@@ -1,0 +1,9 @@
+# Ignore raw design folders and internal agent data
+.agents/
+.gemini/
+01-cv-resume/
+02-concept/
+CVPortfolio Design System/
+cv-design-research-antigravity.html
+cv-design-research.html
+deploy_prep.ps1

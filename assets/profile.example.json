@@ -1,0 +1,61 @@
+{
+  "personal_info": {
+    "name": "Bùi Vĩnh Phú",
+    "name_en": "Phu Bui",
+    "title": "Structural Draftsman",
+    "role": "Team Leader",
+    "slogan": "Good, Better, Best",
+    "email": "phubui277@gmail.com",
+    "location": "Vietnam",
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/phu-bui-016919222/",
+      "github": "https://github.com/BiViPi"
+    },
+    "philosophy": "Continuous learning and improvement to keep pace with global technological evolution."
+  },
+  "experience": [
+    {
+      "company": "SSIFT Vietnam",
+      "position": "Team Leader",
+      "period": "04/2013 – Present",
+      "location": "Vietnam / Germany / Switzerland",
+      "description": "Coordinating and managing teams to implement civil, commercial, and bridge projects for the German and Swiss markets.",
+      "achievements": [
+        "12+ years of hands-on experience in European construction standards (DIN/SIA).",
+        "Successfully delivered hundreds of projects ranging from residential to infrastructure.",
+        "Expert in Allplan for international engineering workflows.",
+        "Developing PythonParts for Allplan to automate drafting and modeling processes."
+      ],
+      "software": [
+        "Allplan (Expert)"
+      ],
+      "automation": [
+        "PythonParts (Python)"
+      ]
+    }
+  ],
+  "skills": {
+    "technical": [
+      "Structural Drafting",
+      "BIM Implementation",
+      "European Standards (DIN/SIA)",
+      "Reinforcement Detailing"
+    ],
+    "software": [
+      "Allplan"
+    ],
+    "automation": [
+      "Python",
+      "PythonParts API"
+    ],
+    "leadership": [
+      "Team Coordination",
+      "Workflow Optimization",
+      "Quality Assurance"
+    ]
+  },
+  "education": {
+    "degree": "Architectural Drafting Certificate",
+    "style": "Practical & Experience-based learning"
+  }
+}

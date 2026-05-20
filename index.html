@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phu Bui — Structural Draftsman · Portfolio</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  html, body { background: var(--paper); }
+  body { margin: 0; }
+
+  /* Case study modal */
+  .modal-backdrop {
+    position: fixed; inset: 0; background: rgba(15,23,42,0.55);
+    backdrop-filter: blur(4px); z-index: 100;
+    display: flex; align-items: center; justify-content: center;
+    padding: 32px;
+    animation: fadeIn 200ms var(--ease-out);
+  }
+  .modal {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    max-width: 880px; width: 100%; max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-modal);
+    animation: lift 250ms var(--ease-out);
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes lift { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .close-btn {
+    position: absolute; top: 20px; right: 20px;
+    width: 36px; height: 36px; border-radius: 999px;
+    background: rgba(15,23,42,0.7); color: #fff;
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<!-- React & Babel Standalone CDN -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+// ==========================================
+// 1. Translation System
+// ==========================================
+const translations = {
+  en: {
+    navHome: "Home",
+    navWork: "Work",
+    navSkills: "Skills",
+    navAbout: "About",
+    navContact: "Contact",
+    navGetInTouch: "Get in touch",
+    heroCaption: "Structural Draftsman · Team Leader · 12+ years",
+    heroBio: "Team Leader at SSIFT Vietnam since 2013 — coordinating structural drafting for civil, commercial, and bridge projects in the German and Swiss markets. DIN/SIA standards, Allplan, and Python automation.",
+    workCaption: "Selected work",
+    workTitle: "Bridges, buildings, brigades of details.",
+    workProjectsCount: "projects · 2013 – present",
+    skillsCaption: "Skills & expertise",
+    skillsTitle: "What I bring to the table.",
+    aboutCaption: "About",
+    aboutTitle: "I trained as an architectural draftsman. Then structural engineering happened.",
+    aboutP1: "I trained as an architectural draftsman. Then I walked into SSIFT Vietnam — a structural engineering office — and everything changed: reinforcement detailing, DIN standards, SIA 262, prestressed concrete. None of it was in the curriculum. I learned by doing, project by project, for twelve years.",
+    aboutP2: "What keeps me here is the complexity. A 180m bridge over an active railway. A civic sports complex with hundreds of pile foundations. A Swiss renovation where every wall is irregular and nothing meets at a right angle. Those are the projects I remember — not because they were easy, but because they weren't.",
+    aboutP3: "At some point I started writing Python. Not because anyone asked me to — but because I kept doing the same operations hundreds of times and thought: there has to be a better way. Now I build tools: a Rebar QA Inspector, automated section generators, parametric reinforcement plugins. I follow AI closely in my own time. I think the best structural draftsman in five years will also be a decent programmer.",
+    aboutP4: "Good, Better, Best. That's the rule.",
+    aboutStatYears: "Years experience",
+    aboutStatMarkets: "Markets served",
+    aboutStatTool: "Primary tool",
+    contactCaption: "Contact",
+    contactTitle: "Let's build something solid.",
+    contactBio: "Available for freelance projects and open to full-time positions in Germany or Switzerland. Structural drafting, Allplan, Python automation.",
+    contactCopied: "✓ Copied",
+    footerSlogan: "Good, Better, Best.",
+    modalRole: "Role",
+    modalDuration: "Duration",
+    modalStack: "Stack",
+    modalOverview: "Overview",
+    modalHighlights: "Highlights",
+    photoPlaceholderText: "Photo placeholder · 35×45",
+  },
+  vi: {
+    navHome: "Trang chủ",
+    navWork: "Dự án",
+    navSkills: "Kỹ năng",
+    navAbout: "Giới thiệu",
+    navContact: "Liên hệ",
+    navGetInTouch: "Liên hệ ngay",
+    heroCaption: "Họa viên Kết cấu · Trưởng nhóm · 12+ năm kinh nghiệm",
+    heroBio: "Trưởng nhóm tại SSIFT Việt Nam từ năm 2013 — điều phối triển khai bản vẽ kết cấu cho các dự án dân dụng, thương mại và cầu đường tại thị trường Đức và Thụy Sĩ. Tiêu chuẩn DIN/SIA, phần mềm Allplan và tự động hóa bằng Python.",
+    workCaption: "Dự án chọn lọc",
+    workTitle: "Cầu đường, tòa nhà, và hàng vạn chi tiết.",
+    workProjectsCount: "dự án · 2013 – hiện tại",
+    skillsCaption: "Kỹ năng & Chuyên môn",
+    skillsTitle: "Những gì tôi mang lại.",
+    aboutCaption: "Giới thiệu",
+    aboutTitle: "Tôi từng học họa viên kiến trúc. Nhưng rồi cơ duyên đưa tôi đến với kỹ thuật kết cấu.",
+    aboutP1: "Tôi được đào tạo như một họa viên kiến trúc. Nhưng rồi tôi bước chân vào SSIFT Việt Nam — một văn phòng thiết kế kết cấu — và mọi thứ thay đổi hoàn toàn: triển khai chi tiết cốt thép, tiêu chuẩn DIN, SIA 262, bê tông dự ứng lực. Không điều nào trong số đó nằm trong giáo trình đại học. Tôi học bằng cách làm việc thực tế, tích lũy qua từng dự án trong suốt 12 năm.",
+    aboutP2: "Điều giữ chân tôi ở lại chính là sự phức tạp. Một cây cầu dài 180m vượt trên tuyến đường sắt đang chạy. Một tổ hợp thể thao công cộng với hàng trăm cọc móng sâu. Một công trình cải tạo tại Thụy Sĩ nơi mọi bức tường đều không đồng đều và không có góc nào vuông vắn. Đó là những dự án tôi luôn nhớ về — không phải vì chúng dễ dàng, mà bởi vì chúng đầy thách thức.",
+    aboutP3: "Có những lúc tôi bắt đầu tự viết Python. Không phải vì ai đó yêu cầu — mà bởi vì tôi liên tục lặp lại một thao tác hàng trăm lần và tự nhủ: phải có cách nào tốt hơn chứ. Bây giờ tôi tự xây dựng các công cụ bổ trợ: Trình kiểm tra lỗi cốt thép (Rebar QA Inspector), tự động tạo mặt cắt từ mô hình 3D, các plugin triển khai cốt thép tham số. Tôi tin rằng một họa viên kết cấu giỏi nhất trong 5 năm tới cũng sẽ là một lập trình viên khá.",
+    aboutP4: "Tốt, Tốt hơn, Tốt nhất. Đó luôn là nguyên tắc của tôi.",
+    aboutStatYears: "Năm kinh nghiệm",
+    aboutStatMarkets: "Thị trường phục vụ",
+    aboutStatTool: "Công cụ cốt lõi",
+    contactCaption: "Liên hệ",
+    contactTitle: "Hãy cùng xây dựng những giá trị vững chắc.",
+    contactBio: "Nhận các dự án freelance và sẵn sàng cho các cơ hội làm việc toàn thời gian tại Đức hoặc Thụy Sĩ. Bản vẽ kết cấu, Allplan, tự động hóa Python.",
+    contactCopied: "✓ Đã sao chép",
+    footerSlogan: "Tốt, Tốt hơn, Tốt nhất.",
+    modalRole: "Vai trò",
+    modalDuration: "Thời gian",
+    modalStack: "Công nghệ",
+    modalOverview: "Tổng quan",
+    modalHighlights: "Điểm nổi bật",
+    photoPlaceholderText: "Ảnh chân dung · 35×45",
+  }
+};
+
+// ==========================================
+// 2. Translatable Data (Projects & Skills)
+// ==========================================
+const projects = {
+  en: [
+    {
+      title: "Neubau Freizeitbad mit Eissporthalleai · Wiesbaden",
+      year: "2024–2025",
+      oneLiner: "Major public leisure & ice sports complex in Wiesbaden — full 3D structural model with pile foundations, multi-zone RC structure, swimming pools and ice rink, to DIN standards.",
+      tech: ["Allplan", "DIN 1045-1", "3D Reinforcement", "Pile Foundations", "Public / Civic"],
+      image: "assets/projects/sportpark-wiesbaden-allplan.png",
+      thumbBg: "linear-gradient(135deg, #0c4a6e, #164e63)",
+      placeholderLabel: "SPORTS COMPLEX · DE",
+      caseStudy: {
+        role: "Lead draftsman · full project",
+        duration: "2024 – 2025",
+        summary: "New construction of a major public leisure bath and ice sports hall (Freizeitbad mit Eissporthalleai) at Konrad-Adenauer-Ring, Wiesbaden. Commissioned by mattiaqua (Eigenbetrieb der Landeshauptstadt Wiesbaden), designed by asp Architekten GmbH (Stuttgart), with structural engineering by wh-p GmbH Beratende Ingenieure. One of the largest and most structurally complex projects in the portfolio — a multi-zone civic building with deep pile foundations, multiple pool structures, and an ice rink, all detailed in full 3D.",
+        highlights: [
+          "Building the complete 3D structural model in Allplan for a large multi-zone civic complex — pile foundation system (hundreds of piles), RC substructure, pool basin walls and slabs, ice rink structure, and multi-level superstructure.",
+          "Full 3D reinforcement detailing across all structural zones to DIN 1045-1 — including the technically demanding interface between the pool basin waterproofing zone and the surrounding RC structure.",
+          "Coordinating drafting scope with the structural engineer wh-p GmbH and architect asp Architekten — working from IFC and 2D input to produce the full execution drawing set.",
+          "Managing the team through the full project cycle as lead, with QA/QC of all drawing sets before handover.",
+        ]
+      }
+    },
+    {
+      title: "Ersatzneubau Tausendfüßler · Offenburg",
+      year: "2020–2023",
+      oneLiner: "Full structural drafting for a 180m 5-span road bridge over the Rheintalbahn — 3D model, 3D reinforcement, and 3D prestressed bar detailing, DIN 1045-1.",
+      tech: ["Allplan", "DIN 1045-1", "3D Reinforcement", "Prestressed Concrete", "Längsverschub"],
+      image: "assets/projects/tausendfuessler-allplan.png",
+      thumbBg: "linear-gradient(135deg, #1e293b, #0f172a)",
+      placeholderLabel: "BRIDGE · DE · B3 OFFENBURG",
+      caseStudy: {
+        role: "Lead draftsman · 5-person team · full project",
+        duration: "10/2020 – 05/2023 · ~2.5 years",
+        summary: "Replacement of the 1960 Tausendfüßler bridge carrying Bundesstraße 3 over the Rheintalbahn in Offenburg — a major freight corridor (Rotterdam–Genua). The 1960 original had developed shear cracks across its full length and failed recalculation; full demolition and replacement was required. The new structure is a 5-span reinforced concrete bridge, ~180m long, ~12m wide, built using the Längsverschubverfahren (incremental launching) so the active Rheintalbahn below was never obstructed during construction.",
+        highlights: [
+          "Led a 5-person team through the complete drafting cycle from project start to handover — 3D structural model, 3D reinforcement detailing, and 3D prestressed bar layout, all in Allplan.",
+          "First segment: 41m long, ~900 tons — detailed the full geometry and rebar for the incremental launch over the live railway line, a technically demanding constraint.",
+          "Full DIN 1045-1 compliance across all substructure and superstructure elements: foundations, piers, abutments, deck, capping beams.",
+          "QA/QC review of all drawing sets before handover to the German project manager — zero structural RFIs raised during construction phase.",
+        ]
+      }
+    },
+    {
+      title: "PythonParts Automation Library · Personal Project",
+      year: "2023–",
+      oneLiner: "Custom Python plugins for Allplan automating standard structural components — parametric columns, beams, and reinforcement cages.",
+      tech: ["Python", "PythonParts API", "Allplan", "Automation"],
+      image: null,
+      thumbBg: "linear-gradient(135deg, #4f46e5, #1e1b4b)",
+      techCard: {
+        stats: [
+          { value: "15+", label: "TOOLS BUILT" },
+          { value: "90→20min", label: "MODELING TIME" },
+          { value: "Python", label: "LANGUAGE" },
+          { value: "Ongoing", label: "STATUS" },
+        ],
+        note: "PERSONAL PROJECT · OPEN-SOURCE SELECTED TOOLS · github.com/BiViPi"
+      },
+      caseStudy: {
+        role: "Developer · personal initiative",
+        duration: "2023 – ongoing",
+        summary: "A personal library of PythonParts and SmartParts — Python plugins for Allplan — built entirely on personal initiative outside of project work. The tools automate repetitive structural drafting tasks that previously required hundreds of manual steps. Select tools are open-sourced on GitHub.",
+        highlights: [
+          "Rebar QA Inspector — scans 3D models for duplicate reinforcement bars, missing rebar labels, and non-standard bar lengths. Catches errors before drawing issue, replacing a slow manual check.",
+          "Spacer (Unterstützung) — parametric 3D spacer tools generating standard and mesh spacers to DBV-BT and DBV-BK specifications automatically.",
+          "Automated Section — generates elevations, sections, and floor plans from any 3D model in a few operations instead of hundreds of manual steps. Major time saving on large models.",
+          "SmartParts for automated reinforcement of columns, walls, beams, and supplementary bars (Verstärkungsbewehrung) — set structural parameters, get full 3D reinforcement output.",
+        ]
+      }
+    },
+    {
+      title: "Neubau Wohn- und Geschäftshaus E64 · Schweiz",
+      year: "2024–2025",
+      oneLiner: "New mixed-use residential & commercial building — full 3D structural model with basement, 4+ floors, walls, slabs, and complete reinforcement detailing to SIA standards.",
+      tech: ["Allplan", "SIA", "3D Reinforcement", "Residential", "Commercial"],
+      image: "assets/projects/wohn-geschaeftshaus-e64-allplan.png",
+      thumbBg: "linear-gradient(135deg, #e2e8f0, #94a3b8)",
+      placeholderLabel: "MIXED-USE · CH",
+      caseStudy: {
+        role: "Lead draftsman · full project",
+        duration: "Mid-2024 – Early 2025 · ~8 months",
+        summary: "New-build mixed-use development in Switzerland — residential apartments above a commercial ground floor and basement level. Full structural drafting scope in Allplan: basement slab and retaining walls, ground-floor commercial structure, four residential floors, roof slab, and all reinforcement detailing.",
+        highlights: [
+          "Built the complete 3D structural model from scratch in Allplan — basement, all above-ground floors, walls, slabs, columns, and beams — working from the architectural drawings and structural engineer's static documents.",
+          "Full 3D reinforcement detailing to SIA standards across all elements: basement retaining walls, flat slabs, stair cores, and facade elements.",
+          "Managed the full drafting cycle as lead, coordinating with the Swiss project manager and delivering QA/QC-reviewed drawing sets at each milestone.",
+          "Handled the structural transition between the wide commercial basement footprint and the tighter residential tower above — a geometrically complex handover zone.",
+        ]
+      }
+    },
+    {
+      title: "Sanierung & Aufstockung · Riedstrasse 17, Tamins",
+      year: "2022",
+      oneLiner: "Renovation and vertical extension of an existing building at 1756m elevation in Graubünden — high-volume detail drawings including structural steel connection details for the new Aufstockung.",
+      tech: ["Allplan", "SIA", "Sanierung", "Steel Connections", "Detail M 1:5"],
+      image: "assets/projects/tamins-riedstrasse17-allplan.png",
+      thumbBg: "linear-gradient(135deg, #f1f5f9, #cbd5e1)",
+      placeholderLabel: "RENOVATION · CH · 1756M",
+      caseStudy: {
+        role: "Lead draftsman · full project",
+        duration: "2022",
+        summary: "Renovation (Sanierung) and vertical extension (Aufstockung) of an existing building at Riedstrasse 17, Tamins — 7015, Canton Graubünden, Switzerland, at 1756m above sea level. A high-complexity renovation project requiring precise as-built documentation of the existing structure alongside full execution drawings for the new addition. The irregular building geometry and the interface between old RC structure and new steel frame made this one of the more technically demanding residential projects in the portfolio.",
+        highlights: [
+          "Produced a high volume of detailed execution drawings at 1:50 and 1:25 — floor plans, 12+ cross-sections, and connection details — all fully annotated in German to SIA standards.",
+          "Detailed structural steel connections for the new Aufstockung: HEB 240 sections, end-plate connections (Kopfplatte), rib stiffeners, M20/M27 bolts, and M16 anchor rods — drawn at M 1:5 and 1:10.",
+          "Navigated the complex geometry of an irregular existing building footprint, reconciling as-built conditions with new structural intent across every drawing.",
+          "All drawings delivered QA/QC reviewed and ready for submission to the Swiss structural engineer and contractor without revision rounds.",
+        ]
+      }
+    },
+    {
+      title: "NGP Gebäude 36 · Mercedes-Benz Sindelfingen",
+      year: "2025–2026",
+      oneLiner: "Next Generation Paintshop — 7,200 prestressed precast elements (columns, main beams, trough slabs) for a 2-story industrial RC structure covering ~30,000m².",
+      tech: ["Allplan", "DIN 1045-1", "Precast / Fertigteile", "Spannbeton", "Industrial"],
+      thumbBg: "linear-gradient(135deg, #0f172a, #1e3a5f)",
+      placeholderLabel: "PRECAST · DE · IN PROGRESS",
+      image: null,
+      techCard: {
+        stats: [
+          { value: "7,200", label: "PRECAST ELEMENTS" },
+          { value: "30,000m²", label: "FOOTPRINT" },
+          { value: "2-STORY", label: "RC STRUCTURE" },
+          { value: "DIN 1045-1", label: "STANDARD" },
+        ],
+        note: "MERCEDES-BENZ WERK SINDELFINGEN · NGP · IN PROGRESS"
+      },
+      caseStudy: {
+        role: "Lead draftsman · ongoing",
+        duration: "2025 – 2026 · in progress",
+        summary: "Structural drafting for the Next Generation Paintshop (NGP) at Mercedes-Benz Werk Sindelfingen — one of the largest precast concrete industrial projects in Germany. The new Building 36 replaces an entire existing paint shop and will house the new series paint line, corrosion testing centre, and water treatment facilities. The structure uses 7,200 Spannbetonfertigteile (prestressed precast concrete elements) — a novel approach for modern production halls.",
+        highlights: [
+          "7,200 prestressed precast elements across three typologies: Fertigteilstützen (columns), [MODIFY] Hauptträger (main beams), and Trogdecken (trough slabs) — all detailed in Allplan to DIN 1045-1.",
+          "2-story reinforced concrete substructure (~30,000m² footprint) topped by an 11m high steel frame — structural interface between RC precast and steel above requires precise connection detailing.",
+          "Large-scale industrial project with tight manufacturing and delivery tolerances — precast elements require exact geometry and reinforcement detailing for factory production.",
+          "Currently in progress (2025–2026). Project is part of a ~€1 billion Mercedes-Benz investment in Sindelfingen's future production capacity.",
+        ]
+      }
+    }
+  ],
+  vi: [
+    {
+      title: "Xây mới Tổ hợp Thể thao băng & Hồ bơi · Wiesbaden",
+      year: "2024–2025",
+      oneLiner: "Tổ hợp thể thao băng & hồ bơi công cộng quy mô lớn tại Wiesbaden — dựng mô hình kết cấu 3D hoàn chỉnh với móng cọc, kết cấu BTCT đa phân khu, các hồ bơi và sân băng theo tiêu chuẩn DIN.",
+      tech: ["Allplan", "DIN 1045-1", "3D Reinforcement", "Pile Foundations", "Public / Civic"],
+      image: "assets/projects/sportpark-wiesbaden-allplan.png",
+      thumbBg: "linear-gradient(135deg, #0c4a6e, #164e63)",
+      placeholderLabel: "SPORTS COMPLEX · DE",
+      caseStudy: {
+        role: "Họa viên trưởng · Toàn bộ dự án",
+        duration: "2024 – 2025",
+        summary: "Xây mới tổ hợp hồ bơi giải trí công cộng và nhà thi đấu thể thao băng (Freizeitbad mit Eissporthalle) tại Konrad-Adenauer-Ring, Wiesbaden. Chủ đầu tư: mattiaqua (Đơn vị vận hành trực thuộc thành phố Wiesbaden), thiết kế bởi asp Architekten GmbH (Stuttgart), đơn vị thiết kế kết cấu wh-p GmbH Beratende Ingenieure. Đây là một trong những dự án lớn và có kết cấu phức tạp nhất trong danh mục — một công trình công cộng đa khu chức năng với móng cọc sâu, kết cấu nhiều bể bơi và sân băng, toàn bộ được chi tiết hóa trên mô hình 3D.",
+        highlights: [
+          "Dựng mô hình kết cấu 3D hoàn chỉnh trên Allplan cho tổ hợp công cộng quy mô lớn — hệ móng cọc (hàng trăm cọc), kết cấu phần ngầm BTCT, tường và bản sàn bể bơi, kết cấu sân băng và phần thân nhiều tầng nổi.",
+          "Triển khai chi tiết cốt thép 3D toàn bộ các phân khu kết cấu theo tiêu chuẩn DIN 1045-1 — bao gồm khu vực giao cắt đòi hỏi kỹ thuật cao giữa vùng chống thấm bể bơi và kết cấu BTCT xung quanh.",
+          "Phối hợp triển khai bản vẽ với đơn vị thiết kế kết cấu wh-p GmbH và kiến trúc sư asp Architekten — làm việc từ dữ liệu IFC và đầu vào 2D để xuất bộ bản vẽ thi công hoàn chỉnh.",
+          "Quản lý đội ngũ trong suốt chu kỳ dự án với vai trò trưởng nhóm, chịu trách nhiệm QA/QC toàn bộ các bộ bản vẽ trước khi bàn giao.",
+        ]
+      }
+    },
+    {
+      title: "Xây mới Cầu đường bộ Tausendfüßler · Offenburg",
+      year: "2020–2023",
+      oneLiner: "Triển khai toàn bộ bản vẽ kết cấu cho cầu đường bộ 5 nhịp dài 180m vượt qua tuyến đường sắt Rheintalbahn — mô hình 3D, chi tiết cốt thép 3D và bố trí cáp dự ứng lực 3D theo tiêu chuẩn DIN 1045-1.",
+      tech: ["Allplan", "DIN 1045-1", "3D Reinforcement", "Prestressed Concrete", "Längsverschub"],
+      image: "assets/projects/tausendfuessler-allplan.png",
+      thumbBg: "linear-gradient(135deg, #1e293b, #0f172a)",
+      placeholderLabel: "BRIDGE · DE · B3 OFFENBURG",
+      caseStudy: {
+        role: "Trưởng nhóm họa viên · Đội ngũ 5 người · Toàn bộ dự án",
+        duration: "10/2020 – 05/2023 · ~2.5 năm",
+        summary: "Thay thế cầu đường bộ Tausendfüßler cũ xây dựng năm 1960 chịu tải tuyến Quốc lộ B3 vượt qua Rheintalbahn tại Offenburg — một hành lang vận tải đường sắt huyết mạch (Rotterdam–Genua). Cầu cũ xuất hiện các vết nứt cắt dọc theo toàn bộ chiều dài và không đạt yêu cầu kiểm toán lực; dự án yêu cầu phá dỡ toàn bộ và xây mới. Cầu mới là cầu bê tông cốt thép 5 nhịp, dài khoảng 180m, rộng khoảng 12m, được thi công bằng phương pháp đẩy dọc (Längsverschubverfahren) để không làm gián đoạn tuyến đường sắt Rheintalbahn đang hoạt động bên dưới.",
+        highlights: [
+          "Dẫn dắt đội ngũ 5 người triển khai toàn bộ chu kỳ bản vẽ từ lúc bắt đầu đến khi bàn giao — bao gồm mô hình kết cấu 3D, chi tiết cốt thép 3D và bố trí thanh dự ứng lực 3D trên Allplan.",
+          "Phân đoạn đầu tiên: dài 41m, nặng ~900 tấn — triển khai chi tiết hình học và cốt thép phục vụ việc đẩy dọc cầu vượt qua tuyến đường sắt đang hoạt động, một thách thức kỹ thuật cực kỳ khắt khe.",
+          "Tuân thủ đầy đủ tiêu chuẩn DIN 1045-1 cho tất cả các cấu kiện mố trụ và dầm cầu: móng, trụ cầu, mố cầu, bản mặt cầu, dầm mũ.",
+          "Đánh giá QA/QC toàn bộ các bộ bản vẽ trước khi bàn giao cho quản lý dự án phía Đức — không phát sinh bất kỳ yêu cầu làm rõ (RFI) nào về kết cấu trong giai đoạn thi công.",
+        ]
+      }
+    },
+    {
+      title: "Thư viện Tự động hóa PythonParts · Dự án cá nhân",
+      year: "2023–",
+      oneLiner: "Các plugin Python tự tùy chỉnh cho Allplan giúp tự động hóa các cấu kiện kết cấu điển hình — cột, dầm tham số hóa và lồng cốt thép.",
+      tech: ["Python", "PythonParts API", "Allplan", "Automation"],
+      image: null,
+      thumbBg: "linear-gradient(135deg, #4f46e5, #1e1b4b)",
+      techCard: {
+        stats: [
+          { value: "15+", label: "CÔNG CỤ ĐÃ DỰNG" },
+          { value: "90→20 phút", label: "THỜI GIAN DỰNG" },
+          { value: "Python", label: "NGÔN NGỮ" },
+          { value: "Đang phát triển", label: "TRẠNG THÁI" },
+        ],
+        note: "DỰ ÁN CÁ NHÂN · MÃ NGUỒN MỞ · github.com/BiViPi"
+      },
+      caseStudy: {
+        role: "Nhà phát triển · Sáng kiến cá nhân",
+        duration: "2023 – Hiện tại",
+        summary: "Một thư viện cá nhân gồm các công cụ PythonParts và SmartParts — các plugin Python dành riêng cho Allplan — được phát triển hoàn toàn theo sáng kiến cá nhân ngoài giờ làm việc. Các công cụ này tự động hóa các tác vụ vẽ kết cấu lặp đi lặp lại vốn trước đây đòi hỏi hàng trăm bước thủ công. Một số công cụ chọn lọc được chia sẻ mã nguồn mở trên GitHub.",
+        highlights: [
+          "Rebar QA Inspector — quét mô hình 3D để phát hiện các thanh cốt thép bị trùng lặp, thiếu nhãn ghi chú rebar hoặc chiều dài thanh không chuẩn tiêu chuẩn. Giúp kiểm soát lỗi trước khi xuất bản vẽ, thay thế quy trình kiểm tra thủ công chậm chạp.",
+          "Spacer (Thanh kê) — công cụ tạo các thanh kê cốt thép 3D tham số hóa tự động tạo các loại thanh kê tiêu chuẩn và dạng lưới theo đặc tính kỹ thuật DBV-BT và DBV-BK.",
+          "Automated Section — tự động tạo các mặt đứng, mặt cắt và mặt bằng sàn từ mô hình 3D bất kỳ chỉ với vài thao tác thay vì hàng trăm bước thủ công. Tiết kiệm thời gian đáng kể trên các mô hình lớn.",
+          "SmartParts hỗ trợ tự động bố trí cốt thép cho cột, tường, dầm và cốt thép bổ sung (Verstärkungsbewehrung) — chỉ cần nhập các thông số hình học kết cấu để nhận ngay kết quả mô hình cốt thép 3D hoàn chỉnh.",
+        ]
+      }
+    },
+    {
+      title: "Xây mới Tòa nhà Hỗn hợp E64 · Thụy Sĩ",
+      year: "2024–2025",
+      oneLiner: "Tòa nhà hỗn hợp căn hộ & thương mại xây mới — mô hình kết cấu 3D hoàn chỉnh với tầng hầm, hơn 4 tầng nổi, tường, sàn và chi tiết cốt thép đầy đủ theo tiêu chuẩn SIA của Thụy Sĩ.",
+      tech: ["Allplan", "SIA", "3D Reinforcement", "Residential", "Commercial"],
+      image: "assets/projects/wohn-geschaeftshaus-e64-allplan.png",
+      thumbBg: "linear-gradient(135deg, #e2e8f0, #94a3b8)",
+      placeholderLabel: "MIXED-USE · CH",
+      caseStudy: {
+        role: "Họa viên trưởng · Toàn bộ dự án",
+        duration: "Giữa 2024 – Đầu 2025 · ~8 tháng",
+        summary: "Dự án xây mới khu phức hợp căn hộ thương mại tại Thụy Sĩ — căn hộ sinh sống ở các tầng trên và khu vực thương mại ở tầng trệt cùng tầng hầm. Phạm vi triển khai bản vẽ kết cấu hoàn chỉnh trên Allplan: bản sàn hầm và tường chắn, kết cấu thương mại tầng trệt, bốn tầng căn hộ nổi, bản sàn mái và toàn bộ chi tiết cốt thép.",
+        highlights: [
+          "Dựng mô hình kết cấu 3D hoàn chỉnh từ đầu trên Allplan — bao gồm tầng hầm, các tầng nổi, tường, sàn, cột và dầm — làm việc dựa trên bản vẽ kiến trúc và tài liệu tính toán tĩnh của kỹ sư kết cấu.",
+          "Chi tiết hóa cốt thép 3D toàn bộ các cấu kiện theo tiêu chuẩn SIA của Thụy Sĩ: tường chắn tầng hầm, sàn phẳng, lõi thang máy và các cấu kiện mặt tiền.",
+          "Quản lý toàn bộ chu kỳ vẽ với vai trò trưởng nhóm, phối hợp với quản lý dự án người Thụy Sĩ và bàn giao các bản vẽ đã qua kiểm định QA/QC tại mỗi cột mốc.",
+          "Xử lý vùng chuyển tiếp kết cấu giữa mặt bằng thương mại rộng rãi ở tầng hầm và khối tháp căn hộ nhỏ hơn ở phía trên — một khu vực bàn giao hình học phức tạp.",
+        ]
+      }
+    },
+    {
+      title: "Cải tạo & Nâng tầng · Riedstrasse 17, Tamins",
+      year: "2022",
+      oneLiner: "Cải tạo và nâng tầng cho công trình hiện hữu ở độ cao 1756m tại Graubünden — khối lượng lớn bản vẽ chi tiết bao gồm liên kết kết cấu thép cho phần nâng tầng mới.",
+      tech: ["Allplan", "SIA", "Sanierung", "Steel Connections", "Detail M 1:5"],
+      image: "assets/projects/tamins-riedstrasse17-allplan.png",
+      thumbBg: "linear-gradient(135deg, #f1f5f9, #cbd5e1)",
+      placeholderLabel: "RENOVATION · CH · 1756M",
+      caseStudy: {
+        role: "Họa viên trưởng · Toàn bộ dự án",
+        duration: "2022",
+        summary: "Cải tạo (Sanierung) và nâng tầng (Aufstockung) cho tòa nhà hiện hữu tại Riedstrasse 17, Tamins — 7015, Bang Graubünden, Thụy Sĩ, ở độ cao 1756m so với mực nước biển. Dự án cải tạo có độ phức tạp cao, yêu cầu thiết lập hồ sơ hiện trạng chính xác của kết cấu cũ song song với bản vẽ thi công cho phần nâng tầng mới. Hình học tòa nhà không đều và giao diện kết nối giữa kết cấu BTCT cũ với khung thép mới làm cho đây trở thành một trong những dự án dân dụng đòi hỏi kỹ thuật cao nhất trong danh mục.",
+        highlights: [
+          "Xuất bản lượng lớn bản vẽ thi công chi tiết tỷ lệ 1:50 và 1:25 — mặt bằng, hơn 12 mặt cắt và các chi tiết liên kết — toàn bộ được chú thích bằng tiếng Đức theo tiêu chuẩn SIA.",
+          "Triển khai chi tiết các liên kết kết cấu thép cho phần nâng tầng mới: thép hình HEB 240, liên kết mặt bích (Kopfplatte), gân tăng cứng, bu lông M20/M27 và thanh neo M16 — vẽ ở tỷ lệ chi tiết 1:5 và 1:10.",
+          "Xử lý hình học phức tạp của mặt bằng công trình hiện hữu không vuông vắn, điều hòa sự sai lệch giữa hiện trạng thực tế và ý đồ kết cấu mới trên từng bản vẽ.",
+          "Toàn bộ bản vẽ được bàn giao sau khi đã qua kiểm tra QA/QC kỹ lưỡng, sẵn sàng trình duyệt cho kỹ sư kết cấu và nhà thầu Thụy Sĩ mà không cần qua các vòng chỉnh sửa.",
+        ]
+      }
+    },
+    {
+      title: "NGP Gebäude 36 · Mercedes-Benz Sindelfingen",
+      year: "2025–2026",
+      oneLiner: "Xưởng sơn thế hệ mới (Next Generation Paintshop) — 7,200 cấu kiện bê tông đúc sẵn dự ứng lực (cột, dầm chính, sàn máng) cho kết cấu nhà xưởng BTCT 2 tầng diện tích ~30,000m².",
+      tech: ["Allplan", "DIN 1045-1", "Precast / Fertigteile", "Spannbeton", "Industrial"],
+      thumbBg: "linear-gradient(135deg, #0f172a, #1e3a5f)",
+      placeholderLabel: "PRECAST · DE · IN PROGRESS",
+      image: null,
+      techCard: {
+        stats: [
+          { value: "7,200", label: "CẤU KIỆN ĐÚC SẴN" },
+          { value: "30,000m²", label: "DIỆN TÍCH SÀN" },
+          { value: "2 TẦNG nổi", label: "KẾT CẤU BTCT" },
+          { value: "DIN 1045-1", label: "TIÊU CHUẨN" },
+        ],
+        note: "MERCEDES-BENZ WERK SINDELFINGEN · NGP · ĐANG TRIỂN KHAI"
+      },
+      caseStudy: {
+        role: "Họa viên trưởng · Đang triển khai",
+        duration: "2025 – 2026 · Đang thực hiện",
+        summary: "Triển khai bản vẽ kết cấu cho Xưởng sơn thế hệ mới (NGP) tại Nhà máy Mercedes-Benz Sindelfingen — một trong những dự án công nghiệp bê tông đúc sẵn lớn nhất tại Đức. Tòa nhà số 36 mới thay thế toàn bộ xưởng sơn cũ hiện hữu và sẽ là nơi lắp đặt dây chuyền sơn hàng loạt mới, trung tâm kiểm tra ăn mòn và các cơ sở xử lý nước. Kết cấu sử dụng 7,200 cấu kiện bê tông đúc sẵn dự ứng lực (Spannbetonfertigteile) — một giải pháp tiên tiến cho các nhà xưởng sản xuất hiện đại.",
+        highlights: [
+          "Triển khai 7,200 cấu kiện bê tông đúc sẵn dự ứng lực thuộc ba nhóm: cột đúc sẵn (Fertigteilstützen), dầm chính (Hauptträger) và sàn máng (Trogdecken) — toàn bộ được chi tiết hóa trên Allplan theo tiêu chuẩn DIN 1045-1.",
+          "Kết cấu phần hạ tầng BTCT 2 tầng (diện tích sàn ~30,000m²) kết hợp với hệ khung thép cao 11m phía trên — giao diện kết nối giữa BTCT đúc sẵn và kết cấu thép phía trên đòi hỏi các chi tiết liên kết cực kỳ chính xác.",
+          "Dự án công nghiệp quy mô lớn với dung sai chế tạo và vận chuyển lắp đặt rất ngặt nghèo — các cấu kiện đúc sẵn đòi hỏi độ chính xác tuyệt đối về hình học và chi tiết cốt thép phục vụ sản xuất tại nhà máy.",
+          "Hiện đang triển khai (2025–2026). Dự án là một phần trong khoản đầu tư trị giá khoảng 1 tỷ Euro của Mercedes-Benz nhằm nâng cao năng lực sản xuất trong tương lai tại Sindelfingen.",
+        ]
+      }
+    }
+  ]
+};
+
+const skillsData = {
+  en: [
+    {
+      category: "Technical Expertise",
+      icon: "briefcase",
+      items: [
+        { label: "2D → 3D Modeling", detail: "Reading complex 2D drawings and building accurate 3D structural models in Allplan" },
+        { label: "Reinforcement Detailing", detail: "Interpreting static documents from structural engineers and detailing rebar accurately to spec" },
+        { label: "DIN / SIA / Eurocode 2", detail: "Deep working knowledge of German (DIN), Swiss (SIA), and European (Eurocode 2) standards for reinforced concrete — residential, commercial, and bridge typologies" },
+        { label: "Reinforced Concrete", detail: "Primary material expertise — from floor slabs to bridge decks, per DIN 1045-1, SIA 262, and EC2" },
+      ]
+    },
+    {
+      category: "Software & Tools",
+      icon: "wrench",
+      items: [
+        { label: "Allplan", detail: "Expert-level — primary production tool for 12+ years" },
+        { label: "PythonParts API", detail: "Developing parametric Allplan plugins in Python to automate standard components" },
+        { label: "Microsoft Office", detail: "Excel for coordination tracking; Word for reporting and documentation" },
+      ]
+    },
+    {
+      category: "Leadership & Process",
+      icon: "graduation-cap",
+      items: [
+        { label: "Team Leadership", detail: "Leading a 4-person drafting team — task allocation, timeline tracking, capacity planning" },
+        { label: "QA / QC", detail: "Full drawing review before handover to German project manager — zero-defect delivery focus" },
+        { label: "Training & Mentoring", detail: "On-boarding and developing new draftsmen; built an internal 300+ detail library to accelerate learning" },
+        { label: "Self-taught & Hands-on", detail: "No formal certifications — all expertise built through 12+ years of live project delivery. Quick to acquire new standards and tools on the job" },
+        { label: "IFC & Multi-discipline Coordination", detail: "Receiving architectural drawings and IFC models as input; working independently to produce the structural set without cross-discipline back-and-forth" },
+      ]
+    },
+    {
+      category: "Languages",
+      icon: "languages",
+      items: [
+        { label: "Vietnamese", detail: "Native" },
+        { label: "German", detail: "Technical reading — proficient in construction terminology and DIN/SIA documentation. Conversation: basic" },
+        { label: "English", detail: "Strong reading and writing. Basic spoken communication" },
+      ]
+    },
+  ],
+  vi: [
+    {
+      category: "Chuyên môn Kỹ thuật",
+      icon: "briefcase",
+      items: [
+        { label: "Mô hình hóa 2D → 3D", detail: "Đọc hiểu các bản vẽ 2D phức tạp và dựng mô hình kết cấu 3D chính xác trên Allplan" },
+        { label: "Chi tiết hóa cốt thép", detail: "Đọc hiểu tài liệu tĩnh học của kỹ sư kết cấu và triển khai cốt thép chính xác theo yêu cầu kỹ thuật" },
+        { label: "DIN / SIA / Eurocode 2", detail: "Kiến thức chuyên sâu và vận dụng các tiêu chuẩn Đức (DIN), Thụy Sĩ (SIA) và Châu Âu (Eurocode 2) đối với cấu kiện bê tông cốt thép — dân dụng, thương mại và công trình cầu" },
+        { label: "Bê tông Cốt thép", detail: "Vật liệu chuyên môn cốt lõi — từ bản sàn đến mặt cầu, tuân thủ DIN 1045-1, SIA 262 và EC2" },
+      ]
+    },
+    {
+      category: "Phần mềm & Công cụ",
+      icon: "wrench",
+      items: [
+        { label: "Allplan", detail: "Cấp độ chuyên gia — công cụ sản xuất bản vẽ chính suốt hơn 12 năm" },
+        { label: "PythonParts API", detail: "Phát triển các plugin Allplan tham số hóa bằng Python để tự động hóa việc tạo cấu kiện điển hình" },
+        { label: "Microsoft Office", detail: "Sử dụng Excel để theo dõi phối hợp công việc; Word để lập báo cáo và hồ sơ" },
+      ]
+    },
+    {
+      category: "Quản lý & Quy trình",
+      icon: "graduation-cap",
+      items: [
+        { label: "Quản lý Đội ngũ", detail: "Dẫn dắt đội ngũ họa viên 4 người — phân bổ công việc, theo dõi tiến độ, lập kế hoạch năng lực" },
+        { label: "Kiểm soát chất lượng (QA / QC)", detail: "Kiểm tra toàn diện bản vẽ trước khi bàn giao cho quản lý dự án người Đức — cam kết sản phẩm không lỗi" },
+        { label: "Đào tạo & Hướng dẫn", detail: "Đào tạo họa viên mới; xây dựng thư viện chi tiết mẫu nội bộ gồm hơn 300 chi tiết giúp đẩy nhanh tốc độ tự học" },
+        { label: "Tự học & Thực hành", detail: "Không qua chứng chỉ trường lớp chính quy — toàn bộ kỹ năng được xây dựng thực tế qua 12+ năm trực tiếp triển khai dự án. Thích nghi cực nhanh với tiêu chuẩn và công cụ mới" },
+        { label: "Phối hợp IFC & Đa chuyên ngành", detail: "Nhận bản vẽ kiến trúc và mô hình IFC làm đầu vào; làm việc độc lập để triển khai bộ bản vẽ kết cấu mà không cần phản hồi qua lại nhiều" },
+      ]
+    },
+    {
+      category: "Ngôn ngữ",
+      icon: "languages",
+      items: [
+        { label: "Tiếng Việt", detail: "Tiếng mẹ đẻ" },
+        { label: "Tiếng Đức", detail: "Đọc hiểu chuyên ngành xây dựng — thành thạo thuật ngữ thi công và tài liệu DIN/SIA. Giao tiếp cơ bản" },
+        { label: "Tiếng Anh", detail: "Đọc và viết tốt. Giao tiếp cơ bản" },
+      ]
+    },
+  ]
+};
+
+const iconPaths = {
+  briefcase: '<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/>',
+  wrench: '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+  "graduation-cap": '<path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>',
+  languages: '<path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>',
+};
+
+// ==========================================
+// 3. Components
+// ==========================================
+const PortfolioNav = ({ active = "home", onNavigate, lang, onToggleLang }) => {
+  const items = [
+    { id: "home", label: lang === "en" ? "Home" : "Trang chủ" },
+    { id: "work", label: lang === "en" ? "Work" : "Dự án" },
+    { id: "skills", label: lang === "en" ? "Skills" : "Kỹ năng" },
+    { id: "about", label: lang === "en" ? "About" : "Giới thiệu" },
+    { id: "contact", label: lang === "en" ? "Contact" : "Liên hệ" },
+  ];
+  return (
+    <nav style={{
+      position: "sticky", top: 0, zIndex: 50,
+      background: "rgba(250,250,247,0.85)",
+      backdropFilter: "blur(12px)",
+      WebkitBackdropFilter: "blur(12px)",
+      borderBottom: "1px solid var(--line)",
+    }}>
+      <div style={{
+        maxWidth: 1100, margin: "0 auto", padding: "14px 32px",
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+      }}>
+        <a href="#home" onClick={(e) => { e.preventDefault(); onNavigate?.("home"); }} style={{
+          display: "flex", alignItems: "center", gap: 10, color: "var(--ink)", textDecoration: "none",
+        }}>
+          <span style={{
+            width: 32, height: 32, borderRadius: 8,
+            background: "var(--ink)", color: "var(--paper)",
+            display: "inline-flex", alignItems: "center", justifyContent: "center",
+            fontWeight: 700, fontSize: 13, letterSpacing: "-0.04em",
+          }}>PB</span>
+          <span style={{ fontWeight: 600, fontSize: 14 }}>Phu Bui</span>
+        </a>
+
+        <ul style={{ display: "flex", gap: 4, listStyle: "none", margin: 0, padding: 0 }}>
+          {items.map((it) => (
+            <li key={it.id}>
+              <a
+                href={`#${it.id}`}
+                onClick={(e) => { e.preventDefault(); onNavigate?.(it.id); }}
+                style={{
+                  padding: "8px 14px",
+                  borderRadius: 999,
+                  color: active === it.id ? "var(--ink)" : "var(--muted-2)",
+                  background: active === it.id ? "var(--line-soft)" : "transparent",
+                  textDecoration: "none",
+                  fontSize: 14,
+                  fontWeight: active === it.id ? 600 : 500,
+                  transition: "all 150ms var(--ease-out)",
+                }}
+              >{it.label}</a>
+            </li>
+          ))}
+        </ul>
+
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <button
+            onClick={onToggleLang}
+            style={{
+              background: "none",
+              border: "1px solid var(--line)",
+              borderRadius: 6,
+              padding: "6px 10px",
+              fontSize: 12,
+              fontWeight: 600,
+              cursor: "pointer",
+              fontFamily: "var(--font-mono)",
+              color: "var(--ink)",
+              transition: "all 150ms var(--ease-out)",
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.background = "var(--line-soft)"}
+            onMouseLeave={(e) => e.currentTarget.style.background = "none"}
+          >
+            {lang === "en" ? "VI" : "EN"}
+          </button>
+          <a href="#contact" onClick={(e) => { e.preventDefault(); onNavigate?.("contact"); }} style={{
+            display: "inline-flex", alignItems: "center", gap: 6,
+            padding: "8px 14px", borderRadius: 8,
+            background: "var(--ink)", color: "var(--paper)",
+            fontWeight: 600, fontSize: 13, textDecoration: "none",
+          }}>{lang === "en" ? "Get in touch" : "Liên hệ"}</a>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+const PortfolioHero = ({ lang, t }) => (
+  <section style={{
+    maxWidth: 1100, margin: "0 auto",
+    padding: "120px 32px 96px",
+    display: "grid",
+    gridTemplateColumns: "1.3fr 1fr",
+    gap: 64,
+    alignItems: "center",
+  }}>
+    <div>
+      <div className="t-caption" style={{ color: "var(--accent)", marginBottom: 18 }}>
+        {t.heroCaption}
+      </div>
+      <h1 style={{
+        fontSize: 58, fontWeight: 700, lineHeight: 1.05,
+        letterSpacing: "-0.025em", margin: 0, color: "var(--ink)",
+      }}>
+        {lang === "en" ? (
+          <>I draft the bones<br />of European<br />buildings &amp; bridges.</>
+        ) : (
+          <>Tôi vẽ nên khung xương<br />cho các công trình<br />&amp; cây cầu tại Châu Âu.</>
+        )}
+      </h1>
+      <p style={{
+        marginTop: 24, fontSize: 18, lineHeight: 1.6,
+        color: "var(--muted-1)", maxWidth: 540,
+      }}>
+        {t.heroBio}
+      </p>
+    </div>
+
+    {/* The draftsman's sheet — stylized realistic RC beam-column blueprint */}
+    <div style={{ position: "relative" }}>
+      <div style={{
+        background: "var(--ink)",
+        borderRadius: 16,
+        padding: "20px 16px 24px",
+        aspectRatio: "3/4",
+        boxShadow: "0 30px 60px rgba(15,23,42,.25)",
+        position: "relative",
+        overflow: "hidden",
+      }}>
+        <svg viewBox="0 0 320 420" style={{ width: "100%", height: "100%", display: "block" }} xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="cadGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="1"/>
+              <path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="1.2"/>
+            </pattern>
+            <linearGradient id="rebarGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#38bdf8"/>
+              <stop offset="100%" stopColor="#818cf8"/>
+            </linearGradient>
+            <linearGradient id="tendonGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#fb7185"/>
+              <stop offset="100%" stopColor="#f43f5e"/>
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="#0f172a"/>
+          <rect width="100%" height="100%" fill="url(#cadGrid)"/>
+
+          <text x="20" y="32" fill="rgba(255,255,255,0.3)" fontFamily="var(--font-mono)" fontSize="8.5" letterSpacing="0.08em">DETAILED DRAWING // BEAM-COLUMN CONNECTION</text>
+          
+          <g stroke="rgba(255,255,255,0.15)" strokeWidth="0.8" strokeDasharray="4,4">
+            <line x1="50" y1="20" x2="50" y2="400" />
+            <line x1="20" y1="300" x2="300" y2="300" />
+            <text x="45" y="15" fill="rgba(255,255,255,0.4)" fontFamily="var(--font-mono)" fontSize="8">AXIS A</text>
+            <text x="305" y="296" fill="rgba(255,255,255,0.4)" fontFamily="var(--font-mono)" fontSize="8">LEVEL 0.00</text>
+          </g>
+
+          {/* Concrete Outline */}
+          <path d="M 40 420 L 40 220 L 320 220 M 320 120 L 100 120 L 100 0 M 40 0 L 40 120" 
+                fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" />
+          
+          {/* Concrete Hatching */}
+          <g stroke="rgba(255,255,255,0.06)" strokeWidth="0.8">
+            <line x1="50" y1="350" x2="60" y2="340" />
+            <line x1="75" y1="280" x2="85" y2="270" />
+            <line x1="160" y1="180" x2="170" y2="170" />
+            <line x1="240" y1="150" x2="250" y2="140" />
+            <circle cx="58" cy="342" r="1.5" fill="none" />
+            <circle cx="82" cy="275" r="1" fill="none" />
+            <circle cx="165" cy="172" r="1" fill="none" />
+            <circle cx="242" cy="148" r="1.5" fill="none" />
+          </g>
+
+          {/* Longitudinal Rebars */}
+          <g stroke="url(#rebarGrad)" strokeWidth="2.8" strokeLinecap="round" fill="none">
+            <path d="M 52 420 L 52 108" />
+            <path d="M 88 420 L 88 108" />
+            
+            <path d="M 320 132 L 64 132 L 64 180" />
+            <path d="M 320 208 L 76 208 L 76 160" />
+          </g>
+
+          {/* Stirrups */}
+          <g stroke="rgba(255,255,255,0.55)" strokeWidth="1.1" fill="none">
+            <rect x="110" y="132" width="12" height="76" rx="1" />
+            <rect x="125" y="132" width="12" height="76" rx="1" />
+            <rect x="145" y="132" width="12" height="76" rx="1" />
+            <rect x="170" y="132" width="12" height="76" rx="1" />
+            <rect x="200" y="132" width="12" height="76" rx="1" />
+            <rect x="235" y="132" width="12" height="76" rx="1" />
+            <rect x="275" y="132" width="12" height="76" rx="1" />
+
+            <line x1="52" y1="380" x2="88" y2="380" />
+            <line x1="52" y1="340" x2="88" y2="340" />
+            <line x1="52" y1="300" x2="88" y2="300" />
+            <line x1="52" y1="260" x2="88" y2="260" />
+            <line x1="52" y1="220" x2="88" y2="220" />
+            <line x1="52" y1="180" x2="88" y2="180" />
+            <line x1="52" y1="140" x2="88" y2="140" />
+          </g>
+
+          {/* Prestressed Tendon */}
+          <path d="M 100 145 Q 180 205 320 160" 
+                fill="none" stroke="url(#tendonGrad)" strokeWidth="2.2" strokeDasharray="3,2" />
+          <polygon points="100,141 100,149 94,146 94,144" fill="#fb7185" />
+
+          {/* Dimension Lines */}
+          <g stroke="rgba(255,255,255,0.35)" strokeWidth="0.8">
+            <line x1="100" y1="95" x2="300" y2="95" />
+            <line x1="100" y1="90" x2="100" y2="100" />
+            <line x1="300" y1="90" x2="300" y2="100" />
+            <line x1="97" y1="98" x2="103" y2="92" />
+            <line x1="297" y1="98" x2="303" y2="92" />
+            <text x="200" y="88" fill="rgba(255,255,255,0.45)" fontFamily="var(--font-mono)" fontSize="7.5" textAnchor="middle">2000</text>
+
+            <line x1="310" y1="120" x2="310" y2="220" />
+            <line x1="305" y1="120" x2="315" y2="120" />
+            <line x1="305" y1="220" x2="315" y2="220" />
+            <line x1="307" y1="123" x2="313" y2="117" />
+            <line x1="307" y1="223" x2="313" y2="217" />
+            <text x="317" y="170" fill="rgba(255,255,255,0.45)" fontFamily="var(--font-mono)" fontSize="7.5" transform="rotate(90 317 170)" text-anchor="middle">1000</text>
+          </g>
+
+          {/* Leader Lines / Labels */}
+          <g stroke="rgba(255,255,255,0.4)" strokeWidth="0.8" fill="none">
+            {/* Stirrup label */}
+            <path d="M 148 132 L 138 108 L 110 108" />
+            <circle cx="148" cy="132" r="1.5" fill="rgba(255,255,255,0.8)" />
+            <text x="105" y="105" fill="rgba(255,255,255,0.6)" fontFamily="var(--font-mono)" fontSize="7" textAnchor="end">St. Ø8/150 (Stirrup)</text>
+
+            {/* Rebar label */}
+            <path d="M 230 208 L 245 235 L 265 235" />
+            <circle cx="230" cy="208" r="1.5" fill="rgba(255,255,255,0.8)" />
+            <text x="270" y="238" fill="rgba(255,255,255,0.6)" fontFamily="var(--font-mono)" fontSize="7">4 Ø20 (B500B Rebar)</text>
+
+            {/* Tendon label */}
+            <path d="M 195 183 L 205 260 L 225 260" />
+            <circle cx="195" cy="183" r="1.5" fill="#fb7185" />
+            <text x="230" y="263" fill="#fb7185" fontFamily="var(--font-mono)" fontSize="7">Prestressed Tendon</text>
+          </g>
+
+          {/* Footnotes */}
+          <g fontFamily="var(--font-mono)" fontSize="7.5" fill="rgba(255,255,255,0.25)">
+            <text x="20" y="380">CONCRETE: C35/45</text>
+            <text x="20" y="392">STANDARD: SIA 262 (Tamins)</text>
+            <text x="200" y="380">SCALE: 1:25</text>
+            <text x="200" y="392">UNIT: METRIC (mm)</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+);
+
+const ProjectCard = ({ project, onOpen }) => (
+  <article
+    onClick={() => onOpen?.(project)}
+    style={{
+      background: "var(--surface)",
+      border: "1px solid var(--line)",
+      borderRadius: "var(--radius-md)",
+      overflow: "hidden",
+      cursor: "pointer",
+      transition: "all 200ms var(--ease-out)",
+      display: "flex",
+      flexDirection: "column",
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.transform = "translateY(-2px)";
+      e.currentTarget.style.boxShadow = "var(--shadow-lifted)";
+      e.currentTarget.style.borderColor = "transparent";
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.transform = "translateY(0)";
+      e.currentTarget.style.boxShadow = "none";
+      e.currentTarget.style.borderColor = "var(--line)";
+    }}
+  >
+    {/* Project thumbnail */}
+    <div style={{
+      aspectRatio: "16/10",
+      background: project.thumbBg || "linear-gradient(135deg, #f1f5f9, #cbd5e1)",
+      position: "relative",
+      overflow: "hidden",
+    }}>
+      {project.image
+        ? <img src={project.image} alt={project.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
+        : project.techCard
+        ? <div style={{ width: "100%", height: "100%", padding: "16px 20px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              {project.techCard.stats.map(s => (
+                <div key={s.label} style={{ background: "rgba(255,255,255,.08)", borderRadius: 6, padding: "8px 12px" }}>
+                  <div style={{ color: "#fff", fontWeight: 700, fontSize: 18, letterSpacing: "-0.02em", fontFamily: "var(--font-mono)" }}>{s.value}</div>
+                  <div style={{ color: "rgba(255,255,255,.55)", fontSize: 10, marginTop: 2, fontFamily: "var(--font-mono)", letterSpacing: ".06em" }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ color: "rgba(255,255,255,.35)", fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: ".12em" }}>{project.techCard.note}</div>
+          </div>
+        : <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(15,23,42,.3)", fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: ".15em" }}>
+            <span>{project.placeholderLabel || "PROJECT IMAGE"}</span>
+          </div>
+      }
+      <span style={{ position: "absolute", top: 12, left: 12, padding: "3px 8px", background: "rgba(15,23,42,.7)", color: "#fff", fontSize: 10, borderRadius: 4, letterSpacing: ".08em", fontFamily: "var(--font-mono)" }}>
+        {project.year}
+      </span>
+    </div>
+    <div style={{ padding: "18px 20px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
+        <h3 style={{ margin: 0, fontSize: 17, fontWeight: 600, color: "var(--ink)", letterSpacing: "-0.01em" }}>
+          {project.title}
+        </h3>
+        <span style={{ color: "var(--accent)", flexShrink: 0, marginLeft: 8 }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </span>
+      </div>
+      <p style={{ margin: "0 0 12px", color: "var(--muted-1)", fontSize: 14, lineHeight: 1.55 }}>
+        {project.oneLiner}
+      </p>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+        {project.tech.map((t) => (
+          <span key={t} style={{
+            padding: "2px 8px", fontSize: 11, fontFamily: "var(--font-mono)",
+            background: "var(--line-soft)", color: "var(--muted-1)",
+            borderRadius: 999,
+          }}>{t}</span>
+        ))}
+      </div>
+    </div>
+  </article>
+);
+
+const PortfolioProjects = ({ projects, onOpen, t }) => (
+  <section id="work" style={{ maxWidth: 1100, margin: "0 auto", padding: "64px 32px" }}>
+    <header style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 32, flexWrap: "wrap", gap: 12 }}>
+      <div>
+        <div className="t-caption" style={{ color: "var(--accent)", marginBottom: 8 }}>{t.workCaption}</div>
+        <h2 style={{ margin: 0, fontSize: 36, fontWeight: 700, letterSpacing: "-0.02em", color: "var(--ink)" }}>
+          {t.workTitle}
+        </h2>
+      </div>
+      <span style={{ color: "var(--muted-3)", fontSize: 13, fontFamily: "var(--font-mono)" }}>
+        {projects.length} {t.workProjectsCount}
+      </span>
+    </header>
+    <div style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+      gap: 20,
+    }}>
+      {projects.map((p, i) => <ProjectCard key={i} project={p} onOpen={onOpen} />)}
+    </div>
+  </section>
+);
+
+const SkillRow = ({ item }) => (
+  <div style={{
+    display: "flex",
+    flexDirection: "column",
+    gap: 3,
+    padding: "14px 0",
+    borderBottom: "1px solid var(--line)",
+  }}>
+    <div style={{ fontWeight: 600, fontSize: 14.5, color: "var(--ink)" }}>{item.label}</div>
+    <div style={{ fontSize: 13.5, color: "var(--muted-1)", lineHeight: 1.5 }}>{item.detail}</div>
+  </div>
+);
+
+const SkillGroup = ({ group }) => (
+  <div style={{
+    background: "var(--surface)",
+    border: "1px solid var(--line)",
+    borderRadius: "var(--radius-md)",
+    padding: "22px 24px",
+  }}>
+    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" dangerouslySetInnerHTML={{ __html: iconPaths[group.icon] }} />
+      <div className="t-section" style={{ margin: 0, fontSize: 11 }}>{group.category}</div>
+    </div>
+    <div>
+      {group.items.map((item, i) => (
+        <SkillRow key={i} item={item} />
+      ))}
+    </div>
+  </div>
+);
+
+const PortfolioSkills = ({ skillsData, t }) => (
+  <section id="skills" style={{ maxWidth: 1100, margin: "0 auto", padding: "64px 32px" }}>
+    <header style={{ marginBottom: 36 }}>
+      <div className="t-caption" style={{ color: "var(--accent)", marginBottom: 10 }}>{t.skillsCaption}</div>
+      <h2 style={{ margin: 0, fontSize: 36, fontWeight: 700, letterSpacing: "-0.02em", color: "var(--ink)", lineHeight: 1.1 }}>
+        {t.skillsTitle}
+      </h2>
+    </header>
+
+    <div style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, minmax(460px, 1fr))",
+      gap: 18,
+    }}>
+      {skillsData.map((group, i) => (
+        <SkillGroup key={i} group={group} />
+      ))}
+    </div>
+  </section>
+);
+
+const PortfolioAbout = ({ t }) => (
+  <section id="about" style={{ background: "var(--paper-soft)", padding: "80px 32px" }}>
+    <div style={{
+      maxWidth: 1100, margin: "0 auto",
+      display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 64,
+      alignItems: "start",
+    }}>
+      <div>
+        <div style={{
+          width: 200, aspectRatio: "35/45",
+          background: "linear-gradient(135deg, #94a3b8, #475569)",
+          borderRadius: "var(--radius-md)",
+          marginBottom: 20,
+          display: "flex", alignItems: "flex-end", justifyContent: "center",
+          color: "#fff", fontWeight: 700, fontSize: 42, letterSpacing: "-0.04em",
+          paddingBottom: 14,
+        }}>PB</div>
+        <div className="t-caption" style={{ color: "var(--muted-3)" }}>{t.photoPlaceholderText}</div>
+      </div>
+      <div>
+        <div className="t-caption" style={{ color: "var(--accent)", marginBottom: 12 }}>{t.aboutCaption}</div>
+        <h2 style={{ margin: "0 0 24px", fontSize: 34, fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1, color: "var(--ink)" }}>
+          {t.aboutTitle}
+        </h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: 16, color: "var(--muted-1)", fontSize: 16, lineHeight: 1.65, maxWidth: 620 }}>
+          <p style={{ margin: 0 }}>{t.aboutP1}</p>
+          <p style={{ margin: 0 }}>{t.aboutP2}</p>
+          <p style={{ margin: 0 }}>{t.aboutP3}</p>
+          <p style={{ margin: 0, color: "var(--ink)", fontStyle: "italic" }}>{t.aboutP4}</p>
+        </div>
+
+        <div style={{ marginTop: 36, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, maxWidth: 600 }}>
+          {[
+            { label: t.aboutStatYears, val: "12+" },
+            { label: t.aboutStatMarkets, val: "DE · CH" },
+            { label: t.aboutStatTool, val: "Allplan" },
+          ].map(s => (
+            <div key={s.label}>
+              <div style={{ fontSize: 28, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.02em" }}>{s.val}</div>
+              <div className="t-meta" style={{ marginTop: 2 }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const PortfolioContact = ({ t }) => {
+  const [copied, setCopied] = React.useState(false);
+  const copyEmail = () => {
+    navigator.clipboard.writeText("phubui277@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1800);
+  };
+  return (
+    <section id="contact" style={{ background: "var(--ink)", color: "var(--paper)", padding: "96px 32px" }}>
+      <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+        <div className="t-caption" style={{ color: "var(--accent-2)", marginBottom: 16 }}>{t.contactCaption}</div>
+        <h2 style={{ margin: 0, fontSize: 48, fontWeight: 700, letterSpacing: "-0.025em", lineHeight: 1.05 }}>
+          {t.contactTitle}
+        </h2>
+        <p style={{ marginTop: 18, fontSize: 18, color: "rgba(255,255,255,.7)", maxWidth: 540, marginLeft: "auto", marginRight: "auto", lineHeight: 1.55 }}>
+          {t.contactBio}
+        </p>
+
+        <div style={{ marginTop: 36, display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
+          <button onClick={copyEmail} style={{
+            padding: "14px 22px", borderRadius: 10, border: "none",
+            background: "var(--paper)", color: "var(--ink)",
+            fontWeight: 600, fontSize: 15, cursor: "pointer",
+            display: "inline-flex", alignItems: "center", gap: 10,
+            fontFamily: "var(--font-mono)",
+          }}>
+            {copied ? t.contactCopied : "phubui277@gmail.com"}
+          </button>
+
+          <a href="https://t.me/chivasI8" target="_blank" rel="noreferrer" style={{
+            padding: "14px 22px", borderRadius: 10,
+            background: "rgba(255,255,255,.08)", color: "var(--paper)",
+            fontWeight: 600, fontSize: 15, textDecoration: "none",
+            display: "inline-flex", alignItems: "center", gap: 8,
+          }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+            </svg>
+            Telegram
+          </a>
+
+          <a href="https://www.linkedin.com/in/phu-bui-016919222/" target="_blank" rel="noreferrer" style={{
+            padding: "14px 22px", borderRadius: 10,
+            background: "rgba(255,255,255,.08)", color: "var(--paper)",
+            fontWeight: 600, fontSize: 15, textDecoration: "none",
+            display: "inline-flex", alignItems: "center", gap: 8,
+          }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
+            LinkedIn
+          </a>
+
+          <a href="https://github.com/BiViPi" target="_blank" rel="noreferrer" style={{
+            padding: "14px 22px", borderRadius: 10,
+            background: "rgba(255,255,255,.08)", color: "var(--paper)",
+            fontWeight: 600, fontSize: 15, textDecoration: "none",
+            display: "inline-flex", alignItems: "center", gap: 8,
+          }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            GitHub
+          </a>
+        </div>
+
+        <div style={{ marginTop: 64, paddingTop: 28, borderTop: "1px solid rgba(255,255,255,.1)", display: "flex", justifyContent: "space-between", color: "rgba(255,255,255,.45)", fontSize: 12, fontFamily: "var(--font-mono)", flexWrap: "wrap", gap: 12 }}>
+          <span>© 2026 Bùi Vĩnh Phú</span>
+          <span>{t.footerSlogan}</span>
+          <span>phubui277@gmail.com</span>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+function CaseStudyModal({ project, onClose, t }) {
+  if (!project) return null;
+  const cs = project.caseStudy;
+  return (
+    <div className="modal-backdrop" onClick={onClose}>
+      <button className="close-btn" onClick={onClose}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <div style={{ aspectRatio: "21/9", background: project.thumbBg, position: "relative", overflow: "hidden" }}>
+          {project.image
+            ? <img src={project.image} alt={project.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
+            : project.techCard
+            ? <div style={{ width: "100%", height: "100%", padding: "24px 32px", display: "flex", flexDirection: "column", justifyContent: "center", gap: 16 }}>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+                  {project.techCard.stats.map(s => (
+                    <div key={s.label} style={{ background: "rgba(255,255,255,.08)", borderRadius: 8, padding: "12px 18px" }}>
+                      <div style={{ color: "#fff", fontWeight: 700, fontSize: 24, letterSpacing: "-0.02em", fontFamily: "var(--font-mono)" }}>{s.value}</div>
+                      <div style={{ color: "rgba(255,255,255,.5)", fontSize: 11, marginTop: 3, fontFamily: "var(--font-mono)", letterSpacing: ".08em" }}>{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ color: "rgba(255,255,255,.3)", fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: ".12em" }}>{project.techCard.note}</div>
+              </div>
+            : <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(255,255,255,.6)", fontFamily: "var(--font-mono)", fontSize: 14, letterSpacing: ".2em" }}>{project.placeholderLabel}</div>
+          }
+          <span style={{ position: "absolute", top: 20, left: 24, color: "#fff", fontFamily: "var(--font-mono)", fontSize: 12, opacity: .8, background: "rgba(15,23,42,.5)", padding: "3px 8px", borderRadius: 4 }}>{project.year}</span>
+        </div>
+        <div style={{ padding: "40px 48px 48px" }}>
+          <h2 style={{ margin: 0, fontSize: 32, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.02em" }}>{project.title}</h2>
+          <p style={{ marginTop: 6, fontSize: 16, color: "var(--muted-1)" }}>{project.oneLiner}</p>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginTop: 28, paddingTop: 20, paddingBottom: 20, borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)" }}>
+            <div>
+              <div className="t-caption">{t.modalRole}</div>
+              <div className="t-body-ink" style={{ marginTop: 4, fontSize: 14 }}>{cs.role}</div>
+            </div>
+            <div>
+              <div className="t-caption">{t.modalDuration}</div>
+              <div className="t-body-ink" style={{ marginTop: 4, fontSize: 14 }}>{cs.duration}</div>
+            </div>
+            <div>
+              <div className="t-caption">{t.modalStack}</div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: 4 }}>
+                {project.tech.map(t => <span key={t} style={{ padding: "2px 8px", fontSize: 11, fontFamily: "var(--font-mono)", background: "var(--line-soft)", color: "var(--muted-1)", borderRadius: 999 }}>{t}</span>)}
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: 28 }}>
+            <div className="t-caption" style={{ color: "var(--accent)", marginBottom: 10 }}>{t.modalOverview}</div>
+            <p style={{ margin: 0, color: "var(--ink)", fontSize: 15.5, lineHeight: 1.65 }}>{cs.summary}</p>
+          </div>
+
+          <div style={{ marginTop: 24 }}>
+            <div className="t-caption" style={{ color: "var(--accent)", marginBottom: 10 }}>{t.modalHighlights}</div>
+            <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+              {cs.highlights.map((h, i) => (
+                <li key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 8 }}>
+                  <span style={{ color: "var(--accent)", fontWeight: 700, lineHeight: 1.55 }}>•</span>
+                  <span style={{ color: "var(--ink)", fontSize: 14.5, lineHeight: 1.55 }}>{h}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ==========================================
+// 4. Main Application Root
+// ==========================================
+function App() {
+  const [lang, setLang] = React.useState("vi"); // Mặc định là Tiếng Việt theo yêu cầu của anh Phú
+  const [active, setActive] = React.useState("home");
+  const [openProject, setOpenProject] = React.useState(null);
+
+  React.useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
+  const navigate = (id) => {
+    setActive(id);
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.pageYOffset - 60;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
+
+  const t = translations[lang];
+
+  return (
+    <>
+      <PortfolioNav active={active} onNavigate={navigate} lang={lang} onToggleLang={() => setLang(lang === "en" ? "vi" : "en")} />
+      <div id="home">
+        <PortfolioHero
+          lang={lang}
+          t={t}
+        />
+      </div>
+      <PortfolioProjects projects={projects[lang]} onOpen={setOpenProject} t={t} />
+      <PortfolioSkills skillsData={skillsData[lang]} t={t} />
+      <PortfolioAbout t={t} />
+      <PortfolioContact t={t} />
+      <CaseStudyModal project={openProject} onClose={() => setOpenProject(null)} t={t} />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
+
