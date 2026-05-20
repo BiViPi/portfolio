@@ -455,16 +455,16 @@ function TwoColumnCV() {
 
 // Shared sub-components for HybridCV
 const HSection = ({ title }) => (
-  <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--ink)", borderBottom: "1.5px solid var(--ink)", paddingBottom: 4, marginBottom: 10, marginTop: 18 }}>{title}</div>
+  <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--ink)", borderBottom: "1.5px solid var(--ink)", paddingBottom: 3, marginBottom: 8, marginTop: 12 }}>{title}</div>
 );
 
 const Chip = ({ children, accent }) => (
-  <span style={{ display: "inline-flex", padding: "3px 10px", borderRadius: 999, fontSize: 11, fontWeight: 500, background: accent ? "var(--accent-soft)" : "var(--line-soft)", color: accent ? "var(--accent)" : "var(--ink)", border: `1px solid ${accent ? "#c7d2fe" : "var(--line)"}`, marginRight: 5, marginBottom: 5 }}>{children}</span>
+  <span style={{ display: "inline-flex", padding: "2px 8px", borderRadius: 999, fontSize: 10.5, fontWeight: 500, background: accent ? "var(--accent-soft)" : "var(--line-soft)", color: accent ? "var(--accent)" : "var(--ink)", border: `1px solid ${accent ? "#c7d2fe" : "var(--line)"}`, marginRight: 4, marginBottom: 4 }}>{children}</span>
 );
 
 const SkillCat = ({ label, chips, accent }) => (
-  <div style={{ marginBottom: 10 }}>
-    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--muted-3)", marginBottom: 5 }}>{label}</div>
+  <div style={{ marginBottom: 6 }}>
+    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--muted-3)", marginBottom: 4 }}>{label}</div>
     <div style={{ display: "flex", flexWrap: "wrap" }}>
       {chips.map(c => <Chip key={c} accent={accent}>{c}</Chip>)}
     </div>
@@ -473,41 +473,76 @@ const SkillCat = ({ label, chips, accent }) => (
 
 function HybridCV() {
   return (
-    <div className="sheet" style={{ padding: "36px 44px" }}>
+    <div className="sheet" style={{ padding: "28px 36px" }}>
 
-      {/* ── TOP META + PHOTO ── */}
-      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 14 }}>
-        <div style={{ width: 100, aspectRatio: "35/45", border: "1.5px dashed var(--muted-4)", borderRadius: 3, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", color: "var(--muted-3)", fontSize: 10, textAlign: "center", gap: 2 }}>
-          <span style={{ fontSize: 11, fontWeight: 600 }}>PHOTO</span>
+      {/* ── HEADER BLOCK (Name + Title on Left, Photo on Right) ── */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10 }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <h1 style={{ margin: 0, fontSize: 32, fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1 }}>
+            <span style={{ color: "var(--ink)" }}>Phu </span>
+            <span style={{ color: "var(--accent)" }}>Bui</span>
+          </h1>
+          <div style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted-2)", marginTop: 5, marginBottom: 8 }}>
+            Structural Draftsman / Team Leader
+          </div>
+          {/* Inline contact items */}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 12px", color: "var(--muted-1)", fontSize: 11, fontFamily: "var(--font-mono)", lineHeight: 1.3 }}>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+              <span style={{ color: "var(--accent)" }}>✉</span> phubui277@gmail.com
+            </span>
+            <span style={{ color: "var(--muted-4)" }}>•</span>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+              <span style={{ color: "var(--accent)" }}>✈</span> @chivasI8
+            </span>
+            <span style={{ color: "var(--muted-4)" }}>•</span>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+              <span style={{ color: "var(--accent)" }}>in</span> linkedin.com/in/phu-bui
+            </span>
+            <span style={{ color: "var(--muted-4)" }}>•</span>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+              <span style={{ color: "var(--accent)" }}>git</span> github.com/BiViPi
+            </span>
+          </div>
+        </div>
+        
+        {/* Photo placeholder */}
+        <div style={{ 
+          width: 66, 
+          aspectRatio: "35/45", 
+          border: "1.5px dashed var(--muted-4)", 
+          borderRadius: 3, 
+          display: "flex", 
+          flexDirection: "column", 
+          alignItems: "center", 
+          justifyContent: "center", 
+          color: "var(--muted-3)", 
+          fontSize: 8, 
+          textAlign: "center", 
+          gap: 1, 
+          flexShrink: 0, 
+          marginLeft: 20 
+        }}>
+          <span style={{ fontSize: 9, fontWeight: 600 }}>PHOTO</span>
           <span>35 × 45 mm</span>
         </div>
       </div>
 
-      {/* ── NAME BLOCK ── */}
-      <div style={{ marginBottom: 6 }}>
-        <h1 style={{ margin: 0, fontSize: 38, fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1 }}>
-          <span style={{ color: "var(--ink)" }}>Phu </span>
-          <span style={{ color: "var(--accent)" }}>Bui</span>
-        </h1>
-        <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted-2)", marginTop: 6 }}>Structural Draftsman / Team Leader</div>
-      </div>
-
-      <div style={{ display: "block", borderBottom: "2px solid var(--ink)", marginBottom: 0 }}></div>
+      <div style={{ display: "block", borderBottom: "2px solid var(--ink)", marginBottom: 8 }}></div>
 
       {/* ── TWO-COLUMN BODY ── */}
-      <div style={{ display: "grid", gridTemplateColumns: "195px 1fr", gap: "0 32px", marginTop: 0 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "185px 1fr", gap: "0 28px", marginTop: 0 }}>
 
         {/* LEFT SIDEBAR */}
         <div>
           <HSection title="Contact" />
-          <div style={{ fontSize: 11, lineHeight: 1.7, color: "var(--ink)" }}>
-            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted-3)" }}>Email</div>
-            <div style={{ marginBottom: 8 }}>phubui277@gmail.com</div>
-            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted-3)" }}>Telegram</div>
-            <div style={{ marginBottom: 8 }}>@chivasI8</div>
-            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted-3)" }}>LinkedIn</div>
-            <div style={{ color: "var(--accent)", marginBottom: 8 }}>linkedin.com/in/phu-bui</div>
-            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted-3)" }}>GitHub</div>
+          <div style={{ fontSize: 10.5, lineHeight: 1.6, color: "var(--ink)" }}>
+            <div style={{ fontSize: 8.5, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted-3)" }}>Email</div>
+            <div style={{ marginBottom: 4 }}>phubui277@gmail.com</div>
+            <div style={{ fontSize: 8.5, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted-3)" }}>Telegram</div>
+            <div style={{ marginBottom: 4 }}>@chivasI8</div>
+            <div style={{ fontSize: 8.5, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted-3)" }}>LinkedIn</div>
+            <div style={{ color: "var(--accent)", marginBottom: 4 }}>linkedin.com/in/phu-bui</div>
+            <div style={{ fontSize: 8.5, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted-3)" }}>GitHub</div>
             <div style={{ color: "var(--accent)" }}>github.com/BiViPi</div>
           </div>
 
@@ -518,19 +553,19 @@ function HybridCV() {
           <SkillCat label="Leadership" chips={["Team Coordination", "QA / QC", "Mentoring"]} />
 
           <HSection title="Education" />
-          <div style={{ fontSize: 11.5, lineHeight: 1.6 }}>
+          <div style={{ fontSize: 11, lineHeight: 1.5 }}>
             <div style={{ fontWeight: 700, color: "var(--ink)" }}>Architectural Drafting Certificate</div>
-            <div style={{ color: "var(--muted-2)", fontSize: 11 }}>Practical Detailing Academy</div>
-            <div style={{ color: "var(--muted-3)", fontSize: 10.5, fontStyle: "italic" }}>Practical & experience-based learning</div>
+            <div style={{ color: "var(--muted-2)", fontSize: 10.5 }}>Practical Detailing Academy</div>
+            <div style={{ color: "var(--muted-3)", fontSize: 10, fontStyle: "italic" }}>Practical & experience-based learning</div>
           </div>
 
           <HSection title="Languages" />
-          <div style={{ fontSize: 11.5, lineHeight: 1.6 }}>
-            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted-3)" }}>Vietnamese</div>
-            <div style={{ color: "var(--ink)", marginBottom: 6 }}>Native speaker</div>
-            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted-3)" }}>English</div>
-            <div style={{ color: "var(--accent)", marginBottom: 6 }}>Professional proficiency</div>
-            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted-3)" }}>German</div>
+          <div style={{ fontSize: 11, lineHeight: 1.5 }}>
+            <div style={{ fontSize: 8.5, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted-3)" }}>Vietnamese</div>
+            <div style={{ color: "var(--ink)", marginBottom: 4 }}>Native speaker</div>
+            <div style={{ fontSize: 8.5, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted-3)" }}>English</div>
+            <div style={{ color: "var(--accent)", marginBottom: 4 }}>Professional proficiency</div>
+            <div style={{ fontSize: 8.5, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted-3)" }}>German</div>
             <div style={{ color: "var(--ink)" }}>Technical reading</div>
           </div>
         </div>
@@ -538,7 +573,7 @@ function HybridCV() {
         {/* RIGHT MAIN */}
         <div>
           <HSection title="Profile" />
-          <p style={{ fontSize: 12, lineHeight: 1.65, color: "var(--ink)", margin: 0 }}>
+          <p style={{ fontSize: 11.5, lineHeight: 1.55, color: "var(--ink)", margin: 0 }}>
             Structural draftsman and team leader with{" "}
             <strong style={{ color: "var(--accent)" }}>12+ years</strong> of experience delivering high-quality residential, commercial, and bridge detailing projects for the{" "}
             <strong style={{ color: "var(--accent)" }}>German and Swiss markets</strong>. Deeply fluent in{" "}
@@ -547,12 +582,12 @@ function HybridCV() {
           </p>
 
           <HSection title="Experience" />
-          <div style={{ marginBottom: 12 }}>
+          <div style={{ marginBottom: 8 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-              <span style={{ fontSize: 13.5, fontWeight: 700, color: "var(--ink)" }}>Team Leader — Structural Drafting</span>
-              <span style={{ fontSize: 11, color: "var(--muted-2)", fontFamily: "var(--font-mono)", whiteSpace: "nowrap" }}>04/2013 – Present</span>
+              <span style={{ fontSize: 13, fontWeight: 700, color: "var(--ink)" }}>Team Leader — Structural Drafting</span>
+              <span style={{ fontSize: 10.5, color: "var(--muted-2)", fontFamily: "var(--font-mono)", whiteSpace: "nowrap" }}>04/2013 – Present</span>
             </div>
-            <div style={{ fontSize: 11.5, color: "var(--muted-2)", marginBottom: 6 }}>
+            <div style={{ fontSize: 11, color: "var(--muted-2)", marginBottom: 4 }}>
               <strong style={{ color: "var(--ink)" }}>SSIFT Vietnam</strong> · Vietnam / Germany / Switzerland
             </div>
             <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
@@ -563,7 +598,7 @@ function HybridCV() {
                 <>Supervised the team's <strong style={{color:"var(--accent)"}}>Allplan 3D workflow</strong>, elevating quality control and plan production.</>,
                 <>Independently designed and deployed custom <strong style={{color:"var(--accent)"}}>PythonParts</strong> toolkits to automate repetitive drafting and modeling operations.</>,
               ].map((b, i) => (
-                <li key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start", marginBottom: 5, fontSize: 12, lineHeight: 1.55 }}>
+                <li key={i} style={{ display: "flex", gap: 6, alignItems: "flex-start", marginBottom: 4, fontSize: 11.5, lineHeight: 1.45 }}>
                   <span style={{ color: "var(--accent)", flexShrink: 0, marginTop: 1 }}>•</span>
                   <span>{b}</span>
                 </li>
@@ -572,11 +607,11 @@ function HybridCV() {
           </div>
 
           <HSection title="Featured Projects" />
-          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 11.5 }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 11 }}>
             <thead>
               <tr style={{ background: "var(--line-soft)" }}>
                 {["Project Scope", "Standards", "Automated Solutions"].map(h => (
-                  <th key={h} style={{ padding: "6px 10px", textAlign: "left", fontSize: 9.5, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted-2)", borderBottom: "1px solid var(--line)" }}>{h}</th>
+                  <th key={h} style={{ padding: "5px 8px", textAlign: "left", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted-2)", borderBottom: "1px solid var(--line)" }}>{h}</th>
                 ))}
               </tr>
             </thead>
@@ -588,9 +623,9 @@ function HybridCV() {
                 ["PythonParts Library", "Python API · Allplan 3D", "Personal library of parametric components (beams, columns, foundations) automating repetitive modeling tasks."],
               ].map(([scope, std, sol], i) => (
                 <tr key={i} style={{ borderBottom: "1px solid var(--line)" }}>
-                  <td style={{ padding: "8px 10px", verticalAlign: "top", fontWeight: 600, color: "var(--ink)", fontSize: 11.5 }}>{scope}</td>
-                  <td style={{ padding: "8px 10px", verticalAlign: "top", color: "var(--muted-2)", fontSize: 11 }}>{std}</td>
-                  <td style={{ padding: "8px 10px", verticalAlign: "top", color: "var(--ink)", fontSize: 11 }}>{sol}</td>
+                  <td style={{ padding: "6px 8px", verticalAlign: "top", fontWeight: 600, color: "var(--ink)", fontSize: 11 }}>{scope}</td>
+                  <td style={{ padding: "6px 8px", verticalAlign: "top", color: "var(--muted-2)", fontSize: 10.5 }}>{std}</td>
+                  <td style={{ padding: "6px 8px", verticalAlign: "top", color: "var(--ink)", fontSize: 10.5 }}>{sol}</td>
                 </tr>
               ))}
             </tbody>
