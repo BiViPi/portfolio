@@ -307,6 +307,8 @@
       color: var(--text-light);
       font-family: monospace;
       white-space: nowrap;
+      position: relative;
+      top: 1px; /* Lower slightly to align with the baseline of the company name */
     }
 
     .exp-location {
@@ -328,6 +330,7 @@
       font-size: 11.5px;
       line-height: 1.45;
       color: var(--text-muted);
+      text-align: left; /* Ensure clean left alignment */
     }
 
     .exp-list-item::before {
@@ -504,19 +507,10 @@
       <!-- MAIN COLUMN (70%) -->
       <main class="main-col">
         
-        <!-- HEADER: NAME & TITLE + CONTACT LINKS -->
+        <!-- HEADER: NAME & TITLE -->
         <header>
           <h1 class="name">Phu Bui</h1>
-          <div class="title">Structural Draftsman / Team Leader</div>
-          <div class="contact-links">
-            <a href="mailto:phubui277@gmail.com">phubui277@gmail.com</a>
-            <span class="bullet">•</span>
-            <a href="https://t.me/chivasI8" target="_blank">@chivasI8</a>
-            <span class="bullet">•</span>
-            <a href="https://www.linkedin.com/in/phu-bui-016919222/" target="_blank">linkedin.com/in/phu-bui</a>
-            <span class="bullet">•</span>
-            <a href="https://github.com/BiViPi" target="_blank">github.com/BiViPi</a>
-          </div>
+          <div class="title" style="margin-bottom: 0;">Structural Draftsman / Team Leader</div>
         </header>
 
         <hr class="separator">
@@ -541,12 +535,12 @@
             <div class="exp-location">Vietnam / Germany / Switzerland (Remote)</div>
             
             <ul class="exp-list">
-              <li class="exp-list-item">Coordinate and manage drafting teams delivering complex civil, commercial, and infrastructure projects.</li>
-              <li class="exp-list-item">Delivered <strong>hundreds of structural projects</strong> for the European market over 12+ years.</li>
-              <li class="exp-list-item">Ensured 100% compliance with <strong>DIN and SIA</strong> structural and reinforcement detailing standards.</li>
-              <li class="exp-list-item">Supervised the team's <strong>Allplan 3D workflow</strong>, elevating quality control and plan production.</li>
-              <li class="exp-list-item">Independently designed and deployed custom <strong>PythonParts</strong> toolkits to automate repetitive drafting and modeling operations.</li>
-              <li class="exp-list-item">Training new draftsmen on-the-job; built and maintains an internal library of 300+ reusable structural details.</li>
+              <li class="exp-list-item"><span>Coordinate and manage drafting teams delivering complex civil, commercial, and infrastructure projects.</span></li>
+              <li class="exp-list-item"><span>Delivered <strong>hundreds of structural projects</strong> for the European market over 12+ years.</span></li>
+              <li class="exp-list-item"><span>Ensured 100% compliance with <strong>DIN and SIA</strong> structural and reinforcement detailing standards.</span></li>
+              <li class="exp-list-item"><span>Supervised the team's <strong>Allplan 3D workflow</strong>, elevating quality control and plan production.</span></li>
+              <li class="exp-list-item"><span>Independently designed and deployed custom <strong>PythonParts</strong> toolkits to automate repetitive drafting and modeling operations.</span></li>
+              <li class="exp-list-item"><span>Training new draftsmen on-the-job; built and maintains an internal library of 300+ reusable structural details.</span></li>
             </ul>
           </div>
         </section>
