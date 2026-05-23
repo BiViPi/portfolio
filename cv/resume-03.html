@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV · Phu Bui — Resume 03</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+  <style>
+    :root {
+      --bg-screen: #ebe6dd;
+      --bg-paper: #f8f3e8;
+      --surface: rgba(255, 255, 255, 0.68);
+      --text-main: #142132;
+      --text-muted: #415066;
+      --text-light: #68778e;
+      --accent: #0f3a63;
+      --accent-soft: rgba(15, 58, 99, 0.08);
+      --line: rgba(15, 58, 99, 0.18);
+      --line-strong: rgba(15, 58, 99, 0.34);
+      --shadow: 0 10px 30px rgba(18, 30, 48, 0.11);
+      --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 28px 18px 40px;
+      background:
+        radial-gradient(circle at top, rgba(255, 250, 241, 0.92), transparent 42%),
+        linear-gradient(180deg, #efe8dc 0%, #ddd5c7 100%);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    button,
+    a {
+      font: inherit;
+    }
+
+    .controls {
+      width: min(100%, 210mm);
+      margin: 0 auto 16px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .print-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(15, 58, 99, 0.22);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .print-btn:hover {
+      background: #0b3152;
+      transform: translateY(-1px);
+      box-shadow: 0 16px 28px rgba(15, 58, 99, 0.24);
+    }
+
+    .png-btn {
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--accent);
+      box-shadow: 0 8px 20px rgba(18, 30, 48, 0.08);
+      border: 1px solid rgba(15, 58, 99, 0.14);
+    }
+
+    .png-btn:hover {
+      background: #fff;
+      box-shadow: 0 12px 24px rgba(18, 30, 48, 0.12);
+    }
+
+    .print-btn:disabled {
+      opacity: 0.72;
+      cursor: wait;
+      transform: none;
+      box-shadow: 0 8px 18px rgba(18, 30, 48, 0.1);
+    }
+
+    .sheet {
+      position: relative;
+      isolation: isolate;
+      width: min(100%, 210mm);
+      min-height: 297mm;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 10px;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), transparent 32%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.1)),
+        var(--bg-paper);
+      box-shadow: var(--shadow);
+    }
+
+    body.exporting-png {
+      background: transparent !important;
+    }
+
+    body.exporting-png .sheet {
+      box-shadow: none !important;
+      background: var(--bg-paper) !important;
+    }
+
+    body.exporting-png .sheet::before {
+      opacity: 0.92;
+    }
+
+    body.exporting-png .sheet::after {
+      opacity: 0.5;
+    }
+
+    .sheet::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, var(--accent) 0 18px, transparent 18px),
+        linear-gradient(135deg, transparent 48.8%, rgba(15, 58, 99, 0.05) 49.4%, transparent 50%) top right / 340px 225px no-repeat,
+        linear-gradient(45deg, transparent 48.8%, rgba(15, 58, 99, 0.045) 49.4%, transparent 50%) bottom right / 392px 272px no-repeat,
+        linear-gradient(120deg, transparent 48.8%, rgba(15, 58, 99, 0.04) 49.4%, transparent 50%) top right / 220px 150px no-repeat,
+        linear-gradient(135deg, transparent 49.2%, rgba(15, 58, 99, 0.035) 49.7%, transparent 50.2%) bottom left / 220px 160px no-repeat;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    .sheet::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 0 24px, rgba(15, 58, 99, 0.03) 24px 25px, transparent 25px 100%),
+        linear-gradient(0deg, transparent 0 24px, rgba(15, 58, 99, 0.03) 24px 25px, transparent 25px 100%),
+        linear-gradient(90deg, transparent 0 calc(100% - 28px), rgba(15, 58, 99, 0.03) calc(100% - 28px) calc(100% - 27px), transparent calc(100% - 27px)),
+        linear-gradient(0deg, transparent 0 calc(100% - 24px), rgba(15, 58, 99, 0.03) calc(100% - 24px) calc(100% - 23px), transparent calc(100% - 23px));
+      opacity: 0.58;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .sheet-inner {
+      position: relative;
+      padding: 28px 28px 26px 34px;
+    }
+
+    .accent-notch {
+      position: absolute;
+      top: 286px;
+      left: 18px;
+      width: 0;
+      height: 0;
+      border-top: 21px solid transparent;
+      border-bottom: 21px solid transparent;
+      border-left: 16px solid var(--accent);
+    }
+
+    .cv-grid {
+      display: grid;
+      grid-template-columns: 258px minmax(0, 1fr);
+      gap: 34px;
+      align-items: start;
+    }
+
+    .sidebar {
+      padding: 16px 8px 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .portrait-wrap {
+      width: 178px;
+      height: 178px;
+      margin: 0 auto 8px;
+      padding: 8px;
+      border-radius: 50%;
+      border: 2.5px solid var(--accent);
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 10px 20px rgba(21, 33, 48, 0.08);
+    }
+
+    .portrait {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 18%;
+    }
+
+    .identity {
+      text-align: left;
+    }
+
+    .name {
+      font-size: 47px;
+      line-height: 0.92;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #0e2440;
+    }
+
+    .title {
+      margin-top: 14px;
+      font-size: 15px;
+      line-height: 1.35;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .sidebar-section {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .section-heading,
+    .sidebar-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      color: var(--accent);
+    }
+
+    .sidebar-heading .heading-text,
+    .section-heading .heading-text {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .heading-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--line-strong);
+    }
+
+    .heading-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      opacity: 0.92;
+    }
+
+    .heading-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 18px 18px;
+      flex-shrink: 0;
+    }
+
+    .section-heading .heading-rule {
+      height: 7px;
+      background: linear-gradient(var(--line-strong), var(--line-strong)) left center / 100% 1px no-repeat;
+    }
+
+    .section-heading .heading-text {
+      white-space: normal;
+    }
+
+    .heading-summary .heading-icon {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21a8 8 0 1 0-16 0'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
+    }
+
+    .heading-work .heading-icon {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='7' width='18' height='13' rx='2'/%3E%3Cpath d='M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'/%3E%3Cpath d='M3 12h18'/%3E%3C/svg%3E");
+    }
+
+    .heading-projects .heading-icon {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='white' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m12 2 2.4 5 5.6.8-4 3.9.9 5.5-4.9-2.7-4.9 2.7.9-5.5-4-3.9 5.6-.8Z'/%3E%3C/svg%3E");
+    }
+
+    .main-col {
+      padding: 18px 14px 0 0;
+      border-left: 1px solid var(--line-strong);
+      padding-left: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    .contact-list,
+    .edu-list,
+    .language-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .skills-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .skill-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .skill-group-title {
+      font-size: 10px;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .skill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-item,
+    .edu-item,
+    .language-item {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .contact-item a,
+    .contact-item span,
+    .edu-item span,
+    .language-item span {
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      color: var(--accent);
+    }
+
+    .icon-mini,
+    .icon-plain {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .icon-mini {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    .icon-plain {
+      background: rgba(15, 58, 99, 0.06);
+      color: var(--accent);
+      border: 1px solid rgba(15, 58, 99, 0.12);
+    }
+
+    .icon-mini svg,
+    .icon-plain svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact-copy {
+      padding-top: 4px;
+      font-size: 12px;
+      line-height: 1.35;
+      color: var(--text-main);
+    }
+
+    .contact-copy strong,
+    .edu-copy strong,
+    .language-copy strong {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .contact-copy span,
+    .edu-copy span,
+    .language-copy span {
+      display: block;
+      margin-top: 2px;
+      color: var(--text-muted);
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .skill-item {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      align-items: center;
+      min-height: 38px;
+      border: 1px solid rgba(15, 58, 99, 0.12);
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.8);
+      overflow: hidden;
+    }
+
+    .skill-icon {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      border-right: 1px solid rgba(15, 58, 99, 0.12);
+      background: rgba(15, 58, 99, 0.04);
+      color: var(--accent);
+    }
+
+    .skill-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .skill-label {
+      padding: 7px 10px;
+      font-size: 12px;
+      line-height: 1.2;
+      color: var(--text-main);
+    }
+
+    .skill-content {
+      min-width: 0;
+      padding: 7px 10px 7px 9px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-name {
+      min-width: 0;
+      font-size: 11.5px;
+      line-height: 1.25;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .skill-level {
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 58, 99, 0.12);
+      background: rgba(15, 58, 99, 0.05);
+      color: var(--accent);
+      font-size: 9px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .skill-dots {
+      display: inline-grid;
+      grid-auto-flow: column;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .skill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(15, 58, 99, 0.2);
+      border: 1px solid rgba(15, 58, 99, 0.1);
+    }
+
+    .skill-dot.is-filled {
+      background: var(--accent);
+      border-color: rgba(15, 58, 99, 0.2);
+    }
+
+    .summary-copy {
+      display: grid;
+      gap: 18px;
+    }
+
+    .summary-copy p,
+    .project-desc,
+    .experience-list li {
+      font-size: 12px;
+      line-height: 1.62;
+      color: var(--text-main);
+    }
+
+    .summary-copy p {
+      color: #27364b;
+    }
+
+    .experience-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .experience-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px 16px;
+      align-items: start;
+    }
+
+    .experience-role {
+      font-size: 17px;
+      line-height: 1.25;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .experience-company {
+      display: block;
+      margin-top: 3px;
+      font-size: 15px;
+      line-height: 1.25;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .experience-date {
+      font-size: 13px;
+      line-height: 1.2;
+      color: var(--text-muted);
+      white-space: nowrap;
+      padding-top: 4px;
+    }
+
+    .experience-location {
+      font-size: 12px;
+      line-height: 1.35;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .experience-list {
+      padding-left: 18px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .experience-list li::marker {
+      color: var(--accent);
+    }
+
+    .experience-list strong {
+      color: #0c2845;
+    }
+
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .project-item {
+      display: grid;
+      grid-template-columns: 36px minmax(0, 1fr);
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px dashed rgba(15, 58, 99, 0.22);
+    }
+
+    .project-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .project-number {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1;
+      box-shadow: 0 10px 18px rgba(15, 58, 99, 0.14);
+    }
+
+    .project-content {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .project-title {
+      font-size: 14px;
+      line-height: 1.3;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .project-meta {
+      font-size: 11px;
+      line-height: 1.45;
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .project-desc {
+      color: #23334a;
+    }
+
+    .screen-only {
+      display: block;
+    }
+
+    .print-only {
+      display: none;
+    }
+
+    @media (max-width: 980px) {
+      body {
+        padding: 16px 0 32px;
+      }
+
+      .controls {
+        width: min(100%, 920px);
+        padding: 0 14px;
+      }
+
+      .sheet {
+        width: min(100%, 920px);
+        border-radius: 0;
+      }
+
+      .sheet-inner {
+        padding: 26px 20px 24px 24px;
+      }
+
+      .cv-grid {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .sidebar {
+        padding: 10px 10px 0 20px;
+      }
+
+      .identity {
+        text-align: center;
+      }
+
+      .main-col {
+        border-left: 0;
+        padding: 0 10px 0 20px;
+      }
+
+      .experience-head {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-date {
+        padding-top: 0;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+
+      html,
+      body {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0;
+        padding: 0;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .screen-only {
+        display: none !important;
+      }
+
+      .print-only {
+        display: block;
+      }
+
+      .sheet {
+        width: 210mm;
+        min-height: 297mm;
+        height: 297mm;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+        overflow: hidden;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .sheet-inner {
+        height: 100%;
+        padding: 20mm 14mm 14mm 16mm;
+      }
+
+      .cv-grid {
+        display: flex;
+        align-items: flex-start;
+        gap: 9mm;
+      }
+
+      .sidebar {
+        width: 62mm;
+        flex: 0 0 62mm;
+        padding: 6mm 2mm 0 3mm;
+        gap: 5mm;
+      }
+
+      .main-col {
+        flex: 1 1 auto;
+        min-width: 0;
+        gap: 7mm;
+        padding: 4mm 2mm 0 7mm;
+      }
+
+      .identity {
+        text-align: left;
+      }
+
+      .portrait-wrap {
+        width: 46mm;
+        height: 46mm;
+      }
+
+      .name {
+        font-size: 19mm;
+      }
+
+      .title {
+        font-size: 4.2mm;
+      }
+
+      .summary-copy p,
+      .project-desc,
+      .experience-list li {
+        font-size: 3.28mm;
+        line-height: 1.5;
+      }
+
+      .project-item,
+      .sidebar-section,
+      .experience-card,
+      .section-heading {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .sheet::before,
+      .sheet::after {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="controls screen-only">
+    <button class="print-btn png-btn" type="button" id="export-png-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+        <path d="m21 15-5-5L5 21"></path>
+      </svg>
+      Export PNG
+    </button>
+    <button class="print-btn" type="button" onclick="window.print()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 9V2h12v7"></path>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+        <path d="M6 14h12v8H6z"></path>
+      </svg>
+      Print / PDF
+    </button>
+  </div>
+
+  <article class="sheet">
+    <div class="sheet-inner">
+      <div class="accent-notch" aria-hidden="true"></div>
+
+      <div class="cv-grid">
+        <aside class="sidebar">
+          <section class="identity">
+            <div class="portrait-wrap">
+              <img class="portrait" src="data:image/jpeg;base64,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" alt="Portrait of Phu Bui">
+            </div>
+            <h1 class="name">Phu Bui</h1>
+            <p class="title">Structural Draftsman / Team Leader</p>
+          </section>
+
+          <section class="sidebar-section">
+            <div class="sidebar-heading">
+              <span class="heading-text">Contact</span>
+              <span class="heading-rule" aria-hidden="true"></span>
+              <span class="heading-dot" aria-hidden="true"></span>
+            </div>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="icon-mini" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"></path><path d="m4 7 8 6 8-6"></path></svg>
+                </div>
+                <div class="contact-copy">
+                  <strong>Email</strong>
+                  <a href="mailto:phubui277@gmail.com">phubui277@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="icon-mini" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 0 8"></path><path d="M19.5 4.5a11 11 0 0 1 0 15"></path><path d="M8 9h3l4.5-4.5V19L11 15H8z"></path></svg>
+                </div>
+                <div class="contact-copy">
+                  <strong>Telegram</strong>
+                  <a href="https://t.me/chivasI8" target="_blank" rel="noreferrer">@chivasI8</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="icon-mini" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 0 8"></path><path d="M8 16V8a6 6 0 0 1 12 0v8"></path><path d="M4 9h4v11H4z"></path><path d="M16 12h4v8h-4"></path></svg>
+                </div>
+                <div class="contact-copy">
+                  <strong>LinkedIn</strong>
+                  <a href="https://www.linkedin.com/in/phu-bui-016919222/" target="_blank" rel="noreferrer">linkedin.com/in/phu-bui</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="icon-mini" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.4-6-3"></path><path d="M15 22v-3.9a3.4 3.4 0 0 0-.9-2.6c3 0 6-1.8 6-8a6.2 6.2 0 0 0-1.7-4.3 5.7 5.7 0 0 0-.1-4.3s-1.2-.4-4.3 1.7a14.6 14.6 0 0 0-8 0C2.9-1.5 1.7-1.1 1.7-1.1a5.7 5.7 0 0 0-.1 4.3A6.2 6.2 0 0 0 0 7.5c0 6.2 3 8 6 8a3.4 3.4 0 0 0-.9 2.6V22"></path></svg>
+                </div>
+                <div class="contact-copy">
+                  <strong>GitHub</strong>
+                  <a href="https://github.com/BiViPi" target="_blank" rel="noreferrer">github.com/BiViPi</a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="sidebar-section">
+            <div class="sidebar-heading">
+              <span class="heading-text">Skills &amp; Tools</span>
+              <span class="heading-rule" aria-hidden="true"></span>
+              <span class="heading-dot" aria-hidden="true"></span>
+            </div>
+
+            <div class="skills-layout">
+              <div class="skill-group">
+                <div class="skill-group-title">Technical</div>
+                <div class="skill-list">
+                  <div class="skill-item">
+                    <div class="skill-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M5 19 12 5l7 14"></path><path d="M8 13h8"></path></svg>
+                    </div>
+                    <div class="skill-content">
+                      <div class="skill-name">Allplan</div>
+                      <div class="skill-level">Expert</div>
+                      <div class="skill-dots" aria-hidden="true">
+                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="skill-item">
+                    <div class="skill-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M3 21h18"></path><path d="M5 21V7l7-4 7 4v14"></path><path d="M9 9h.01"></path><path d="M15 9h.01"></path><path d="M9 13h.01"></path><path d="M15 13h.01"></path></svg>
+                    </div>
+                    <div class="skill-content">
+                      <div class="skill-name">BIM Implementation</div>
+                      <div class="skill-level">Moderate</div>
+                      <div class="skill-dots" aria-hidden="true">
+                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="skill-item">
+                    <div class="skill-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M8 3v3"></path><path d="M16 3v3"></path><path d="M9 18h6"></path><path d="M10 21h4"></path><rect x="4" y="6" width="16" height="12" rx="2"></rect></svg>
+                    </div>
+                    <div class="skill-content">
+                      <div class="skill-name">PythonParts API</div>
+                      <div class="skill-level">Expert</div>
+                      <div class="skill-dots" aria-hidden="true">
+                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="skill-item">
+                    <div class="skill-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M12 6V3"></path><path d="M16 8l2.6-1.5"></path><path d="M8 8 5.4 6.5"></path><path d="M7 12a5 5 0 1 0 10 0 5 5 0 0 0-10 0Z"></path><path d="M12 17v4"></path><path d="M16 16.5 18.6 18"></path><path d="M8 16.5 5.4 18"></path></svg>
+                    </div>
+                    <div class="skill-content">
+                      <div class="skill-name">SmartParts</div>
+                      <div class="skill-level">Expert</div>
+                      <div class="skill-dots" aria-hidden="true">
+                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="skill-item">
+                    <div class="skill-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M12 9c-2.5 0-4 1.1-4 3v4h8v-4c0-1.9-1.5-3-4-3Z"></path><path d="M8 16h8"></path><path d="M9 6c0-1.1.9-2 2-2h2a2 2 0 0 1 0 4h-2"></path></svg>
+                    </div>
+                    <div class="skill-content">
+                      <div class="skill-name">Python</div>
+                      <div class="skill-level">Moderate</div>
+                      <div class="skill-dots" aria-hidden="true">
+                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot"></span><span class="skill-dot"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-group">
+                <div class="skill-group-title">Standards &amp; Leadership</div>
+                <div class="skill-list">
+                  <div class="skill-item">
+                    <div class="skill-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                    </div>
+                    <div class="skill-content">
+                      <div class="skill-name">DIN 1045-1</div>
+                      <div class="skill-level">Expert</div>
+                      <div class="skill-dots" aria-hidden="true">
+                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="skill-item">
+                    <div class="skill-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                    </div>
+                    <div class="skill-content">
+                      <div class="skill-name">SIA 262</div>
+                      <div class="skill-level">Expert</div>
+                      <div class="skill-dots" aria-hidden="true">
+                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="skill-item">
+                    <div class="skill-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M3 5h18"></path><path d="M7 5v14"></path><path d="M3 12h12"></path><path d="M15 13c0-3 1.6-5 4-5s4 2 4 5-1.6 5-4 5-4-2-4-5Z"></path></svg>
+                    </div>
+                    <div class="skill-content">
+                      <div class="skill-name">Eurocode 2</div>
+                      <div class="skill-level">Expert</div>
+                      <div class="skill-dots" aria-hidden="true">
+                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="skill-item">
+                    <div class="skill-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <div class="skill-content">
+                      <div class="skill-name">Team Coordination</div>
+                      <div class="skill-level">Expert</div>
+                      <div class="skill-dots" aria-hidden="true">
+                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="skill-item">
+                    <div class="skill-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7z"></path><path d="M9 12h6"></path><path d="M12 9v6"></path></svg>
+                    </div>
+                    <div class="skill-content">
+                      <div class="skill-name">QA / QC</div>
+                      <div class="skill-level">Expert</div>
+                      <div class="skill-dots" aria-hidden="true">
+                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="skill-item">
+                    <div class="skill-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M12 3 4 7l8 4 8-4-8-4Z"></path><path d="M4 12l8 4 8-4"></path><path d="M4 17l8 4 8-4"></path></svg>
+                    </div>
+                    <div class="skill-content">
+                      <div class="skill-name">Mentoring</div>
+                      <div class="skill-level">Moderate</div>
+                      <div class="skill-dots" aria-hidden="true">
+                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="sidebar-section">
+            <div class="sidebar-heading">
+              <span class="heading-text">Education</span>
+              <span class="heading-rule" aria-hidden="true"></span>
+              <span class="heading-dot" aria-hidden="true"></span>
+            </div>
+
+            <div class="edu-list">
+              <div class="edu-item">
+                <div class="icon-plain" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="m3 9 9-5 9 5-9 5-9-5Z"></path><path d="M7 11v4c0 1.7 2.2 3 5 3s5-1.3 5-3v-4"></path></svg>
+                </div>
+                <div class="edu-copy">
+                  <strong>Architectural Drafting Certificate</strong>
+                  <span>Practical Detailing Academy</span>
+                  <span><em>Practical &amp; experience-based learning.</em></span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="sidebar-section">
+            <div class="sidebar-heading">
+              <span class="heading-text">Languages</span>
+              <span class="heading-rule" aria-hidden="true"></span>
+              <span class="heading-dot" aria-hidden="true"></span>
+            </div>
+
+            <div class="language-list">
+              <div class="language-item">
+                <div class="icon-mini" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18"></path><path d="M12 3a15 15 0 0 0 0 18"></path></svg>
+                </div>
+                <div class="language-copy">
+                  <strong>Vietnamese</strong>
+                  <span>Native speaker</span>
+                </div>
+              </div>
+
+              <div class="language-item">
+                <div class="icon-mini" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18"></path><path d="M12 3a15 15 0 0 0 0 18"></path></svg>
+                </div>
+                <div class="language-copy">
+                  <strong>English</strong>
+                  <span>Professional reading &amp; writing</span>
+                </div>
+              </div>
+
+              <div class="language-item">
+                <div class="icon-mini" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18"></path><path d="M12 3a15 15 0 0 0 0 18"></path></svg>
+                </div>
+                <div class="language-copy">
+                  <strong>German</strong>
+                  <span>Technical reading</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </aside>
+
+        <main class="main-col">
+          <section>
+            <div class="section-heading heading-summary">
+              <span class="heading-icon" aria-hidden="true"></span>
+              <span class="heading-text">Professional Summary</span>
+              <span class="heading-rule" aria-hidden="true"></span>
+              <span class="heading-dot" aria-hidden="true"></span>
+            </div>
+
+            <div class="summary-copy">
+              <p>Team Leader and Structural Draftsman with 12+ years delivering reinforced concrete projects for German and Swiss clients. Expert in interpreting 2D drawings and IFC files to build accurate 3D Allplan models and reinforcement details to DIN 1045-1, SIA 262, and Eurocode 2.</p>
+              <p>Leads a 4-person team with full QA/QC ownership before handover. Independently develops Python automation tools (PythonParts, SmartParts) for Allplan, including a Rebar QA Inspector, automated section generation, and parametric reinforcement tools.</p>
+            </div>
+          </section>
+
+          <section>
+            <div class="section-heading heading-work">
+              <span class="heading-icon" aria-hidden="true"></span>
+              <span class="heading-text">Work Experience</span>
+              <span class="heading-rule" aria-hidden="true"></span>
+              <span class="heading-dot" aria-hidden="true"></span>
+            </div>
+
+            <div class="experience-card">
+              <div class="experience-head">
+                <div>
+                  <h2 class="experience-role">Team Leader — Structural Drafting</h2>
+                  <span class="experience-company">SSIFT Vietnam</span>
+                </div>
+                <div class="experience-date">04/2013 – Present</div>
+              </div>
+
+              <div class="experience-location">Vietnam / Germany / Switzerland (Remote)</div>
+
+              <ul class="experience-list">
+                <li>Coordinate and manage drafting teams delivering complex civil, commercial, and infrastructure projects.</li>
+                <li>Delivered <strong>hundreds of structural projects</strong> for the European market over 12+ years.</li>
+                <li>Ensured 100% compliance with <strong>DIN and SIA</strong> structural and reinforcement detailing standards.</li>
+                <li>Supervised the team's <strong>Allplan 3D workflow</strong>, elevating quality control and plan production.</li>
+                <li>Independently designed and deployed custom <strong>PythonParts</strong> toolkits to automate repetitive drafting and modeling operations.</li>
+                <li>Training new draftsmen on-the-job; built and maintains an internal library of <strong>300+ reusable structural details</strong>.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <div class="section-heading heading-projects">
+              <span class="heading-icon" aria-hidden="true"></span>
+              <span class="heading-text">Featured Projects</span>
+              <span class="heading-rule" aria-hidden="true"></span>
+              <span class="heading-dot" aria-hidden="true"></span>
+            </div>
+
+            <div class="projects">
+              <article class="project-item">
+                <div class="project-number">1</div>
+                <div class="project-content">
+                  <h3 class="project-title">Tausendfüßler Bridge</h3>
+                  <div class="project-meta">Offenburg, Germany &nbsp;|&nbsp; DIN 1045-1 &nbsp;|&nbsp; Allplan 3D &amp; Prestressed Reinforcement</div>
+                  <p class="project-desc">Full 3D RC model, 3D reinforcement, and prestressed bar layout for a 180m 5-span road bridge over the Rheintalbahn. Full QA/QC role from start to final client approval.</p>
+                </div>
+              </article>
+
+              <article class="project-item">
+                <div class="project-number">2</div>
+                <div class="project-content">
+                  <h3 class="project-title">Freizeitbad Wiesbaden</h3>
+                  <div class="project-meta">Wiesbaden, Germany &nbsp;|&nbsp; DIN 1045-1 &nbsp;|&nbsp; Allplan BIM Workflow</div>
+                  <p class="project-desc">3D structural model with pile foundations and multi-zone reinforced concrete structure for a major public leisure bath and ice sports hall complex.</p>
+                </div>
+              </article>
+
+              <article class="project-item">
+                <div class="project-number">3</div>
+                <div class="project-content">
+                  <h3 class="project-title">NGP Geb&auml;ude 36</h3>
+                  <div class="project-meta">Mercedes-Benz Sindelfingen, Germany &nbsp;|&nbsp; DIN 1045-1 &nbsp;|&nbsp; Allplan 3D &amp; Precast Integration</div>
+                  <p class="project-desc">7,200 Spannbetonfertigteile (precast columns, main beams, trough slabs) for a 2-story RC industrial structure spanning ~30,000 m&sup2;.</p>
+                </div>
+              </article>
+
+              <article class="project-item">
+                <div class="project-number">4</div>
+                <div class="project-content">
+                  <h3 class="project-title">PythonParts Automation Library</h3>
+                  <div class="project-meta">Internal Tooling &nbsp;|&nbsp; Python API &nbsp;|&nbsp; Allplan 3D Automation</div>
+                  <p class="project-desc">Personal library of parametric components (beams, columns, foundations) and Rebar QA Inspector automating repetitive modeling tasks, reducing drafting errors by ~30%.</p>
+                </div>
+              </article>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </article>
+
+  <script>
+    async function exportResumeAsPng() {
+      const button = document.getElementById("export-png-btn");
+      const sheet = document.querySelector(".sheet");
+
+      if (!button || !sheet) {
+        return;
+      }
+
+      const originalLabel = button.innerHTML;
+      button.disabled = true;
+      button.innerHTML = "Rendering...";
+
+      try {
+        if (document.fonts && document.fonts.ready) {
+          await document.fonts.ready;
+        }
+
+        const images = Array.from(sheet.querySelectorAll("img"));
+        await Promise.all(images.map((image) => {
+          if (image.complete) {
+            return Promise.resolve();
+          }
+
+          return new Promise((resolve, reject) => {
+            image.addEventListener("load", resolve, { once: true });
+            image.addEventListener("error", reject, { once: true });
+          });
+        }));
+
+        if (typeof html2canvas !== "function") {
+          throw new Error("html2canvas is not available");
+        }
+
+        document.body.classList.add("exporting-png");
+
+        const canvas = await html2canvas(sheet, {
+          backgroundColor: "#f8f3e8",
+          scale: 2,
+          useCORS: false,
+          allowTaint: false,
+          logging: false,
+          imageTimeout: 15000,
+          onclone: (clonedDocument) => {
+            const clonedBody = clonedDocument.body;
+            const clonedControls = clonedDocument.querySelector(".controls");
+
+            if (clonedBody) {
+              clonedBody.style.margin = "0";
+              clonedBody.style.padding = "0";
+              clonedBody.style.background = "transparent";
+              clonedBody.style.minHeight = "auto";
+              clonedBody.classList.add("exporting-png");
+            }
+
+            if (clonedControls) {
+              clonedControls.remove();
+            }
+          }
+        });
+
+        const link = document.createElement("a");
+        link.download = "phu-bui-resume-03.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      } catch (error) {
+        console.error("PNG export failed:", error);
+        window.alert("PNG export failed. If this file is opened fully offline, the PNG library may be blocked.");
+      } finally {
+        document.body.classList.remove("exporting-png");
+        button.disabled = false;
+        button.innerHTML = originalLabel;
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const button = document.getElementById("export-png-btn");
+
+      if (!button) {
+        return;
+      }
+
+      button.addEventListener("click", exportResumeAsPng);
+    });
+  </script>
+</body>
+</html>
