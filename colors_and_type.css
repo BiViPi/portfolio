@@ -7,56 +7,55 @@
 
 :root {
   /* ============================================================
-     COLOR TOKENS
+     COLOR TOKENS — Bright Navy Scale (#1E4D8F)
      ============================================================ */
 
-  /* ---- Foundation: ink on warm paper ---- */
-  --color-accent: #3F5F8A;
-  --color-accent-hover: #334E73;
-  --color-accent-active: #2B425F;
-  --color-accent-soft: #EEF4FB;
-  --color-accent-soft-hover: #E2ECF7;
-  --color-accent-border: #C9D8EA;
-  --color-accent-dark: #24364D;
-  --color-accent-dark-hover: #1E2E42;
-  --color-text-main: #111827;
-  --color-text-muted: #475569;
-  --color-text-subtle: #64748B;
-  --color-surface: #FFFFFF;
+  /* ---- Bright Navy accent scale (HSL 215°) ---- */
+  --color-accent:           #1E4D8F;  /* Bright Navy — primary accent        */
+  --color-accent-hover:     #1A4480;  /* Navy hover — slightly deeper        */
+  --color-accent-active:    #153A6E;  /* Navy active press                   */
+  --color-accent-soft:      #E8F0FB;  /* Navy tint — chip/card bg            */
+  --color-accent-soft-hover:#D9E5F7;  /* Navy tint hover                     */
+  --color-accent-border:    #B8CCE8;  /* Navy border — subtle divider        */
+  --color-accent-dark:      #163D78;  /* Dark navy — CTA button bg           */
+  --color-accent-dark-hover:#123268;  /* Dark navy hover                     */
+  --color-accent-deep:      #0C2A57;  /* Deep navy — contact section bg      */
+  --color-accent-gradient-start: #1E4D8F; /* Gradient start (bright navy)   */
+  --color-accent-gradient-end:   #0C2A57; /* Gradient end (deep navy)        */
+
+  /* ---- Text ---- */
+  --color-text-main:   #111827;
+  --color-text-muted:  #4C6480;  /* Navy-tinted muted — not slate gray  */
+  --color-text-subtle: #6B82A0;  /* Navy-tinted subtle                  */
+
+  --color-surface:      #FFFFFF;
   --color-surface-soft: #F8FAFC;
-  --color-border: #E2E8F0;
+  --color-border:       #E2E8F0;
 
-  --paper:        #F6F8FB;
-  --paper-soft:   #F8FAFC;
-  --surface:      var(--color-surface);
-  --ink:          var(--color-text-main);
-  --ink-soft:     #1f2937;
+  --paper:      #F6F8FB;
+  --paper-soft: #F8FAFC;
+  --surface:    var(--color-surface);
+  --ink:        var(--color-text-main);
+  --ink-soft:   #1f2937;
 
-  /* ---- Cool grays for hierarchy ---- */
-  --muted-1:      var(--color-text-muted);
-  --muted-2:      var(--color-text-subtle);
-  --muted-3:      #94a3b8;
+  /* ---- Navy-tinted text hierarchy ---- */
+  --navy-text-strong: #163D78;  /* Same as accent-dark — rich navy      */
+  --navy-text-muted:  #4C6480;  /* Mid navy-gray                        */
+  --navy-text-subtle: #6B82A0;  /* Light navy-gray                      */
+  --muted-1:      var(--navy-text-muted);
+  --muted-2:      var(--navy-text-subtle);
+  --muted-3:      #8A9DB8;
   --muted-4:      #b6c2d1;
   --line:         var(--color-border);
   --line-soft:    var(--color-surface-soft);
 
-  /* ---- Brand accent ---- */
-  --accent:       #4f46e5;   /* indigo-600 — THE accent */
-  --accent-hover: #4338ca;   /* indigo-700 */
-  --accent-soft:  #eef2ff;   /* indigo-50, callout/chip bg */
-  --accent-ring:  rgba(79, 70, 229, 0.35);
-
-  /* ---- Optional secondary (portfolio only, never print) ---- */
-  --accent-2:     #06b6d4;   /* cyan-500 */
-  --accent-2-soft:#ecfeff;
-
-  /* ---- Muted navy override for portfolio surfaces ---- */
-  --accent:       var(--color-accent);
-  --accent-hover: var(--color-accent-hover);
-  --accent-soft:  var(--color-accent-soft);
-  --accent-ring:  rgba(63, 95, 138, 0.28);
-  --accent-2:     var(--color-accent);
-  --accent-2-soft:var(--color-accent-soft);
+  /* ---- Brand accent — single canonical set ---- */
+  --accent:        var(--color-accent);
+  --accent-hover:  var(--color-accent-hover);
+  --accent-soft:   var(--color-accent-soft);
+  --accent-ring:   rgba(30, 77, 143, 0.26);
+  --accent-2:      var(--color-accent);
+  --accent-2-soft: var(--color-accent-soft);
 
   /* ---- Status (used in research/country matrix etc.) ---- */
   --ok:           #16a34a;
