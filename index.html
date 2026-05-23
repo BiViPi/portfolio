@@ -213,43 +213,43 @@
     .skills-grid-new {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 24px;
+      gap: 18px;
+      margin-top: 18px;
     }
 
     .skill-card {
       background: var(--surface);
-      border: 1px solid #dbe6f3;
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 8px 24px -8px rgba(15,23,42,0.04), 0 1px 2px rgba(15,23,42,0.01);
+      border: 1px solid #dbeafe;
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
       transition: all 250ms var(--ease-out);
     }
 
     .skill-card:hover {
       transform: translateY(-2px);
-      border-color: #c5d7ed;
-      box-shadow: 0 12px 30px -8px rgba(15,23,42,0.06), 0 2px 6px rgba(15,23,42,0.02);
+      border-color: #b9d8fc;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
     }
 
     .core-skill-card {
       background: linear-gradient(135deg, #ffffff, #f7faff);
-      border: 1px solid #dbe6f3;
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 10px 30px -10px rgba(15,23,42,0.05), 0 1px 3px rgba(15,23,42,0.02);
+      border: 1px solid #dbeafe;
+      border-radius: var(--radius-md);
+      padding: 28px 34px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
       transition: all 250ms var(--ease-out);
       position: relative;
       overflow: hidden;
       display: flex;
-      gap: 32px;
+      gap: 24px;
       align-items: center;
     }
 
     .core-skill-card:hover {
       transform: translateY(-2px);
-      border-color: #c3d6eb;
-      box-shadow: 0 16px 36px -12px rgba(15,23,42,0.08), 0 2px 8px rgba(15,23,42,0.03);
+      border-color: #b9d8fc;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
     }
 
     .core-card-illustration {
@@ -257,7 +257,7 @@
       right: 0;
       bottom: 0;
       top: 0;
-      width: 40%;
+      width: 35%;
       pointer-events: none;
       display: flex;
       align-items: flex-end;
@@ -266,28 +266,232 @@
 
     .lang-strip {
       background: var(--surface);
-      border: 1px solid #dbe6f3;
-      border-radius: 16px;
-      padding: 24px 32px;
-      box-shadow: 0 8px 24px -8px rgba(15,23,42,0.04), 0 1px 2px rgba(15,23,42,0.01);
-      margin-top: 24px;
+      border: 1px solid #dbeafe;
+      border-radius: var(--radius-md);
+      min-height: 84px;
+      padding: 14px 24px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: auto repeat(3, minmax(0, 1fr));
+      align-items: center;
+      gap: 0;
+      transition: all 250ms var(--ease-out);
+    }
+
+    .lang-label-block {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      transition: all 250ms var(--ease-out);
+      gap: 12px;
+      padding-right: 24px;
+      min-width: 0;
+    }
+
+    .core-skill-icon {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      background: #e0f2fe;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(2,132,199,0.12), inset 0 2px 4px rgba(255,255,255,0.6);
+    }
+
+    .core-skill-content {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      max-width: 660px;
+    }
+
+    .core-skill-title {
+      margin: 0 0 10px;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.22;
+      color: var(--ink);
+      letter-spacing: -0.015em;
+      max-width: 760px;
+    }
+
+    .core-skill-desc {
+      margin: 0 0 16px;
+      color: var(--muted-1);
+      font-size: 14px;
+      line-height: 1.5;
+      max-width: 620px;
+    }
+
+    .core-skill-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .core-skill-badge {
+      padding: 4px 12px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      background: #eff6ff;
+      color: var(--accent);
+      border-radius: 999px;
+      border: 1px solid #bfdbfe;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .skill-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .skill-card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: #e0f2fe;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .skill-card-title {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .skill-card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .skill-card-divider {
+      height: 1px;
+      background: rgba(148, 163, 184, 0.15);
+      margin-left: 24px;
+    }
+
+    .skill-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .skill-item-bullet {
+      color: var(--accent);
+      font-size: 14px;
+      line-height: 1.1;
+      margin-top: 1px;
+    }
+
+    .skill-item-content {
+      flex: 1;
+    }
+
+    .skill-item-title {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.25;
+    }
+
+    .skill-item-badge {
+      font-size: 10px;
+      background: #eff6ff;
+      color: var(--accent);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      border: 1px solid #bfdbfe;
+      line-height: 1.35;
+    }
+
+    .skill-item-desc {
+      color: #475569;
+      font-size: 13px;
+      margin-top: 3px;
+      line-height: 1.45;
+    }
+
+    .lang-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--ink);
+      font-family: var(--font-mono);
+      letter-spacing: 0.08em;
+    }
+
+    .lang-name {
+      font-weight: 700;
+      font-size: 13.5px;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .lang-desc {
+      font-size: 12px;
+      color: #475569;
+      margin-top: 2px;
+      line-height: 1.35;
     }
 
     .lang-strip:hover {
       transform: translateY(-2px);
-      border-color: #c5d7ed;
-      box-shadow: 0 12px 30px -8px rgba(15,23,42,0.06), 0 2px 6px rgba(15,23,42,0.02);
+      border-color: #b9d8fc;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
     }
 
     .lang-group {
-      display: flex;
-      gap: 32px;
+      display: contents;
+    }
+
+    .lang-block {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
       align-items: center;
+      gap: 12px;
+      width: 100%;
+      min-width: 0;
+      padding: 0 24px;
+      box-sizing: border-box;
+      min-height: 58px;
+    }
+
+    .lang-block {
+      border-left: 1px solid rgba(148, 163, 184, 0.22);
+    }
+
+    .lang-copy {
+      min-width: 0;
+    }
+
+    .flag-frame {
+      width: 42px;
+      height: 31.5px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      box-shadow: 0 2px 6px rgba(15,23,42,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
 
     .about-section {
@@ -439,21 +643,38 @@
       .core-skill-card {
         flex-direction: column;
         align-items: flex-start;
-        gap: 24px;
-        padding: 32px;
+        gap: 18px;
+        padding: 24px;
       }
       .core-card-illustration {
         display: none;
       }
+      .core-skill-content {
+        max-width: 100%;
+      }
+      .core-skill-title {
+        font-size: 20px;
+      }
       .lang-strip {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 20px;
       }
       .lang-group {
-        flex-direction: column;
-        align-items: flex-start;
+        display: grid;
+        grid-template-columns: 1fr;
         gap: 16px;
+      }
+      .lang-label-block {
+        padding-right: 0;
+      }
+      .lang-block {
+        padding: 0;
+        border-left: none;
+      }
+      .lang-block:not(:first-child) {
+        border-top: 1px solid rgba(148, 163, 184, 0.22);
+        padding-top: 16px;
         width: 100%;
       }
       
@@ -1498,59 +1719,84 @@ const globeIcon = (
 );
 
 const StructuralIllustration = () => (
-  <svg width="340" height="180" viewBox="0 0 340 180" fill="none" stroke="rgba(37,99,235,0.06)" strokeWidth="1.2" style={{ display: "block" }}>
-    <path d="M10 150 L50 90 L90 150 L130 90 L170 150 L210 90 L250 150 L290 90 L330 150" />
-    <line x1="10" y1="150" x2="330" y2="150" strokeWidth="1.8" stroke="rgba(37,99,235,0.08)" />
-    <line x1="50" y1="90" x2="290" y2="90" strokeWidth="1.5" />
-    <line x1="50" y1="90" x2="50" y2="150" strokeDasharray="3,3" />
-    <line x1="130" y1="90" x2="130" y2="150" strokeDasharray="3,3" />
-    <line x1="210" y1="90" x2="210" y2="150" strokeDasharray="3,3" />
-    <line x1="290" y1="90" x2="290" y2="150" strokeDasharray="3,3" />
-    <path d="M 0 30 L 340 30 M 0 60 L 340 60 M 0 120 L 340 120" stroke="rgba(37,99,235,0.02)" strokeWidth="0.8" />
-    <path d="M 80 0 L 80 180 M 160 0 L 160 180 M 240 0 L 240 180" stroke="rgba(37,99,235,0.02)" strokeWidth="0.8" />
-    <path d="M 10 150 Q 170 30 330 150" stroke="rgba(37,99,235,0.04)" strokeDasharray="5,5" />
+  <svg width="340" height="150" viewBox="0 0 340 150" fill="none" stroke="rgba(37,99,235,0.22)" strokeWidth="1.2" style={{ display: "block" }}>
+    {/* Bridge Piers / Arches */}
+    <path d="M 40 150 L 40 110 C 40 85, 70 85, 70 110 L 70 150" />
+    <path d="M 100 150 L 100 110 C 100 85, 130 85, 130 110 L 130 150" />
+    <path d="M 160 150 L 160 110 C 160 85, 190 85, 190 110 L 190 150" />
+    <path d="M 220 150 L 220 110 C 220 85, 250 85, 250 110 L 250 150" />
+    <path d="M 280 150 L 280 110 C 280 85, 310 85, 310 110 L 310 150" />
+    {/* Bridge Deck */}
+    <rect x="10" y="76" width="320" height="6" rx="1.5" fill="none" stroke="rgba(37,99,235,0.25)" strokeWidth="1.5" />
+    {/* Bridge Guard Rails */}
+    <line x1="10" y1="66" x2="330" y2="66" strokeWidth="0.8" />
+    <line x1="10" y1="70" x2="330" y2="70" strokeWidth="0.6" strokeDasharray="2,2" />
+    {/* Vertical railing posts */}
+    <path d="M20 66 V76 M40 66 V76 M60 66 V76 M80 66 V76 M100 66 V76 M120 66 V76 M140 66 V76 M160 66 V76 M180 66 V76 M200 66 V76 M220 66 V76 M240 66 V76 M260 66 V76 M280 66 V76 M300 66 V76 M320 66 V76" strokeWidth="0.5" />
+    {/* Cables/Stay lines */}
+    <path d="M 170 15 L 30 76 M 170 15 L 70 76 M 170 15 L 110 76 M 170 15 L 150 76 M 170 15 L 190 76 M 170 15 L 230 76 M 170 15 L 270 76 M 170 15 L 310 76" strokeWidth="0.8" stroke="rgba(37,99,235,0.15)" strokeDasharray="3,3" />
+    <line x1="170" y1="15" x2="170" y2="76" strokeWidth="1.8" stroke="rgba(37,99,235,0.25)" />
+    {/* Analysis helper grid/dimensions */}
+    <line x1="10" y1="140" x2="330" y2="140" stroke="rgba(37,99,235,0.03)" strokeWidth="0.8" />
+    <path d="M 55 145 L 55 135 M 115 145 L 115 135 M 175 145 L 175 135 M 235 145 L 235 135 M 295 145 L 295 135" stroke="rgba(37,99,235,0.1)" strokeWidth="0.5" />
   </svg>
 );
 
 const PortfolioSkills = ({ skillsData, t }) => {
   const data = skillsData;
+  const flagSvgs = {
+    vn: (
+      <svg width="24" height="16" viewBox="0 0 36 24" xmlns="http://www.w3.org/2000/svg" style={{ borderRadius: 2, display: "block" }}>
+        <rect width="36" height="24" fill="#da251d" />
+        <polygon points="18,4.5 19.35,8.85 23.85,8.85 20.2,11.55 21.6,15.9 18,13.2 14.4,15.9 15.8,11.55 12.15,8.85 16.65,8.85" fill="#ffff00" />
+      </svg>
+    ),
+    de: (
+      <svg width="24" height="16" viewBox="0 0 36 24" xmlns="http://www.w3.org/2000/svg" style={{ borderRadius: 2, display: "block" }}>
+        <rect width="36" height="8" fill="#000000" />
+        <rect y="8" width="36" height="8" fill="#dd0000" />
+        <rect y="16" width="36" height="8" fill="#ffcf00" />
+      </svg>
+    ),
+    gb: (
+      <svg width="24" height="16" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" style={{ borderRadius: 2, display: "block" }}>
+        <clipPath id="unionJackClip">
+          <rect width="30" height="20" rx="2" />
+        </clipPath>
+        <g clipPath="url(#unionJackClip)">
+          <rect width="30" height="20" fill="#012169" />
+          <path d="M0,0 L30,20 M30,0 L0,20" stroke="#fff" strokeWidth="3" />
+          <path d="M0,0 L30,20 M30,0 L0,20" stroke="#C8102E" strokeWidth="2" />
+          <path d="M15,0 V20 M0,10 H30" stroke="#fff" strokeWidth="5" />
+          <path d="M15,0 V20 M0,10 H30" stroke="#C8102E" strokeWidth="3" />
+        </g>
+      </svg>
+    )
+  };
+
   return (
     <section id="skills" className="page-section">
-      <header style={{ marginBottom: 36 }}>
+      <header style={{ marginBottom: 28 }}>
         <div className="t-caption" style={{ color: "var(--accent)", marginBottom: 10 }}>{t.skillsCaption}</div>
-        <h2 style={{ margin: 0, fontSize: 36, fontWeight: 700, letterSpacing: "-0.02em", color: "var(--ink)", lineHeight: 1.1 }}>
+        <h2 style={{ margin: 0, fontSize: 40, fontWeight: 700, letterSpacing: "-0.025em", color: "var(--ink)", lineHeight: 1.1 }}>
           {t.skillsTitle}
         </h2>
       </header>
 
-      {/* Core Expertise Card */}
       <div className="core-skill-card" style={{ marginBottom: 24 }}>
-        <div style={{
-          width: 56, height: 56, borderRadius: "50%",
-          background: "var(--accent-soft)", color: "var(--accent)",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          flexShrink: 0, boxShadow: "0 4px 12px rgba(2,132,199,0.08)"
-        }}>
+        <div className="core-skill-icon">
           {diamondIcon}
         </div>
-        
-        <div style={{ zIndex: 2, flex: 1 }}>
+
+        <div className="core-skill-content">
           <div className="t-caption" style={{ color: "var(--accent)", fontSize: 11, marginBottom: 8, fontWeight: 700, letterSpacing: "0.1em" }}>
             {data.core.label}
           </div>
-          <h3 style={{ margin: "0 0 12px", fontSize: 22, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.015em" }}>
-            {data.core.title}
-          </h3>
-          <p style={{ margin: "0 0 20px", color: "var(--muted-1)", fontSize: 15, lineHeight: 1.6, maxWidth: "620px" }}>
-            {data.core.desc}
-          </p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-            {data.core.badges.map(b => (
-              <span key={b} style={{
-                padding: "4px 12px", fontSize: 11, fontFamily: "var(--font-mono)",
-                background: "var(--line-soft)", color: "var(--muted-2)",
-                borderRadius: 999, border: "1px solid var(--line)"
-              }}>{b}</span>
+          <h3 className="core-skill-title">{data.core.title}</h3>
+          <p className="core-skill-desc">{data.core.desc}</p>
+          <div className="core-skill-badges">
+            {data.core.badges.map((b) => (
+              <span key={b} className="core-skill-badge">{b}</span>
             ))}
           </div>
         </div>
@@ -1560,70 +1806,55 @@ const PortfolioSkills = ({ skillsData, t }) => {
         </div>
       </div>
 
-      {/* Grid of 4 Cards */}
       <div className="skills-grid-new">
         {data.cards.map((card, i) => (
           <div key={i} className="skill-card">
-            <header style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
-              <div style={{
-                width: 38, height: 38, borderRadius: 10,
-                background: "var(--accent-soft)", color: "var(--accent)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                flexShrink: 0
-              }}>
+            <header className="skill-card-header">
+              <div className="skill-card-icon">
                 {skillIcons[card.icon]}
               </div>
-              <h3 style={{ margin: 0, fontSize: 17, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.01em" }}>{card.title}</h3>
+              <h3 className="skill-card-title">{card.title}</h3>
             </header>
-            
-            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+
+            <div className="skill-card-list">
               {card.items.map((item, idx) => (
-                <div key={idx} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                  <span style={{ color: "var(--accent)", fontSize: 16, lineHeight: 1.1, marginTop: 1 }}>•</span>
-                  <div style={{ flex: 1 }}>
-                    <div style={{ fontWeight: 600, fontSize: 14.5, color: "var(--ink)", display: "flex", alignItems: "center", gap: 8 }}>
-                      {item.name}
-                      {item.badge && (
-                        <span style={{
-                          fontSize: 9.5, background: "var(--accent-soft)", color: "var(--accent)",
-                          padding: "2px 6px", borderRadius: 4, fontWeight: 700, letterSpacing: "0.02em"
-                        }}>{item.badge}</span>
-                      )}
+                <React.Fragment key={idx}>
+                  {idx > 0 && <div className="skill-card-divider"></div>}
+                  <div className="skill-item">
+                    <span className="skill-item-bullet">•</span>
+                    <div className="skill-item-content">
+                      <div className="skill-item-title">
+                        {item.name}
+                        {item.badge && <span className="skill-item-badge">{item.badge}</span>}
+                      </div>
+                      <div className="skill-item-desc">{item.desc}</div>
                     </div>
-                    <div style={{ color: "var(--muted-1)", fontSize: 13, marginTop: 4, lineHeight: 1.55 }}>{item.desc}</div>
                   </div>
-                </div>
+                </React.Fragment>
               ))}
             </div>
           </div>
         ))}
       </div>
 
-      {/* Language Strip */}
       <div className="lang-strip">
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div style={{
-            width: 36, height: 36, borderRadius: "50%",
-            background: "var(--accent-soft)", color: "var(--accent)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            flexShrink: 0
-          }}>
+        <div className="lang-label-block">
+          <div className="skill-card-icon">
             {globeIcon}
           </div>
-          <span style={{ fontWeight: 700, fontSize: 14.5, color: "var(--ink)", fontFamily: "var(--font-mono)", letterSpacing: "0.05em" }}>{data.languages.title.toUpperCase()}</span>
+          <span className="lang-title">{data.languages.title.toUpperCase()}</span>
         </div>
-        
+
         <div className="lang-group">
           {data.languages.items.map((langItem, idx) => {
-            const flagMap = { vn: "🇻🇳", de: "🇩🇪", gb: "🇬🇧" };
             return (
-              <div key={idx} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <span style={{ fontSize: 24, filter: "drop-shadow(0 2px 4px rgba(15,23,42,0.06))" }}>
-                  {flagMap[langItem.code]}
-                </span>
-                <div>
-                  <div style={{ fontWeight: 600, fontSize: 13.5, color: "var(--ink)" }}>{langItem.name}</div>
-                  <div style={{ fontSize: 12, color: "var(--muted-2)", marginTop: 2 }}>{langItem.desc}</div>
+              <div key={idx} className="lang-block">
+                <div className="flag-frame">
+                  {flagSvgs[langItem.code]}
+                </div>
+                <div className="lang-copy">
+                  <div className="lang-name">{langItem.name}</div>
+                  <div className="lang-desc">{langItem.desc}</div>
                 </div>
               </div>
             );
