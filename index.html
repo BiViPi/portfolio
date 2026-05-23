@@ -556,9 +556,51 @@
       align-items: flex-start;
     }
 
+    .about-portrait {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px -10px rgba(15,23,42,0.12), 0 4px 12px -5px rgba(15,23,42,0.06);
+      background: var(--paper-soft);
+    }
+
+    .about-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
     .about-content {
       grid-column: span 8;
       max-width: 700px;
+    }
+
+    .about-title {
+      margin: 0 0 24px;
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+
+    .about-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      color: var(--muted-1);
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .about-copy p {
+      margin: 0;
     }
 
     .about-stats {
@@ -566,6 +608,17 @@
       display: flex;
       justify-content: space-between;
       max-width: 100%;
+    }
+
+    .about-stat {
+      min-width: 0;
+    }
+
+    .about-stat-value {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.02em;
     }
 
     .contact-section {
@@ -836,6 +889,39 @@
       .about-content {
         max-width: 100%;
       }
+      .about-portrait {
+        width: min(100%, 360px);
+        aspect-ratio: 1.18/1;
+        border-radius: 24px;
+      }
+      .about-title {
+        font-size: 28px;
+        line-height: 1.1;
+        margin-bottom: 18px;
+      }
+      .about-copy {
+        gap: 18px;
+        font-size: 15px;
+        line-height: 1.72;
+        margin-bottom: 28px;
+      }
+      .about-stats {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-top: 24px;
+      }
+      .about-stat {
+        padding: 18px 0 16px;
+        border-top: 1px solid rgba(148, 163, 184, 0.18);
+      }
+      .about-stat:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+      .about-stat-value {
+        font-size: 30px;
+      }
 
       .contact-section {
         padding: 4px 20px 56px;
@@ -877,9 +963,37 @@
     }
 
     @media (max-width: 480px) {
-      .about-stats {
-        flex-direction: column;
-        gap: 20px;
+      .about-section {
+        padding: 44px 20px 28px;
+      }
+      .about-grid {
+        gap: 28px;
+      }
+      .about-portrait {
+        width: 100%;
+        aspect-ratio: 1.28/1;
+        border-radius: 22px;
+      }
+      .about-title {
+        font-size: 22px;
+        line-height: 1.12;
+        letter-spacing: -0.03em;
+        margin-bottom: 16px;
+      }
+      .about-copy {
+        gap: 16px;
+        font-size: 14px;
+        line-height: 1.68;
+        margin-bottom: 24px;
+      }
+      .about-copy p {
+        max-width: 32ch;
+      }
+      .about-stat {
+        padding: 16px 0 14px;
+      }
+      .about-stat-value {
+        font-size: 24px;
       }
       .hero-title {
         font-size: 32px;
@@ -2004,37 +2118,25 @@ const PortfolioAbout = ({ t }) => (
   <section id="about" className="about-section">
     <div className="about-grid">
       <aside className="about-avatar-wrapper">
-        <div style={{
-          width: "100%",
-          aspectRatio: "3/4",
-          borderRadius: "var(--radius-md)",
-          overflow: "hidden",
-          border: "1px solid var(--line)",
-          boxShadow: "0 12px 30px -10px rgba(15,23,42,0.12), 0 4px 12px -5px rgba(15,23,42,0.06)",
-          background: "var(--paper-soft)",
-        }}>
+        <div className="about-portrait">
+
           <img 
             src="docs/IMG_0686.PNG" 
             alt="Bùi Vĩnh Phú" 
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              display: "block",
-            }} 
+
           />
         </div>
       </aside>
       
       <article className="about-content">
         <div className="t-caption" style={{ color: "var(--accent)", marginBottom: 12 }}>{t.aboutCaption}</div>
-        <h2 style={{ margin: "0 0 24px", fontSize: 34, fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, color: "var(--ink)" }}>
+        <h2 className="about-title">
           {t.aboutTitle}
         </h2>
-        <div style={{ display: "flex", flexDirection: "column", gap: 20, color: "var(--muted-1)", fontSize: 16, lineHeight: 1.7, marginBottom: 32 }}>
-          <p style={{ margin: 0 }}>{t.aboutP1}</p>
-          <p style={{ margin: 0 }}>{t.aboutP2}</p>
-          <p style={{ margin: 0 }}>{t.aboutP3}</p>
+        <div className="about-copy">
+          <p>{t.aboutP1}</p>
+          <p>{t.aboutP2}</p>
+          <p>{t.aboutP3}</p>
           <p style={{ margin: 0, color: "var(--ink)", fontStyle: "italic", fontWeight: 500 }}>{t.aboutP4}</p>
         </div>
 
@@ -2046,8 +2148,8 @@ const PortfolioAbout = ({ t }) => (
             { label: t.aboutStatMarkets, val: "DE · CH" },
             { label: t.aboutStatTool, val: "Allplan" },
           ].map(s => (
-            <div key={s.label}>
-              <div style={{ fontSize: 32, fontWeight: 800, color: "var(--accent)", letterSpacing: "-0.02em" }}>{s.val}</div>
+            <div key={s.label} className="about-stat">
+              <div className="about-stat-value">{s.val}</div>
               <div className="t-meta" style={{ marginTop: 6, color: "var(--muted-1)", fontWeight: 500 }}>{s.label}</div>
             </div>
           ))}
