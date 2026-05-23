@@ -8,22 +8,22 @@
 <style>
     /* 1. Global Reset & Variables */
     :root {
-      /* Bright Navy accent scale */
-      --color-accent:           #1E4D8F;
-      --color-accent-hover:     #1A4480;
-      --color-accent-active:    #153A6E;
-      --color-accent-soft:      #E8F0FB;
-      --color-accent-soft-hover:#D9E5F7;
-      --color-accent-border:    #B8CCE8;
-      --color-accent-dark:      #163D78;
-      --color-accent-dark-hover:#123268;
-      --color-accent-deep:      #0C2A57;
-      --color-accent-gradient-start: #1E4D8F;
-      --color-accent-gradient-end:   #0C2A57;
+      /* True Navy accent scale */
+      --color-accent:           #1F4E83;
+      --color-accent-hover:     #163B66;
+      --color-accent-active:    #0F2D50;
+      --color-accent-soft:      #EEF5FC;
+      --color-accent-soft-hover:#E3EFFB;
+      --color-accent-border:    #BFD3EA;
+      --color-accent-dark:      #0F3A66;
+      --color-accent-dark-hover:#0B2F54;
+      --color-accent-deep:      #082B4D;
+      --color-accent-gradient-start: #0F4C81;
+      --color-accent-gradient-end:   #082B4D;
 
       --color-text-main:   #111827;
-      --color-text-muted:  #4C6480;
-      --color-text-subtle: #6B82A0;
+      --color-text-muted:  #475569;
+      --color-text-subtle: #64748B;
 
       --color-surface:      #FFFFFF;
       --color-surface-soft: #F8FAFC;
@@ -34,13 +34,13 @@
       --surface:    var(--color-surface);
       --ink:        var(--color-text-main);
 
-      /* Navy-tinted text hierarchy */
-      --navy-text-strong: #163D78;
-      --navy-text-muted:  #4C6480;
-      --navy-text-subtle: #6B82A0;
-      --muted-1: var(--navy-text-muted);
-      --muted-2: var(--navy-text-subtle);
-      --muted-3: #8A9DB8;
+      /* Text hierarchy */
+      --navy-text-strong: #0F3A66;
+      --navy-text-muted:  var(--color-text-muted);
+      --navy-text-subtle: var(--color-text-subtle);
+      --muted-1: var(--color-text-muted);
+      --muted-2: var(--color-text-subtle);
+      --muted-3: #94a3b8;
 
       /* Canonical accent aliases */
       --accent:             var(--color-accent);
@@ -331,7 +331,7 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 10px 26px rgba(30, 77, 143, 0.18), inset 0 2px 4px rgba(255,255,255,0.6);
+      box-shadow: 0 10px 26px rgba(31, 78, 131, 0.18), inset 0 2px 4px rgba(255,255,255,0.6);
     }
 
     .core-skill-content {
@@ -531,7 +531,7 @@
     .about-section {
       position: relative;
       background:
-        radial-gradient(circle at 50% 100%, rgba(30, 77, 143, 0.09), transparent 34%),
+        radial-gradient(circle at 50% 100%, rgba(31, 78, 131, 0.09), transparent 34%),
         var(--paper-soft);
       padding: 96px 32px 40px;
       overflow: hidden;
@@ -543,16 +543,16 @@
       left: 50%;
       bottom: 12px;
       transform: translateX(-50%);
-      width: min(1120px, calc(100% - 64px));
+      width: min(1036px, calc(100% - 64px));
       height: 120px;
-      background: linear-gradient(180deg, rgba(12, 42, 87, 0) 0%, rgba(12, 42, 87, 0.09) 100%);
+      background: linear-gradient(180deg, rgba(8, 43, 77, 0) 0%, rgba(8, 43, 77, 0.09) 100%);
       filter: blur(28px);
       opacity: 0.8;
       pointer-events: none;
     }
 
     .about-grid {
-      max-width: 1100px;
+      max-width: 1036px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -639,15 +639,15 @@
     }
 
     .contact-panel {
-      max-width: 1380px;
+      max-width: 1036px;
       margin: 0 auto;
       padding: 88px 32px 96px;
       border-radius: 42px;
-      background: linear-gradient(135deg, #1E4D8F 0%, #0C2A57 100%);
+      background: linear-gradient(135deg, #0F4C81 0%, #082B4D 100%);
       color: #ffffff;
       box-shadow:
-        0 34px 88px -36px rgba(12, 42, 87, 0.48),
-        0 18px 36px -24px rgba(12, 42, 87, 0.24);
+        0 34px 88px -36px rgba(8, 43, 77, 0.48),
+        0 18px 36px -24px rgba(8, 43, 77, 0.24);
       position: relative;
       overflow: hidden;
     }
@@ -742,7 +742,7 @@
       padding-top: 20px;
       padding-bottom: 20px;
       border-top: 1px solid var(--line);
-      border-bottom: 1px solid rgba(201, 216, 234, 0.72);
+      border-bottom: 1px solid rgba(191, 211, 234, 0.72);
     }
 
     .close-btn {
@@ -1124,7 +1124,7 @@ const projects = {
       oneLiner: "Major public leisure & ice sports complex in Wiesbaden — full 3D structural model with pile foundations, multi-zone RC structure, swimming pools and ice rink, to DIN standards.",
       tech: ["Allplan", "DIN 1045-1", "3D Reinforcement", "Pile Foundations", "Public / Civic"],
       image: "assets/projects/sportpark-wiesbaden-allplan.png",
-      thumbBg: "linear-gradient(135deg, #1E4D8F 0%, #0C2A57 100%)",
+      thumbBg: "linear-gradient(135deg, #0F4C81 0%, #082B4D 100%)",
       placeholderLabel: "SPORTS COMPLEX · DE",
       caseStudy: {
         role: "Lead draftsman · full project",
@@ -1144,7 +1144,7 @@ const projects = {
       oneLiner: "Full structural drafting for a 180m 5-span road bridge over the Rheintalbahn — 3D model, 3D reinforcement, and 3D prestressed bar detailing, DIN 1045-1.",
       tech: ["Allplan", "DIN 1045-1", "3D Reinforcement", "Prestressed Concrete", "Längsverschub"],
       image: "assets/projects/tausendfuessler-allplan.png",
-      thumbBg: "linear-gradient(135deg, #163D78, #0C2A57)",
+      thumbBg: "linear-gradient(135deg, #0F3A66, #082B4D)",
       placeholderLabel: "BRIDGE · DE · B3 OFFENBURG",
       caseStudy: {
         role: "Lead draftsman · 5-person team · full project",
@@ -1164,7 +1164,7 @@ const projects = {
       oneLiner: "Custom Python plugins for Allplan automating standard structural components — parametric columns, beams, and reinforcement cages.",
       tech: ["Python", "PythonParts API", "Allplan", "Automation"],
       image: null,
-      thumbBg: "linear-gradient(135deg, #1E4D8F 0%, #0C2A57 100%)",
+      thumbBg: "linear-gradient(135deg, #0F4C81 0%, #082B4D 100%)",
       techCard: {
         stats: [
           { value: "15+", label: "TOOLS BUILT" },
@@ -1192,7 +1192,7 @@ const projects = {
       oneLiner: "New mixed-use residential & commercial building — full 3D structural model with basement, 4+ floors, walls, slabs, and complete reinforcement detailing to SIA standards.",
       tech: ["Allplan", "SIA", "3D Reinforcement", "Residential", "Commercial"],
       image: "assets/projects/wohn-geschaeftshaus-e64-allplan.png",
-      thumbBg: "linear-gradient(135deg, #E8F0FB, #B8CCE8)",
+      thumbBg: "linear-gradient(135deg, #EEF5FC, #BFD3EA)",
       placeholderLabel: "MIXED-USE · CH",
       caseStudy: {
         role: "Lead draftsman · full project",
@@ -1212,7 +1212,7 @@ const projects = {
       oneLiner: "Renovation and vertical extension of an existing building at 1756m elevation in Graubünden — high-volume detail drawings including structural steel connection details for the new Aufstockung.",
       tech: ["Allplan", "SIA", "Sanierung", "Steel Connections", "Detail M 1:5"],
       image: "assets/projects/tamins-riedstrasse17-allplan.png",
-      thumbBg: "linear-gradient(135deg, #E8F0FB, #B8CCE8)",
+      thumbBg: "linear-gradient(135deg, #EEF5FC, #BFD3EA)",
       placeholderLabel: "RENOVATION · CH · 1756M",
       caseStudy: {
         role: "Lead draftsman · full project",
@@ -1231,7 +1231,7 @@ const projects = {
       year: "2025–2026",
       oneLiner: "Next Generation Paintshop — 7,200 prestressed precast elements (columns, main beams, trough slabs) for a 2-story industrial RC structure covering ~30,000m².",
       tech: ["Allplan", "DIN 1045-1", "Precast / Fertigteile", "Spannbeton", "Industrial"],
-      thumbBg: "linear-gradient(135deg, #1E4D8F 0%, #0C2A57 100%)",
+      thumbBg: "linear-gradient(135deg, #0F4C81 0%, #082B4D 100%)",
       placeholderLabel: "PRECAST · DE · IN PROGRESS",
       image: null,
       techCard: {
@@ -1263,7 +1263,7 @@ const projects = {
       oneLiner: "Tổ hợp thể thao băng & hồ bơi công cộng quy mô lớn tại Wiesbaden — dựng mô hình kết cấu 3D hoàn chỉnh với móng cọc, kết cấu BTCT đa phân khu, các hồ bơi và sân băng theo tiêu chuẩn DIN.",
       tech: ["Allplan", "DIN 1045-1", "3D Reinforcement", "Pile Foundations", "Public / Civic"],
       image: "assets/projects/sportpark-wiesbaden-allplan.png",
-      thumbBg: "linear-gradient(135deg, #1E4D8F 0%, #0C2A57 100%)",
+      thumbBg: "linear-gradient(135deg, #0F4C81 0%, #082B4D 100%)",
       placeholderLabel: "SPORTS COMPLEX · DE",
       caseStudy: {
         role: "Họa viên trưởng · Toàn bộ dự án",
@@ -1283,7 +1283,7 @@ const projects = {
       oneLiner: "Triển khai toàn bộ bản vẽ kết cấu cho cầu đường bộ 5 nhịp dài 180m vượt qua tuyến đường sắt Rheintalbahn — mô hình 3D, chi tiết cốt thép 3D và bố trí cáp dự ứng lực 3D theo tiêu chuẩn DIN 1045-1.",
       tech: ["Allplan", "DIN 1045-1", "3D Reinforcement", "Prestressed Concrete", "Längsverschub"],
       image: "assets/projects/tausendfuessler-allplan.png",
-      thumbBg: "linear-gradient(135deg, #163D78, #0C2A57)",
+      thumbBg: "linear-gradient(135deg, #0F3A66, #082B4D)",
       placeholderLabel: "BRIDGE · DE · B3 OFFENBURG",
       caseStudy: {
         role: "Trưởng nhóm họa viên · Đội ngũ 5 người · Toàn bộ dự án",
@@ -1303,7 +1303,7 @@ const projects = {
       oneLiner: "Các plugin Python tự tùy chỉnh cho Allplan giúp tự động hóa các cấu kiện kết cấu điển hình — cột, dầm tham số hóa và lồng cốt thép.",
       tech: ["Python", "PythonParts API", "Allplan", "Automation"],
       image: null,
-      thumbBg: "linear-gradient(135deg, #1E4D8F 0%, #0C2A57 100%)",
+      thumbBg: "linear-gradient(135deg, #0F4C81 0%, #082B4D 100%)",
       techCard: {
         stats: [
           { value: "15+", label: "CÔNG CỤ ĐÃ DỰNG" },
@@ -1331,7 +1331,7 @@ const projects = {
       oneLiner: "Tòa nhà hỗn hợp căn hộ & thương mại xây mới — mô hình kết cấu 3D hoàn chỉnh với tầng hầm, hơn 4 tầng nổi, tường, sàn và chi tiết cốt thép đầy đủ theo tiêu chuẩn SIA của Thụy Sĩ.",
       tech: ["Allplan", "SIA", "3D Reinforcement", "Residential", "Commercial"],
       image: "assets/projects/wohn-geschaeftshaus-e64-allplan.png",
-      thumbBg: "linear-gradient(135deg, #E8F0FB, #B8CCE8)",
+      thumbBg: "linear-gradient(135deg, #EEF5FC, #BFD3EA)",
       placeholderLabel: "MIXED-USE · CH",
       caseStudy: {
         role: "Họa viên trưởng · Toàn bộ dự án",
@@ -1351,7 +1351,7 @@ const projects = {
       oneLiner: "Cải tạo và nâng tầng cho công trình hiện hữu ở độ cao 1756m tại Graubünden — khối lượng lớn bản vẽ chi tiết bao gồm liên kết kết cấu thép cho phần nâng tầng mới.",
       tech: ["Allplan", "SIA", "Sanierung", "Steel Connections", "Detail M 1:5"],
       image: "assets/projects/tamins-riedstrasse17-allplan.png",
-      thumbBg: "linear-gradient(135deg, #E8F0FB, #B8CCE8)",
+      thumbBg: "linear-gradient(135deg, #EEF5FC, #BFD3EA)",
       placeholderLabel: "RENOVATION · CH · 1756M",
       caseStudy: {
         role: "Họa viên trưởng · Toàn bộ dự án",
@@ -1370,7 +1370,7 @@ const projects = {
       year: "2025–2026",
       oneLiner: "Xưởng sơn thế hệ mới (Next Generation Paintshop) — 7,200 cấu kiện bê tông đúc sẵn dự ứng lực (cột, dầm chính, sàn máng) cho kết cấu nhà xưởng BTCT 2 tầng diện tích ~30,000m².",
       tech: ["Allplan", "DIN 1045-1", "Precast / Fertigteile", "Spannbeton", "Industrial"],
-      thumbBg: "linear-gradient(135deg, #1E4D8F 0%, #0C2A57 100%)",
+      thumbBg: "linear-gradient(135deg, #0F4C81 0%, #082B4D 100%)",
       placeholderLabel: "PRECAST · DE · IN PROGRESS",
       image: null,
       techCard: {
@@ -1537,7 +1537,7 @@ const PortfolioNav = ({ active = "home", onNavigate, lang, onToggleLang }) => {
       background: "rgba(246,248,251,0.88)",
       backdropFilter: "blur(12px)",
       WebkitBackdropFilter: "blur(12px)",
-      borderBottom: "1px solid rgba(201, 216, 234, 0.68)",
+      borderBottom: "1px solid rgba(191, 211, 234, 0.68)",
     }}>
       <div className="nav-inner">
         <a href="#home" onClick={(e) => { e.preventDefault(); handleNavClick("home"); }} style={{
@@ -1717,7 +1717,7 @@ const PortfolioHero = ({ lang, t }) => (
     {/* The draftsman's sheet — stylized realistic RC beam-column blueprint */}
     <div className="hero-blueprint-container">
       <div style={{
-        background: "linear-gradient(135deg, #1E4D8F 0%, #0C2A57 100%)",
+        background: "linear-gradient(135deg, #0F4C81 0%, #082B4D 100%)",
         borderRadius: 16,
         padding: "20px 16px 24px",
         aspectRatio: "3/4",
@@ -1737,10 +1737,10 @@ const PortfolioHero = ({ lang, t }) => (
             </linearGradient>
             <linearGradient id="tendonGrad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#6F89A9"/>
-              <stop offset="100%" stopColor="#1E4D8F"/>
+              <stop offset="100%" stopColor="#0F4C81"/>
             </linearGradient>
           </defs>
-          <rect width="100%" height="100%" fill="#0C2A57"/>
+          <rect width="100%" height="100%" fill="#082B4D"/>
           <rect width="100%" height="100%" fill="url(#cadGrid)"/>
 
           <text x="20" y="32" fill="rgba(255,255,255,0.3)" fontFamily="var(--font-mono)" fontSize="8.5" letterSpacing="0.08em">DETAILED DRAWING // BEAM-COLUMN CONNECTION</text>
@@ -1799,7 +1799,7 @@ const PortfolioHero = ({ lang, t }) => (
           {/* Prestressed Tendon */}
           <path d="M 100 145 Q 180 205 320 160" 
                 fill="none" stroke="url(#tendonGrad)" strokeWidth="2.2" strokeDasharray="3,2" />
-          <polygon points="100,141 100,149 94,146 94,144" fill="#1E4D8F" />
+          <polygon points="100,141 100,149 94,146 94,144" fill="#0F4C81" />
 
           {/* Dimension Lines */}
           <g stroke="rgba(255,255,255,0.35)" strokeWidth="0.8">
@@ -1832,8 +1832,8 @@ const PortfolioHero = ({ lang, t }) => (
 
             {/* Tendon label */}
             <path d="M 195 183 L 205 260 L 225 260" />
-            <circle cx="195" cy="183" r="1.5" fill="#1E4D8F" />
-            <text x="230" y="263" fill="#1E4D8F" fontFamily="var(--font-mono)" fontSize="7">Prestressed Tendon</text>
+            <circle cx="195" cy="183" r="1.5" fill="#0F4C81" />
+            <text x="230" y="263" fill="#0F4C81" fontFamily="var(--font-mono)" fontSize="7">Prestressed Tendon</text>
           </g>
 
           {/* Footnotes */}
@@ -1876,7 +1876,7 @@ const ProjectCard = ({ project, onOpen }) => (
     {/* Project thumbnail */}
     <div style={{
       aspectRatio: "16/10",
-      background: project.thumbBg || "linear-gradient(135deg, #E8F0FB, #B8CCE8)",
+      background: project.thumbBg || "linear-gradient(135deg, #EEF5FC, #BFD3EA)",
       position: "relative",
       overflow: "hidden",
     }}>

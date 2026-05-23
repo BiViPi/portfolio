@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    CV/Portfolio Design System — Tokens + Semantic Type
    ============================================================ */
 
@@ -10,23 +10,23 @@
      COLOR TOKENS — Bright Navy Scale (#1E4D8F)
      ============================================================ */
 
-  /* ---- Bright Navy accent scale (HSL 215°) ---- */
-  --color-accent:           #1E4D8F;  /* Bright Navy — primary accent        */
-  --color-accent-hover:     #1A4480;  /* Navy hover — slightly deeper        */
-  --color-accent-active:    #153A6E;  /* Navy active press                   */
-  --color-accent-soft:      #E8F0FB;  /* Navy tint — chip/card bg            */
-  --color-accent-soft-hover:#D9E5F7;  /* Navy tint hover                     */
-  --color-accent-border:    #B8CCE8;  /* Navy border — subtle divider        */
-  --color-accent-dark:      #163D78;  /* Dark navy — CTA button bg           */
-  --color-accent-dark-hover:#123268;  /* Dark navy hover                     */
-  --color-accent-deep:      #0C2A57;  /* Deep navy — contact section bg      */
-  --color-accent-gradient-start: #1E4D8F; /* Gradient start (bright navy)   */
-  --color-accent-gradient-end:   #0C2A57; /* Gradient end (deep navy)        */
+  /* ---- True Navy accent scale ---- */
+  --color-accent:           #1F4E83;  /* Accent / eyebrow / icon / link      */
+  --color-accent-hover:     #163B66;  /* Navy hover                          */
+  --color-accent-active:    #0F2D50;  /* Navy active press                   */
+  --color-accent-soft:      #EEF5FC;  /* Navy tint — chip/card bg            */
+  --color-accent-soft-hover:#E3EFFB;  /* Navy tint hover                     */
+  --color-accent-border:    #BFD3EA;  /* Navy border — subtle divider        */
+  --color-accent-dark:      #0F3A66;  /* Dark navy — CTA button bg/badge     */
+  --color-accent-dark-hover:#0B2F54;  /* Dark navy hover                     */
+  --color-accent-deep:      #082B4D;  /* Deep navy — contact section bg      */
+  --color-accent-gradient-start: #0F4C81; /* Gradient start (true navy)      */
+  --color-accent-gradient-end:   #082B4D; /* Gradient end (deep navy)        */
 
   /* ---- Text ---- */
-  --color-text-main:   #111827;
-  --color-text-muted:  #4C6480;  /* Navy-tinted muted — not slate gray  */
-  --color-text-subtle: #6B82A0;  /* Navy-tinted subtle                  */
+  --color-text-main:   #111827;  /* Heading / title */
+  --color-text-muted:  #475569;  /* Body text (neutral slate) */
+  --color-text-subtle: #64748B;  /* Muted / metadata */
 
   --color-surface:      #FFFFFF;
   --color-surface-soft: #F8FAFC;
@@ -38,14 +38,14 @@
   --ink:        var(--color-text-main);
   --ink-soft:   #1f2937;
 
-  /* ---- Navy-tinted text hierarchy ---- */
-  --navy-text-strong: #163D78;  /* Same as accent-dark — rich navy      */
-  --navy-text-muted:  #4C6480;  /* Mid navy-gray                        */
-  --navy-text-subtle: #6B82A0;  /* Light navy-gray                      */
-  --muted-1:      var(--navy-text-muted);
-  --muted-2:      var(--navy-text-subtle);
-  --muted-3:      #8A9DB8;
-  --muted-4:      #b6c2d1;
+  /* ---- Text hierarchy ---- */
+  --navy-text-strong: #0F3A66;  /* Same as accent-dark */
+  --navy-text-muted:  var(--color-text-muted);  /* Fallback to slate */
+  --navy-text-subtle: var(--color-text-subtle); /* Fallback to slate */
+  --muted-1:      var(--color-text-muted);
+  --muted-2:      var(--color-text-subtle);
+  --muted-3:      #94a3b8;
+  --muted-4:      #cbd5e1;
   --line:         var(--color-border);
   --line-soft:    var(--color-surface-soft);
 
@@ -53,7 +53,7 @@
   --accent:        var(--color-accent);
   --accent-hover:  var(--color-accent-hover);
   --accent-soft:   var(--color-accent-soft);
-  --accent-ring:   rgba(30, 77, 143, 0.26);
+  --accent-ring:   rgba(31, 78, 131, 0.26);
   --accent-2:      var(--color-accent);
   --accent-2-soft: var(--color-accent-soft);
 
