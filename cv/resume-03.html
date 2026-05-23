@@ -227,8 +227,8 @@
 
     .title {
       margin-top: 14px;
-      font-size: 15px;
-      line-height: 1.35;
+      font-size: 13.5px;
+      line-height: 1.32;
       font-weight: 700;
       letter-spacing: 0.11em;
       text-transform: uppercase;
@@ -471,32 +471,16 @@
       min-width: 0;
       padding: 7px 10px 7px 9px;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto auto;
+      grid-template-columns: minmax(0, 1fr) auto;
       align-items: center;
       gap: 8px;
     }
 
     .skill-name {
       min-width: 0;
-      font-size: 11.5px;
+      font-size: 11.3px;
       line-height: 1.25;
       color: var(--text-main);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .skill-level {
-      padding: 3px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(15, 58, 99, 0.12);
-      background: rgba(15, 58, 99, 0.05);
-      color: var(--accent);
-      font-size: 9px;
-      line-height: 1;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      white-space: nowrap;
     }
 
     .skill-dots {
@@ -545,32 +529,34 @@
     .experience-head {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 10px 16px;
+      gap: 8px 16px;
       align-items: start;
     }
 
     .experience-role {
-      font-size: 17px;
-      line-height: 1.25;
+      font-size: 13px;
+      line-height: 1.18;
       font-weight: 700;
+      letter-spacing: 0.01em;
       color: var(--text-main);
     }
 
     .experience-company {
       display: block;
       margin-top: 3px;
-      font-size: 15px;
+      font-size: 13.5px;
       line-height: 1.25;
       font-weight: 700;
       color: var(--accent);
     }
 
     .experience-date {
-      font-size: 13px;
+      font-size: 12px;
       line-height: 1.2;
       color: var(--text-muted);
       white-space: nowrap;
       padding-top: 4px;
+      text-align: right;
     }
 
     .experience-location {
@@ -780,7 +766,7 @@
       }
 
       .title {
-        font-size: 4.2mm;
+        font-size: 3.9mm;
       }
 
       .summary-copy p,
@@ -837,7 +823,7 @@
               <img class="portrait" src="data:image/jpeg;base64,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" alt="Portrait of Phu Bui">
             </div>
             <h1 class="name">Phu Bui</h1>
-            <p class="title">Structural Draftsman / Team Leader</p>
+            <p class="title">Senior Structural Detailing Specialist</p>
           </section>
 
           <section class="sidebar-section">
@@ -899,7 +885,7 @@
 
             <div class="skills-layout">
               <div class="skill-group">
-                <div class="skill-group-title">Technical</div>
+                <div class="skill-group-title">Tools</div>
                 <div class="skill-list">
                   <div class="skill-item">
                     <div class="skill-icon" aria-hidden="true">
@@ -907,7 +893,6 @@
                     </div>
                     <div class="skill-content">
                       <div class="skill-name">Allplan</div>
-                      <div class="skill-level">Expert</div>
                       <div class="skill-dots" aria-hidden="true">
                         <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span>
                       </div>
@@ -916,24 +901,10 @@
 
                   <div class="skill-item">
                     <div class="skill-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d="M3 21h18"></path><path d="M5 21V7l7-4 7 4v14"></path><path d="M9 9h.01"></path><path d="M15 9h.01"></path><path d="M9 13h.01"></path><path d="M15 13h.01"></path></svg>
+                      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M8 20h8"></path><path d="M12 16v4"></path></svg>
                     </div>
                     <div class="skill-content">
-                      <div class="skill-name">BIM Implementation</div>
-                      <div class="skill-level">Moderate</div>
-                      <div class="skill-dots" aria-hidden="true">
-                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot"></span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="skill-item">
-                    <div class="skill-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d="M8 3v3"></path><path d="M16 3v3"></path><path d="M9 18h6"></path><path d="M10 21h4"></path><rect x="4" y="6" width="16" height="12" rx="2"></rect></svg>
-                    </div>
-                    <div class="skill-content">
-                      <div class="skill-name">PythonParts API</div>
-                      <div class="skill-level">Expert</div>
+                      <div class="skill-name">VS Code / Antigravity</div>
                       <div class="skill-dots" aria-hidden="true">
                         <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span>
                       </div>
@@ -942,26 +913,12 @@
 
                   <div class="skill-item">
                     <div class="skill-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d="M12 6V3"></path><path d="M16 8l2.6-1.5"></path><path d="M8 8 5.4 6.5"></path><path d="M7 12a5 5 0 1 0 10 0 5 5 0 0 0-10 0Z"></path><path d="M12 17v4"></path><path d="M16 16.5 18.6 18"></path><path d="M8 16.5 5.4 18"></path></svg>
+                      <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"></path><path d="M8 8h8"></path><path d="M8 12h8"></path><path d="M8 16h5"></path></svg>
                     </div>
                     <div class="skill-content">
-                      <div class="skill-name">SmartParts</div>
-                      <div class="skill-level">Expert</div>
+                      <div class="skill-name">Word / Excel</div>
                       <div class="skill-dots" aria-hidden="true">
                         <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="skill-item">
-                    <div class="skill-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d="M12 9c-2.5 0-4 1.1-4 3v4h8v-4c0-1.9-1.5-3-4-3Z"></path><path d="M8 16h8"></path><path d="M9 6c0-1.1.9-2 2-2h2a2 2 0 0 1 0 4h-2"></path></svg>
-                    </div>
-                    <div class="skill-content">
-                      <div class="skill-name">Python</div>
-                      <div class="skill-level">Moderate</div>
-                      <div class="skill-dots" aria-hidden="true">
-                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot"></span><span class="skill-dot"></span>
                       </div>
                     </div>
                   </div>
@@ -969,15 +926,14 @@
               </div>
 
               <div class="skill-group">
-                <div class="skill-group-title">Standards &amp; Leadership</div>
+                <div class="skill-group-title">Technical Skills</div>
                 <div class="skill-list">
                   <div class="skill-item">
                     <div class="skill-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                      <svg viewBox="0 0 24 24"><path d="M4 20h16"></path><path d="M5.5 20V8l6.5-4 6.5 4v12"></path><path d="M8.5 12h7"></path><path d="M8.5 15h7"></path></svg>
                     </div>
                     <div class="skill-content">
-                      <div class="skill-name">DIN 1045-1</div>
-                      <div class="skill-level">Expert</div>
+                      <div class="skill-name">Formwork Detailing</div>
                       <div class="skill-dots" aria-hidden="true">
                         <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span>
                       </div>
@@ -986,11 +942,10 @@
 
                   <div class="skill-item">
                     <div class="skill-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                      <svg viewBox="0 0 24 24"><path d="M5 6h14"></path><path d="M7 6v12"></path><path d="M17 6v12"></path><path d="M7 12h10"></path><path d="M10 9v6"></path><path d="M14 9v6"></path></svg>
                     </div>
                     <div class="skill-content">
-                      <div class="skill-name">SIA 262</div>
-                      <div class="skill-level">Expert</div>
+                      <div class="skill-name">Reinforcement Detailing</div>
                       <div class="skill-dots" aria-hidden="true">
                         <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span>
                       </div>
@@ -999,11 +954,39 @@
 
                   <div class="skill-item">
                     <div class="skill-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d="M3 5h18"></path><path d="M7 5v14"></path><path d="M3 12h12"></path><path d="M15 13c0-3 1.6-5 4-5s4 2 4 5-1.6 5-4 5-4-2-4-5Z"></path></svg>
+                      <svg viewBox="0 0 24 24"><path d="M8 7V4"></path><path d="M16 7V4"></path><rect x="4" y="7" width="16" height="13" rx="2"></rect><path d="M8 11h8"></path><path d="M8 15h4"></path></svg>
                     </div>
                     <div class="skill-content">
-                      <div class="skill-name">Eurocode 2</div>
-                      <div class="skill-level">Expert</div>
+                      <div class="skill-name">Coding with AI Assist</div>
+                      <div class="skill-dots" aria-hidden="true">
+                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-group">
+                <div class="skill-group-title">Leadership</div>
+                <div class="skill-list">
+                  <div class="skill-item">
+                    <div class="skill-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M9 6h11"></path><path d="M9 12h11"></path><path d="M9 18h11"></path><path d="M4 6h.01"></path><path d="M4 12h.01"></path><path d="M4 18h.01"></path></svg>
+                    </div>
+                    <div class="skill-content">
+                      <div class="skill-name">Task Coordination</div>
+                      <div class="skill-dots" aria-hidden="true">
+                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="skill-item">
+                    <div class="skill-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M21 12a8.5 8.5 0 1 1-3-6.5"></path><path d="m21 3-9 9"></path><path d="M15 3h6v6"></path></svg>
+                    </div>
+                    <div class="skill-content">
+                      <div class="skill-name">Problem Solving</div>
                       <div class="skill-dots" aria-hidden="true">
                         <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span>
                       </div>
@@ -1015,36 +998,9 @@
                       <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                     </div>
                     <div class="skill-content">
-                      <div class="skill-name">Team Coordination</div>
-                      <div class="skill-level">Expert</div>
-                      <div class="skill-dots" aria-hidden="true">
-                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot"></span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="skill-item">
-                    <div class="skill-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7z"></path><path d="M9 12h6"></path><path d="M12 9v6"></path></svg>
-                    </div>
-                    <div class="skill-content">
-                      <div class="skill-name">QA / QC</div>
-                      <div class="skill-level">Expert</div>
+                      <div class="skill-name">Team Guidance</div>
                       <div class="skill-dots" aria-hidden="true">
                         <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="skill-item">
-                    <div class="skill-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d="M12 3 4 7l8 4 8-4-8-4Z"></path><path d="M4 12l8 4 8-4"></path><path d="M4 17l8 4 8-4"></path></svg>
-                    </div>
-                    <div class="skill-content">
-                      <div class="skill-name">Mentoring</div>
-                      <div class="skill-level">Moderate</div>
-                      <div class="skill-dots" aria-hidden="true">
-                        <span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot is-filled"></span><span class="skill-dot"></span>
                       </div>
                     </div>
                   </div>
@@ -1125,8 +1081,8 @@
             </div>
 
             <div class="summary-copy">
-              <p>Team Leader and Structural Draftsman with 12+ years delivering reinforced concrete projects for German and Swiss clients. Expert in interpreting 2D drawings and IFC files to build accurate 3D Allplan models and reinforcement details to DIN 1045-1, SIA 262, and Eurocode 2.</p>
-              <p>Leads a 4-person team with full QA/QC ownership before handover. Independently develops Python automation tools (PythonParts, SmartParts) for Allplan, including a Rebar QA Inspector, automated section generation, and parametric reinforcement tools.</p>
+              <p>Senior Structural Detailing Specialist with 12+ years delivering reinforced concrete projects for German and Swiss clients. Expert in refining IFC-based 3D models and producing accurate formwork and reinforcement detailing packages in Allplan to DIN 1045-1, SIA 262, and Eurocode 2.</p>
+              <p>Leads a 3-member drafting team with full QA/QC ownership before handover. Independently develops Python automation tools (PythonParts, SmartParts) for Allplan, including a Rebar QA Inspector, automated section generation, and parametric reinforcement tools.</p>
             </div>
           </section>
 
@@ -1141,7 +1097,7 @@
             <div class="experience-card">
               <div class="experience-head">
                 <div>
-                  <h2 class="experience-role">Team Leader — Structural Drafting</h2>
+                  <h2 class="experience-role">Team Leader - Structural Detailing</h2>
                   <span class="experience-company">SSIFT Vietnam</span>
                 </div>
                 <div class="experience-date">04/2013 – Present</div>
@@ -1150,12 +1106,13 @@
               <div class="experience-location">Vietnam / Germany / Switzerland (Remote)</div>
 
               <ul class="experience-list">
-                <li>Coordinate and manage drafting teams delivering complex civil, commercial, and infrastructure projects.</li>
-                <li>Delivered <strong>hundreds of structural projects</strong> for the European market over 12+ years.</li>
-                <li>Ensured 100% compliance with <strong>DIN and SIA</strong> structural and reinforcement detailing standards.</li>
-                <li>Supervised the team's <strong>Allplan 3D workflow</strong>, elevating quality control and plan production.</li>
+                <li>Lead a 3-member drafting team delivering formwork and reinforcement packages for complex civil, commercial, and infrastructure projects.</li>
+                <li>Delivered <strong>hundreds of structural projects</strong> for the German and Swiss market over 12+ years.</li>
+                <li>Refined external IFC models into production-ready <strong>Allplan 3D formwork and reinforcement models</strong> for downstream drawing sets.</li>
+                <li>Ensured 100% compliance with <strong>DIN and SIA</strong> formwork and reinforcement detailing standards through rigorous QA/QC before handover.</li>
+                <li>Supervised the team's <strong>Allplan 3D workflow</strong>, from model refinement through final drawing production.</li>
                 <li>Independently designed and deployed custom <strong>PythonParts</strong> toolkits to automate repetitive drafting and modeling operations.</li>
-                <li>Training new draftsmen on-the-job; built and maintains an internal library of <strong>300+ reusable structural details</strong>.</li>
+                <li>Trained junior draftsmen on the job and built an internal library of <strong>300+ reusable structural details</strong>.</li>
               </ul>
             </div>
           </section>
