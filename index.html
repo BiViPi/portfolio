@@ -518,8 +518,26 @@
     }
 
     .about-section {
-      background: var(--paper-soft);
-      padding: 96px 32px;
+      position: relative;
+      background:
+        radial-gradient(circle at 50% 100%, rgba(59, 130, 246, 0.08), transparent 34%),
+        var(--paper-soft);
+      padding: 96px 32px 40px;
+      overflow: hidden;
+    }
+
+    .about-section::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 12px;
+      transform: translateX(-50%);
+      width: min(1120px, calc(100% - 64px));
+      height: 120px;
+      background: linear-gradient(180deg, rgba(36, 54, 77, 0) 0%, rgba(36, 54, 77, 0.08) 100%);
+      filter: blur(28px);
+      opacity: 0.8;
+      pointer-events: none;
     }
 
     .about-grid {
@@ -551,9 +569,41 @@
     }
 
     .contact-section {
+      background: var(--paper-soft);
+      padding: 0 32px 96px;
+      position: relative;
+    }
+
+    .contact-panel {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 88px 32px 96px;
+      border-radius: 42px;
       background: linear-gradient(135deg, #24364D 0%, #172333 100%);
       color: #ffffff;
-      padding: 96px 32px;
+      box-shadow:
+        0 34px 88px -36px rgba(15, 23, 42, 0.46),
+        0 18px 36px -24px rgba(15, 23, 42, 0.22);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.16), transparent 42%),
+        linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 32%);
+      pointer-events: none;
+    }
+
+    .contact-inner {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      z-index: 1;
     }
 
     .contact-title {
@@ -697,6 +747,14 @@
       .about-stats {
         margin-top: 32px;
       }
+
+      .contact-section {
+        padding: 8px 24px 72px;
+      }
+      .contact-panel {
+        padding: 72px 28px 80px;
+        border-radius: 34px;
+      }
       
       .skills-grid-new {
         grid-template-columns: 1fr;
@@ -766,7 +824,7 @@
         font-size: 36px;
       }
       .about-section {
-        padding: 56px 24px;
+        padding: 56px 24px 32px;
       }
       .about-grid {
         gap: 36px;
@@ -777,6 +835,14 @@
       }
       .about-content {
         max-width: 100%;
+      }
+
+      .contact-section {
+        padding: 4px 20px 56px;
+      }
+      .contact-panel {
+        padding: 56px 20px 64px;
+        border-radius: 28px;
       }
 
       .contact-title {
@@ -2000,7 +2066,8 @@ const PortfolioContact = ({ t }) => {
   };
   return (
     <section id="contact" className="contact-section">
-      <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+      <div className="contact-panel">
+      <div className="contact-inner">
         <div className="t-caption" style={{ color: "var(--accent)", marginBottom: 16 }}>{t.contactCaption}</div>
         <h2 className="contact-title">
           {t.contactTitle}
@@ -2058,6 +2125,7 @@ const PortfolioContact = ({ t }) => {
           <span>{t.footerSlogan}</span>
           <span>phubui277@gmail.com</span>
         </div>
+      </div>
       </div>
     </section>
   );
