@@ -25,8 +25,8 @@
       --color-surface-soft: #F8FAFC;
       --color-border: #E2E8F0;
 
-      --paper: var(--color-surface-soft);
-      --paper-soft: #f1f5f9;
+      --paper: #F6F8FB;
+      --paper-soft: #F8FAFC;
       --surface: var(--color-surface);
       --ink: var(--color-text-main);
       --muted-1: var(--color-text-muted);
@@ -137,7 +137,7 @@
     }
 
     .hamburger-btn:hover {
-      background: var(--line-soft);
+      background: var(--accent-soft-hover);
     }
 
     /* Mobile navigation drawer */
@@ -147,7 +147,7 @@
       top: 61px; /* Height of the sticky navbar */
       left: 0;
       width: 100%;
-      background: rgba(250,250,247,0.98);
+      background: rgba(246,248,251,0.98);
       backdrop-filter: blur(20px);
       WebkitBackdropFilter: blur(20px);
       border-bottom: 1px solid var(--line);
@@ -628,7 +628,7 @@
       padding-top: 20px;
       padding-bottom: 20px;
       border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(201, 216, 234, 0.72);
     }
 
     .close-btn {
@@ -1329,10 +1329,10 @@ const PortfolioNav = ({ active = "home", onNavigate, lang, onToggleLang }) => {
   return (
     <nav style={{
       position: "sticky", top: 0, zIndex: 50,
-      background: "rgba(250,250,247,0.85)",
+      background: "rgba(246,248,251,0.88)",
       backdropFilter: "blur(12px)",
       WebkitBackdropFilter: "blur(12px)",
-      borderBottom: "1px solid var(--line)",
+      borderBottom: "1px solid rgba(201, 216, 234, 0.68)",
     }}>
       <div className="nav-inner">
         <a href="#home" onClick={(e) => { e.preventDefault(); handleNavClick("home"); }} style={{
@@ -1396,7 +1396,10 @@ const PortfolioNav = ({ active = "home", onNavigate, lang, onToggleLang }) => {
             padding: "8px 14px", borderRadius: 8,
             background: "var(--accent-dark)", color: "#ffffff",
             fontWeight: 600, fontSize: 13, textDecoration: "none",
-          }}>{lang === "en" ? "Get in touch" : "Liên hệ"}</a>
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.background = "var(--accent-hover)"}
+          onMouseLeave={(e) => e.currentTarget.style.background = "var(--accent-dark)"}
+          >{lang === "en" ? "Get in touch" : "Liên hệ"}</a>
         </div>
 
         {/* Hamburger Toggle Button for Mobile */}
@@ -1474,6 +1477,8 @@ const PortfolioNav = ({ active = "home", onNavigate, lang, onToggleLang }) => {
               textDecoration: "none",
               width: "100%",
             }}
+            onMouseEnter={(e) => e.currentTarget.style.background = "var(--accent-hover)"}
+            onMouseLeave={(e) => e.currentTarget.style.background = "var(--accent-dark)"}
           >
             {lang === "en" ? "Get in touch" : "Liên hệ"}
           </a>
@@ -1676,7 +1681,7 @@ const ProjectCard = ({ project, onOpen }) => (
         ? <div style={{ width: "100%", height: "100%", padding: "16px 20px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
               {project.techCard.stats.map(s => (
-                <div key={s.label} style={{ background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.12)", borderRadius: 6, padding: "8px 12px" }}>
+                <div key={s.label} style={{ background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.14)", borderRadius: 6, padding: "8px 12px" }}>
                   <div style={{ color: "#D8E6F7", fontWeight: 700, fontSize: 18, letterSpacing: "-0.02em", fontFamily: "var(--font-mono)" }}>{s.value}</div>
                   <div style={{ color: "rgba(255,255,255,.68)", fontSize: 10, marginTop: 2, fontFamily: "var(--font-mono)", letterSpacing: ".06em" }}>{s.label}</div>
                 </div>
@@ -2075,7 +2080,7 @@ function CaseStudyModal({ project, onClose, t }) {
             ? <div style={{ width: "100%", height: "100%", padding: "24px 32px", display: "flex", flexDirection: "column", justifyContent: "center", gap: 16 }}>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
                   {project.techCard.stats.map(s => (
-                    <div key={s.label} style={{ background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.12)", borderRadius: 8, padding: "12px 18px" }}>
+                    <div key={s.label} style={{ background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.14)", borderRadius: 8, padding: "12px 18px" }}>
                       <div style={{ color: "#D8E6F7", fontWeight: 700, fontSize: 24, letterSpacing: "-0.02em", fontFamily: "var(--font-mono)" }}>{s.value}</div>
                       <div style={{ color: "rgba(255,255,255,.68)", fontSize: 11, marginTop: 3, fontFamily: "var(--font-mono)", letterSpacing: ".08em" }}>{s.label}</div>
                     </div>

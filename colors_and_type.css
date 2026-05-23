@@ -26,8 +26,8 @@
   --color-surface-soft: #F8FAFC;
   --color-border: #E2E8F0;
 
-  --paper:        var(--color-surface-soft);
-  --paper-soft:   #f1f5f9;
+  --paper:        #F6F8FB;
+  --paper-soft:   #F8FAFC;
   --surface:      var(--color-surface);
   --ink:          var(--color-text-main);
   --ink-soft:     #1f2937;
@@ -49,6 +49,14 @@
   /* ---- Optional secondary (portfolio only, never print) ---- */
   --accent-2:     #06b6d4;   /* cyan-500 */
   --accent-2-soft:#ecfeff;
+
+  /* ---- Muted navy override for portfolio surfaces ---- */
+  --accent:       var(--color-accent);
+  --accent-hover: var(--color-accent-hover);
+  --accent-soft:  var(--color-accent-soft);
+  --accent-ring:  rgba(63, 95, 138, 0.28);
+  --accent-2:     var(--color-accent);
+  --accent-2-soft:var(--color-accent-soft);
 
   /* ---- Status (used in research/country matrix etc.) ---- */
   --ok:           #16a34a;
