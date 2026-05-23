@@ -209,38 +209,118 @@
       gap: 20px;
     }
 
-    .skills-grid {
+    /* Skills Redesign */
+    .skills-grid-new {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid #dbe6f3;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 8px 24px -8px rgba(15,23,42,0.04), 0 1px 2px rgba(15,23,42,0.01);
+      transition: all 250ms var(--ease-out);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-2px);
+      border-color: #c5d7ed;
+      box-shadow: 0 12px 30px -8px rgba(15,23,42,0.06), 0 2px 6px rgba(15,23,42,0.02);
+    }
+
+    .core-skill-card {
+      background: linear-gradient(135deg, #ffffff, #f7faff);
+      border: 1px solid #dbe6f3;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 10px 30px -10px rgba(15,23,42,0.05), 0 1px 3px rgba(15,23,42,0.02);
+      transition: all 250ms var(--ease-out);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .core-skill-card:hover {
+      transform: translateY(-2px);
+      border-color: #c3d6eb;
+      box-shadow: 0 16px 36px -12px rgba(15,23,42,0.08), 0 2px 8px rgba(15,23,42,0.03);
+    }
+
+    .core-card-illustration {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      width: 40%;
+      pointer-events: none;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+
+    .lang-strip {
+      background: var(--surface);
+      border: 1px solid #dbe6f3;
+      border-radius: 16px;
+      padding: 24px 32px;
+      box-shadow: 0 8px 24px -8px rgba(15,23,42,0.04), 0 1px 2px rgba(15,23,42,0.01);
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      transition: all 250ms var(--ease-out);
+    }
+
+    .lang-strip:hover {
+      transform: translateY(-2px);
+      border-color: #c5d7ed;
+      box-shadow: 0 12px 30px -8px rgba(15,23,42,0.06), 0 2px 6px rgba(15,23,42,0.02);
+    }
+
+    .lang-group {
+      display: flex;
+      gap: 32px;
+      align-items: center;
     }
 
     .about-section {
       background: var(--paper-soft);
-      padding: 80px 32px;
+      padding: 96px 32px;
     }
 
     .about-grid {
       max-width: 1100px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1.4fr;
+      grid-template-columns: repeat(12, 1fr);
       gap: 64px;
       align-items: start;
     }
 
     .about-avatar-wrapper {
+      grid-column: span 4;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
     }
 
+    .about-content {
+      grid-column: span 8;
+      max-width: 700px;
+    }
+
     .about-stats {
       margin-top: 36px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 600px;
+      display: flex;
+      justify-content: space-between;
+      max-width: 100%;
     }
 
     .contact-section {
@@ -337,28 +417,44 @@
       
       .about-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
+        gap: 48px;
+        text-align: left;
       }
       .about-avatar-wrapper {
+        grid-column: span 12;
         align-items: center;
       }
-      .about-avatar-wrapper div:last-child {
-        text-align: center;
-      }
-      .about-grid div:last-child p {
-        margin-left: auto;
-        margin-right: auto;
+      .about-content {
+        grid-column: span 12;
+        max-width: 100%;
       }
       .about-stats {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-top: 32px;
       }
       
-      .skills-grid {
+      .skills-grid-new {
         grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .core-skill-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 32px;
+      }
+      .core-card-illustration {
+        display: none;
+      }
+      .lang-strip {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      .lang-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        width: 100%;
       }
       
       /* Toggle mobile menu display */
@@ -390,25 +486,16 @@
         padding: 56px 24px;
       }
       .about-grid {
-        gap: 40px;
-        text-align: center;
+        gap: 36px;
+        text-align: left;
       }
       .about-avatar-wrapper {
         align-items: center;
       }
-      .about-avatar-wrapper div:last-child {
-        text-align: center;
+      .about-content {
+        max-width: 100%;
       }
-      .about-grid div:last-child p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .about-stats {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-        margin-left: auto;
-        margin-right: auto;
-      }
+
       .contact-title {
         font-size: 32px;
       }
@@ -442,7 +529,7 @@
 
     @media (max-width: 480px) {
       .about-stats {
-        grid-template-columns: 1fr;
+        flex-direction: column;
         gap: 20px;
       }
       .hero-title {
@@ -501,7 +588,6 @@ const translations = {
     modalStack: "Stack",
     modalOverview: "Overview",
     modalHighlights: "Highlights",
-    photoPlaceholderText: "Photo placeholder · 35×45",
   },
   vi: {
     navHome: "Trang chủ",
@@ -536,7 +622,6 @@ const translations = {
     modalStack: "Công nghệ",
     modalOverview: "Tổng quan",
     modalHighlights: "Điểm nổi bật",
-    photoPlaceholderText: "Ảnh chân dung · 35×45",
   }
 };
 
@@ -825,88 +910,112 @@ const projects = {
 };
 
 const skillsData = {
-  en: [
-    {
-      category: "Technical Expertise",
-      icon: "briefcase",
-      items: [
-        { label: "2D → 3D Modeling", detail: "Reading complex 2D drawings and building accurate 3D structural models in Allplan" },
-        { label: "Reinforcement Detailing", detail: "Interpreting static documents from structural engineers and detailing rebar accurately to spec" },
-        { label: "DIN / SIA / Eurocode 2", detail: "Deep working knowledge of German (DIN), Swiss (SIA), and European (Eurocode 2) standards for reinforced concrete — residential, commercial, and bridge typologies" },
-        { label: "Reinforced Concrete", detail: "Primary material expertise — from floor slabs to bridge decks, per DIN 1045-1, SIA 262, and EC2" },
-      ]
+  en: {
+    core: {
+      label: "CORE EXPERTISE",
+      title: "12+ years of structural drafting for German and Swiss markets",
+      desc: "Specializing in 2D → 3D modeling, reinforcement detailing, drawing quality control, and Allplan coordination according to DIN / SIA / Eurocode 2.",
+      badges: ["Allplan", "Eurocode 2", "DIN / SIA", "QA / QC", "IFC", "Team Lead"]
     },
-    {
-      category: "Software & Tools",
-      icon: "wrench",
+    cards: [
+      {
+        title: "Technical Expertise",
+        icon: "technical",
+        items: [
+          { name: "2D → 3D Modeling", desc: "Drafting accurate structural models from 2D drawings and input data." },
+          { name: "Reinforcement Detailing", desc: "Detailing rebar based on static requirements and buildability." },
+          { name: "Reinforced Concrete", desc: "Practical expertise ranging from floor slabs to abutments and bridge decks." }
+        ]
+      },
+      {
+        title: "Software & Automation",
+        icon: "software",
+        items: [
+          { name: "Allplan", desc: "Expert-level — primary production tool for 12+ years.", badge: "Expert" },
+          { name: "PythonParts API", desc: "Building plugins and automating repetitive drafting tasks." },
+          { name: "IFC Coordination", desc: "Working with input models and coordinating across disciplines." }
+        ]
+      },
+      {
+        title: "Standards & Quality",
+        icon: "standards",
+        items: [
+          { name: "DIN / SIA / Eurocode 2", desc: "Applying German, Swiss, and European standards to execution drawings." },
+          { name: "QA / QC", desc: "Inspection of drawing sets before delivery to ensure zero-defect handovers." }
+        ]
+      },
+      {
+        title: "Management & Process",
+        icon: "management",
+        items: [
+          { name: "Team Leadership", desc: "Task allocation, progress tracking, and capacity planning." },
+          { name: "Training & Mentoring", desc: "Developing standard detail libraries and supporting junior draftsmen." },
+          { name: "Self-learning & Adaptability", desc: "Rapid acquisition of new tools and workflow optimization." }
+        ]
+      }
+    ],
+    languages: {
+      title: "Languages",
       items: [
-        { label: "Allplan", detail: "Expert-level — primary production tool for 12+ years" },
-        { label: "PythonParts API", detail: "Developing parametric Allplan plugins in Python to automate standard components" },
-        { label: "Microsoft Office", detail: "Excel for coordination tracking; Word for reporting and documentation" },
+        { name: "Vietnamese", desc: "Native", code: "vn" },
+        { name: "German", desc: "Technical reading, basic conversation", code: "de" },
+        { name: "English", desc: "Strong reading and writing, basic conversation", code: "gb" }
       ]
+    }
+  },
+  vi: {
+    core: {
+      label: "CHUYÊN MÔN CỐT LÕI",
+      title: "12+ năm triển khai bản vẽ kết cấu cho dự án tại Đức",
+      desc: "Chuyên sâu về mô hình hóa 2D → 3D, chi tiết cốt thép, kiểm soát chất lượng bản vẽ và phối hợp triển khai bằng Allplan theo DIN / SIA / Eurocode 2.",
+      badges: ["Allplan", "Eurocode 2", "DIN / SIA", "QA / QC", "IFC", "Team Lead"]
     },
-    {
-      category: "Leadership & Process",
-      icon: "graduation-cap",
+    cards: [
+      {
+        title: "Chuyên môn kỹ thuật",
+        icon: "technical",
+        items: [
+          { name: "Mô hình hóa 2D → 3D", desc: "Dựng mô hình kết cấu chính xác từ bản vẽ 2D và dữ liệu đầu vào." },
+          { name: "Chi tiết hóa cốt thép", desc: "Triển khai cốt thép theo yêu cầu kỹ thuật và khả năng thi công." },
+          { name: "Bê tông cốt thép", desc: "Kinh nghiệm thực tế từ bản sàn đến mố trụ, mặt cầu." }
+        ]
+      },
+      {
+        title: "Phần mềm & tự động hóa",
+        icon: "software",
+        items: [
+          { name: "Allplan", desc: "Cấp độ chuyên gia — công cụ sản xuất bản vẽ chính suốt hơn 12 năm.", badge: "Chuyên gia" },
+          { name: "PythonParts API", desc: "Tạo plugin và tự động hóa tác vụ lặp lại." },
+          { name: "IFC Coordination", desc: "Làm việc với mô hình đầu vào và phối hợp đa bộ môn." }
+        ]
+      },
+      {
+        title: "Tiêu chuẩn & chất lượng",
+        icon: "standards",
+        items: [
+          { name: "DIN / SIA / Eurocode 2", desc: "Áp dụng tiêu chuẩn Đức, Thụy Sĩ và Châu Âu trong triển khai bản vẽ." },
+          { name: "QA / QC", desc: "Kiểm tra bản vẽ trước khi bàn giao, giảm lỗi và tăng độ tin cậy." }
+        ]
+      },
+      {
+        title: "Quản lý & quy trình",
+        icon: "management",
+        items: [
+          { name: "Quản lý đội ngũ", desc: "Phân công việc, theo dõi tiến độ, lập kế hoạch năng lực." },
+          { name: "Đào tạo & hướng dẫn", desc: "Xây dựng thư viện chi tiết mẫu và hỗ trợ nhân sự mới." },
+          { name: "Tự học & thích nghi", desc: "Học nhanh công cụ mới và tối ưu quy trình làm việc." }
+        ]
+      }
+    ],
+    languages: {
+      title: "Ngôn ngữ",
       items: [
-        { label: "Team Leadership", detail: "Leading a 4-person drafting team — task allocation, timeline tracking, capacity planning" },
-        { label: "QA / QC", detail: "Full drawing review before handover to German project manager — zero-defect delivery focus" },
-        { label: "Training & Mentoring", detail: "On-boarding and developing new draftsmen; built an internal 300+ detail library to accelerate learning" },
-        { label: "Self-taught & Hands-on", detail: "No formal certifications — all expertise built through 12+ years of live project delivery. Quick to acquire new standards and tools on the job" },
-        { label: "IFC & Multi-discipline Coordination", detail: "Receiving architectural drawings and IFC models as input; working independently to produce the structural set without cross-discipline back-and-forth" },
+        { name: "Tiếng Việt", desc: "Bản ngữ", code: "vn" },
+        { name: "Tiếng Đức", desc: "Đọc hiểu chuyên ngành, giao tiếp cơ bản", code: "de" },
+        { name: "Tiếng Anh", desc: "Đọc viết tốt, giao tiếp cơ bản", code: "gb" }
       ]
-    },
-    {
-      category: "Languages",
-      icon: "languages",
-      items: [
-        { label: "Vietnamese", detail: "Native" },
-        { label: "German", detail: "Technical reading — proficient in construction terminology and DIN/SIA documentation. Conversation: basic" },
-        { label: "English", detail: "Strong reading and writing. Basic spoken communication" },
-      ]
-    },
-  ],
-  vi: [
-    {
-      category: "Chuyên môn Kỹ thuật",
-      icon: "briefcase",
-      items: [
-        { label: "Mô hình hóa 2D → 3D", detail: "Đọc hiểu các bản vẽ 2D phức tạp và dựng mô hình kết cấu 3D chính xác trên Allplan" },
-        { label: "Chi tiết hóa cốt thép", detail: "Đọc hiểu tài liệu tĩnh học của kỹ sư kết cấu và triển khai cốt thép chính xác theo yêu cầu kỹ thuật" },
-        { label: "DIN / SIA / Eurocode 2", detail: "Kiến thức chuyên sâu và vận dụng các tiêu chuẩn Đức (DIN), Thụy Sĩ (SIA) và Châu Âu (Eurocode 2) đối với cấu kiện bê tông cốt thép — dân dụng, thương mại và công trình cầu" },
-        { label: "Bê tông Cốt thép", detail: "Vật liệu chuyên môn cốt lõi — từ bản sàn đến mặt cầu, tuân thủ DIN 1045-1, SIA 262 và EC2" },
-      ]
-    },
-    {
-      category: "Phần mềm & Công cụ",
-      icon: "wrench",
-      items: [
-        { label: "Allplan", detail: "Cấp độ chuyên gia — công cụ sản xuất bản vẽ chính suốt hơn 12 năm" },
-        { label: "PythonParts API", detail: "Phát triển các plugin Allplan tham số hóa bằng Python để tự động hóa việc tạo cấu kiện điển hình" },
-        { label: "Microsoft Office", detail: "Sử dụng Excel để theo dõi phối hợp công việc; Word để lập báo cáo và hồ sơ" },
-      ]
-    },
-    {
-      category: "Quản lý & Quy trình",
-      icon: "graduation-cap",
-      items: [
-        { label: "Quản lý Đội ngũ", detail: "Dẫn dắt đội ngũ họa viên 4 người — phân bổ công việc, theo dõi tiến độ, lập kế hoạch năng lực" },
-        { label: "Kiểm soát chất lượng (QA / QC)", detail: "Kiểm tra toàn diện bản vẽ trước khi bàn giao cho quản lý dự án người Đức — cam kết sản phẩm không lỗi" },
-        { label: "Đào tạo & Hướng dẫn", detail: "Đào tạo họa viên mới; xây dựng thư viện chi tiết mẫu nội bộ gồm hơn 300 chi tiết giúp đẩy nhanh tốc độ tự học" },
-        { label: "Tự học & Thực hành", detail: "Không qua chứng chỉ trường lớp chính quy — toàn bộ kỹ năng được xây dựng thực tế qua 12+ năm trực tiếp triển khai dự án. Thích nghi cực nhanh với tiêu chuẩn và công cụ mới" },
-        { label: "Phối hợp IFC & Đa chuyên ngành", detail: "Nhận bản vẽ kiến trúc và mô hình IFC làm đầu vào; làm việc độc lập để triển khai bộ bản vẽ kết cấu mà không cần phản hồi qua lại nhiều" },
-      ]
-    },
-    {
-      category: "Ngôn ngữ",
-      icon: "languages",
-      items: [
-        { label: "Tiếng Việt", detail: "Tiếng mẹ đẻ" },
-        { label: "Tiếng Đức", detail: "Đọc hiểu chuyên ngành xây dựng — thành thạo thuật ngữ thi công và tài liệu DIN/SIA. Giao tiếp cơ bản" },
-        { label: "Tiếng Anh", detail: "Đọc và viết tốt. Giao tiếp cơ bản" },
-      ]
-    },
-  ]
+    }
+  }
 };
 
 const iconPaths = {
@@ -1343,81 +1452,227 @@ const PortfolioProjects = ({ projects, onOpen, t }) => (
   </section>
 );
 
-const SkillRow = ({ item }) => (
-  <div style={{
-    display: "flex",
-    flexDirection: "column",
-    gap: 3,
-    padding: "14px 0",
-    borderBottom: "1px solid var(--line)",
-  }}>
-    <div style={{ fontWeight: 600, fontSize: 14.5, color: "var(--ink)" }}>{item.label}</div>
-    <div style={{ fontSize: 13.5, color: "var(--muted-1)", lineHeight: 1.5 }}>{item.detail}</div>
-  </div>
+const skillIcons = {
+  technical: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m21 16-9 5-9-5M21 12l-9 5-9-5M12 3v9M21 8l-9 5-9-5 9-5 9 5z"/>
+    </svg>
+  ),
+  software: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect width="18" height="13" x="3" y="4" rx="2"/>
+      <line x1="8" y1="20" x2="16" y2="20"/>
+      <line x1="12" y1="17" x2="12" y2="20"/>
+    </svg>
+  ),
+  standards: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      <path d="m9 11 2 2 4-4"/>
+    </svg>
+  ),
+  management: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </svg>
+  )
+};
+
+const diamondIcon = (
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M6 3h12l4 6-10 13L2 9z" />
+    <path d="M11 3 8 9l4 13 4-13-3-6" />
+    <path d="M2 9h20" />
+  </svg>
 );
 
-const SkillGroup = ({ group }) => (
-  <div style={{
-    background: "var(--surface)",
-    border: "1px solid var(--line)",
-    borderRadius: "var(--radius-md)",
-    padding: "22px 24px",
-  }}>
-    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" dangerouslySetInnerHTML={{ __html: iconPaths[group.icon] }} />
-      <div className="t-section" style={{ margin: 0, fontSize: 11 }}>{group.category}</div>
-    </div>
-    <div>
-      {group.items.map((item, i) => (
-        <SkillRow key={i} item={item} />
-      ))}
-    </div>
-  </div>
+const globeIcon = (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <line x1="2" y1="12" x2="22" y2="12"/>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+  </svg>
 );
 
-const PortfolioSkills = ({ skillsData, t }) => (
-  <section id="skills" className="page-section">
-    <header style={{ marginBottom: 36 }}>
-      <div className="t-caption" style={{ color: "var(--accent)", marginBottom: 10 }}>{t.skillsCaption}</div>
-      <h2 style={{ margin: 0, fontSize: 36, fontWeight: 700, letterSpacing: "-0.02em", color: "var(--ink)", lineHeight: 1.1 }}>
-        {t.skillsTitle}
-      </h2>
-    </header>
-
-    <div className="skills-grid">
-      {skillsData.map((group, i) => (
-        <SkillGroup key={i} group={group} />
-      ))}
-    </div>
-  </section>
+const StructuralIllustration = () => (
+  <svg width="340" height="180" viewBox="0 0 340 180" fill="none" stroke="rgba(37,99,235,0.06)" strokeWidth="1.2" style={{ display: "block" }}>
+    <path d="M10 150 L50 90 L90 150 L130 90 L170 150 L210 90 L250 150 L290 90 L330 150" />
+    <line x1="10" y1="150" x2="330" y2="150" strokeWidth="1.8" stroke="rgba(37,99,235,0.08)" />
+    <line x1="50" y1="90" x2="290" y2="90" strokeWidth="1.5" />
+    <line x1="50" y1="90" x2="50" y2="150" strokeDasharray="3,3" />
+    <line x1="130" y1="90" x2="130" y2="150" strokeDasharray="3,3" />
+    <line x1="210" y1="90" x2="210" y2="150" strokeDasharray="3,3" />
+    <line x1="290" y1="90" x2="290" y2="150" strokeDasharray="3,3" />
+    <path d="M 0 30 L 340 30 M 0 60 L 340 60 M 0 120 L 340 120" stroke="rgba(37,99,235,0.02)" strokeWidth="0.8" />
+    <path d="M 80 0 L 80 180 M 160 0 L 160 180 M 240 0 L 240 180" stroke="rgba(37,99,235,0.02)" strokeWidth="0.8" />
+    <path d="M 10 150 Q 170 30 330 150" stroke="rgba(37,99,235,0.04)" strokeDasharray="5,5" />
+  </svg>
 );
+
+const PortfolioSkills = ({ skillsData, t }) => {
+  const data = skillsData;
+  return (
+    <section id="skills" className="page-section">
+      <header style={{ marginBottom: 36 }}>
+        <div className="t-caption" style={{ color: "var(--accent)", marginBottom: 10 }}>{t.skillsCaption}</div>
+        <h2 style={{ margin: 0, fontSize: 36, fontWeight: 700, letterSpacing: "-0.02em", color: "var(--ink)", lineHeight: 1.1 }}>
+          {t.skillsTitle}
+        </h2>
+      </header>
+
+      {/* Core Expertise Card */}
+      <div className="core-skill-card" style={{ marginBottom: 24 }}>
+        <div style={{
+          width: 56, height: 56, borderRadius: "50%",
+          background: "var(--accent-soft)", color: "var(--accent)",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          flexShrink: 0, boxShadow: "0 4px 12px rgba(2,132,199,0.08)"
+        }}>
+          {diamondIcon}
+        </div>
+        
+        <div style={{ zIndex: 2, flex: 1 }}>
+          <div className="t-caption" style={{ color: "var(--accent)", fontSize: 11, marginBottom: 8, fontWeight: 700, letterSpacing: "0.1em" }}>
+            {data.core.label}
+          </div>
+          <h3 style={{ margin: "0 0 12px", fontSize: 22, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.015em" }}>
+            {data.core.title}
+          </h3>
+          <p style={{ margin: "0 0 20px", color: "var(--muted-1)", fontSize: 15, lineHeight: 1.6, maxWidth: "620px" }}>
+            {data.core.desc}
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+            {data.core.badges.map(b => (
+              <span key={b} style={{
+                padding: "4px 12px", fontSize: 11, fontFamily: "var(--font-mono)",
+                background: "var(--line-soft)", color: "var(--muted-2)",
+                borderRadius: 999, border: "1px solid var(--line)"
+              }}>{b}</span>
+            ))}
+          </div>
+        </div>
+
+        <div className="core-card-illustration">
+          <StructuralIllustration />
+        </div>
+      </div>
+
+      {/* Grid of 4 Cards */}
+      <div className="skills-grid-new">
+        {data.cards.map((card, i) => (
+          <div key={i} className="skill-card">
+            <header style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+              <div style={{
+                width: 38, height: 38, borderRadius: 10,
+                background: "var(--accent-soft)", color: "var(--accent)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                flexShrink: 0
+              }}>
+                {skillIcons[card.icon]}
+              </div>
+              <h3 style={{ margin: 0, fontSize: 17, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.01em" }}>{card.title}</h3>
+            </header>
+            
+            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+              {card.items.map((item, idx) => (
+                <div key={idx} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "var(--accent)", fontSize: 16, lineHeight: 1.1, marginTop: 1 }}>•</span>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontWeight: 600, fontSize: 14.5, color: "var(--ink)", display: "flex", alignItems: "center", gap: 8 }}>
+                      {item.name}
+                      {item.badge && (
+                        <span style={{
+                          fontSize: 9.5, background: "var(--accent-soft)", color: "var(--accent)",
+                          padding: "2px 6px", borderRadius: 4, fontWeight: 700, letterSpacing: "0.02em"
+                        }}>{item.badge}</span>
+                      )}
+                    </div>
+                    <div style={{ color: "var(--muted-1)", fontSize: 13, marginTop: 4, lineHeight: 1.55 }}>{item.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Language Strip */}
+      <div className="lang-strip">
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div style={{
+            width: 36, height: 36, borderRadius: "50%",
+            background: "var(--accent-soft)", color: "var(--accent)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            flexShrink: 0
+          }}>
+            {globeIcon}
+          </div>
+          <span style={{ fontWeight: 700, fontSize: 14.5, color: "var(--ink)", fontFamily: "var(--font-mono)", letterSpacing: "0.05em" }}>{data.languages.title.toUpperCase()}</span>
+        </div>
+        
+        <div className="lang-group">
+          {data.languages.items.map((langItem, idx) => {
+            const flagMap = { vn: "🇻🇳", de: "🇩🇪", gb: "🇬🇧" };
+            return (
+              <div key={idx} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <span style={{ fontSize: 24, filter: "drop-shadow(0 2px 4px rgba(15,23,42,0.06))" }}>
+                  {flagMap[langItem.code]}
+                </span>
+                <div>
+                  <div style={{ fontWeight: 600, fontSize: 13.5, color: "var(--ink)" }}>{langItem.name}</div>
+                  <div style={{ fontSize: 12, color: "var(--muted-2)", marginTop: 2 }}>{langItem.desc}</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const PortfolioAbout = ({ t }) => (
   <section id="about" className="about-section">
     <div className="about-grid">
-      <div className="about-avatar-wrapper">
+      <aside className="about-avatar-wrapper">
         <div style={{
-          width: 200, aspectRatio: "35/45",
-          background: "linear-gradient(135deg, #94a3b8, #475569)",
+          width: "100%",
+          aspectRatio: "3/4",
           borderRadius: "var(--radius-md)",
-          marginBottom: 20,
-          display: "flex", alignItems: "flex-end", justifyContent: "center",
-          color: "#fff", fontWeight: 700, fontSize: 42, letterSpacing: "-0.04em",
-          paddingBottom: 14,
-        }}>PB</div>
-        <div className="t-caption" style={{ color: "var(--muted-3)" }}>{t.photoPlaceholderText}</div>
-      </div>
-      <div>
+          overflow: "hidden",
+          border: "1px solid var(--line)",
+          boxShadow: "0 12px 30px -10px rgba(15,23,42,0.12), 0 4px 12px -5px rgba(15,23,42,0.06)",
+          background: "var(--paper-soft)",
+        }}>
+          <img 
+            src="docs/IMG_0686.PNG" 
+            alt="Bùi Vĩnh Phú" 
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+            }} 
+          />
+        </div>
+      </aside>
+      
+      <article className="about-content">
         <div className="t-caption" style={{ color: "var(--accent)", marginBottom: 12 }}>{t.aboutCaption}</div>
-        <h2 style={{ margin: "0 0 24px", fontSize: 34, fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1, color: "var(--ink)" }}>
+        <h2 style={{ margin: "0 0 24px", fontSize: 34, fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, color: "var(--ink)" }}>
           {t.aboutTitle}
         </h2>
-        <div style={{ display: "flex", flexDirection: "column", gap: 16, color: "var(--muted-1)", fontSize: 16, lineHeight: 1.65, maxWidth: 620 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 20, color: "var(--muted-1)", fontSize: 16, lineHeight: 1.7, marginBottom: 32 }}>
           <p style={{ margin: 0 }}>{t.aboutP1}</p>
           <p style={{ margin: 0 }}>{t.aboutP2}</p>
           <p style={{ margin: 0 }}>{t.aboutP3}</p>
-          <p style={{ margin: 0, color: "var(--ink)", fontStyle: "italic" }}>{t.aboutP4}</p>
+          <p style={{ margin: 0, color: "var(--ink)", fontStyle: "italic", fontWeight: 500 }}>{t.aboutP4}</p>
         </div>
+
+        <hr style={{ border: 0, height: "1px", background: "var(--line)", margin: "32px 0 24px", opacity: 0.6 }} />
 
         <div className="about-stats">
           {[
@@ -1426,12 +1681,12 @@ const PortfolioAbout = ({ t }) => (
             { label: t.aboutStatTool, val: "Allplan" },
           ].map(s => (
             <div key={s.label}>
-              <div style={{ fontSize: 28, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.02em" }}>{s.val}</div>
-              <div className="t-meta" style={{ marginTop: 2 }}>{s.label}</div>
+              <div style={{ fontSize: 32, fontWeight: 800, color: "var(--accent)", letterSpacing: "-0.02em" }}>{s.val}</div>
+              <div className="t-meta" style={{ marginTop: 6, color: "var(--muted-1)", fontWeight: 500 }}>{s.label}</div>
             </div>
           ))}
         </div>
-      </div>
+      </article>
     </div>
   </section>
 );
