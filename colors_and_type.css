@@ -11,19 +11,34 @@
      ============================================================ */
 
   /* ---- Foundation: ink on warm paper ---- */
-  --paper:        #fafaf7;   /* default page background */
-  --paper-soft:   #f4f4ee;   /* subtle alt block / table stripe */
-  --surface:      #ffffff;   /* card / sheet */
-  --ink:          #0f172a;   /* primary text (slate-900) */
-  --ink-soft:     #1e293b;   /* slate-800, hover-darker text */
+  --color-accent: #3F5F8A;
+  --color-accent-hover: #334E73;
+  --color-accent-active: #2B425F;
+  --color-accent-soft: #EEF4FB;
+  --color-accent-soft-hover: #E2ECF7;
+  --color-accent-border: #C9D8EA;
+  --color-accent-dark: #24364D;
+  --color-accent-dark-hover: #1E2E42;
+  --color-text-main: #111827;
+  --color-text-muted: #475569;
+  --color-text-subtle: #64748B;
+  --color-surface: #FFFFFF;
+  --color-surface-soft: #F8FAFC;
+  --color-border: #E2E8F0;
+
+  --paper:        var(--color-surface-soft);
+  --paper-soft:   #f1f5f9;
+  --surface:      var(--color-surface);
+  --ink:          var(--color-text-main);
+  --ink-soft:     #1f2937;
 
   /* ---- Cool grays for hierarchy ---- */
-  --muted-1:      #334155;   /* slate-700, secondary text */
-  --muted-2:      #475569;   /* slate-600, meta text */
-  --muted-3:      #64748b;   /* slate-500, captions */
-  --muted-4:      #94a3b8;   /* slate-400, placeholder / disabled */
-  --line:         #e2e8f0;   /* slate-200, hairline divider */
-  --line-soft:    #f1f5f9;   /* slate-100, alt stripe */
+  --muted-1:      var(--color-text-muted);
+  --muted-2:      var(--color-text-subtle);
+  --muted-3:      #94a3b8;
+  --muted-4:      #b6c2d1;
+  --line:         var(--color-border);
+  --line-soft:    var(--color-surface-soft);
 
   /* ---- Brand accent ---- */
   --accent:       #4f46e5;   /* indigo-600 — THE accent */
