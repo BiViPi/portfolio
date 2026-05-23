@@ -891,36 +891,45 @@
       }
       .about-portrait {
         width: min(100%, 360px);
-        aspect-ratio: 1.18/1;
+        aspect-ratio: 1.04/1;
         border-radius: 24px;
       }
       .about-title {
-        font-size: 28px;
-        line-height: 1.1;
+        font-size: 29px;
+        line-height: 1.08;
         margin-bottom: 18px;
+        text-wrap: pretty;
       }
       .about-copy {
         gap: 18px;
         font-size: 15px;
-        line-height: 1.72;
+        line-height: 1.74;
         margin-bottom: 28px;
       }
       .about-stats {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 14px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
         margin-top: 24px;
       }
       .about-stat {
-        padding: 18px 0 16px;
-        border-top: 1px solid rgba(148, 163, 184, 0.18);
+        padding: 0 10px 0 0;
+        border-top: none;
+        border-right: 1px solid rgba(148, 163, 184, 0.18);
       }
       .about-stat:first-child {
-        border-top: none;
         padding-top: 0;
       }
+      .about-stat:last-child {
+        border-right: none;
+        padding-right: 0;
+      }
       .about-stat-value {
-        font-size: 30px;
+        font-size: 24px;
+      }
+      .about-stat .t-meta {
+        font-size: 11px;
+        line-height: 1.45;
       }
 
       .contact-section {
@@ -971,29 +980,34 @@
       }
       .about-portrait {
         width: 100%;
-        aspect-ratio: 1.28/1;
+        aspect-ratio: 1.02/1;
         border-radius: 22px;
       }
       .about-title {
-        font-size: 22px;
-        line-height: 1.12;
-        letter-spacing: -0.03em;
+        font-size: 23px;
+        line-height: 1.08;
+        letter-spacing: -0.028em;
         margin-bottom: 16px;
+        text-wrap: auto;
       }
       .about-copy {
         gap: 16px;
         font-size: 14px;
-        line-height: 1.68;
+        line-height: 1.72;
         margin-bottom: 24px;
       }
       .about-copy p {
-        max-width: 32ch;
+        max-width: none;
       }
       .about-stat {
-        padding: 16px 0 14px;
+        padding: 0 8px 0 0;
       }
       .about-stat-value {
-        font-size: 24px;
+        font-size: 20px;
+      }
+      .about-stat .t-meta {
+        font-size: 10px;
+        letter-spacing: 0.01em;
       }
       .hero-title {
         font-size: 32px;
