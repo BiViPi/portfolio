@@ -18,10 +18,10 @@
       --text-main: #142132;
       --text-muted: #415066;
       --text-light: #68778e;
-      --accent: #0f3a63;
-      --accent-soft: rgba(15, 58, 99, 0.08);
-      --line: rgba(15, 58, 99, 0.18);
-      --line-strong: rgba(15, 58, 99, 0.34);
+      --accent: #1F4E83;
+      --accent-soft: rgba(31, 78, 131, 0.08);
+      --line: rgba(31, 78, 131, 0.18);
+      --line-strong: rgba(31, 78, 131, 0.34);
       --shadow: 0 10px 30px rgba(18, 30, 48, 0.11);
       --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
@@ -75,21 +75,21 @@
       font-weight: 700;
       letter-spacing: 0.04em;
       cursor: pointer;
-      box-shadow: 0 12px 24px rgba(15, 58, 99, 0.22);
+      box-shadow: 0 12px 24px rgba(31, 78, 131, 0.22);
       transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
 
     .print-btn:hover {
-      background: #0b3152;
+      background: #163B66;
       transform: translateY(-1px);
-      box-shadow: 0 16px 28px rgba(15, 58, 99, 0.24);
+      box-shadow: 0 16px 28px rgba(31, 78, 131, 0.24);
     }
 
     .png-btn {
       background: rgba(255, 255, 255, 0.92);
       color: var(--accent);
       box-shadow: 0 8px 20px rgba(18, 30, 48, 0.08);
-      border: 1px solid rgba(15, 58, 99, 0.14);
+      border: 1px solid rgba(31, 78, 131, 0.14);
     }
 
     .png-btn:hover {
@@ -142,10 +142,10 @@
       inset: 0;
       background:
         linear-gradient(90deg, var(--accent) 0 18px, transparent 18px),
-        linear-gradient(135deg, transparent 48.8%, rgba(15, 58, 99, 0.05) 49.4%, transparent 50%) top right / 340px 225px no-repeat,
-        linear-gradient(45deg, transparent 48.8%, rgba(15, 58, 99, 0.045) 49.4%, transparent 50%) bottom right / 392px 272px no-repeat,
-        linear-gradient(120deg, transparent 48.8%, rgba(15, 58, 99, 0.04) 49.4%, transparent 50%) top right / 220px 150px no-repeat,
-        linear-gradient(135deg, transparent 49.2%, rgba(15, 58, 99, 0.035) 49.7%, transparent 50.2%) bottom left / 220px 160px no-repeat;
+        linear-gradient(135deg, transparent 48.8%, rgba(31, 78, 131, 0.05) 49.4%, transparent 50%) top right / 340px 225px no-repeat,
+        linear-gradient(45deg, transparent 48.8%, rgba(31, 78, 131, 0.045) 49.4%, transparent 50%) bottom right / 392px 272px no-repeat,
+        linear-gradient(120deg, transparent 48.8%, rgba(31, 78, 131, 0.04) 49.4%, transparent 50%) top right / 220px 150px no-repeat,
+        linear-gradient(135deg, transparent 49.2%, rgba(31, 78, 131, 0.035) 49.7%, transparent 50.2%) bottom left / 220px 160px no-repeat;
       pointer-events: none;
       z-index: -2;
     }
@@ -155,10 +155,10 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, transparent 0 24px, rgba(15, 58, 99, 0.03) 24px 25px, transparent 25px 100%),
-        linear-gradient(0deg, transparent 0 24px, rgba(15, 58, 99, 0.03) 24px 25px, transparent 25px 100%),
-        linear-gradient(90deg, transparent 0 calc(100% - 28px), rgba(15, 58, 99, 0.03) calc(100% - 28px) calc(100% - 27px), transparent calc(100% - 27px)),
-        linear-gradient(0deg, transparent 0 calc(100% - 24px), rgba(15, 58, 99, 0.03) calc(100% - 24px) calc(100% - 23px), transparent calc(100% - 23px));
+        linear-gradient(90deg, transparent 0 24px, rgba(31, 78, 131, 0.03) 24px 25px, transparent 25px 100%),
+        linear-gradient(0deg, transparent 0 24px, rgba(31, 78, 131, 0.03) 24px 25px, transparent 25px 100%),
+        linear-gradient(90deg, transparent 0 calc(100% - 28px), rgba(31, 78, 131, 0.03) calc(100% - 28px) calc(100% - 27px), transparent calc(100% - 27px)),
+        linear-gradient(0deg, transparent 0 calc(100% - 24px), rgba(31, 78, 131, 0.03) calc(100% - 24px) calc(100% - 23px), transparent calc(100% - 23px));
       opacity: 0.58;
       pointer-events: none;
       z-index: -1;
@@ -169,16 +169,7 @@
       padding: 20px 24px 20px 28px;
     }
 
-    .accent-notch {
-      position: absolute;
-      top: 286px;
-      left: 18px;
-      width: 0;
-      height: 0;
-      border-top: 21px solid transparent;
-      border-bottom: 21px solid transparent;
-      border-left: 16px solid var(--accent);
-    }
+
 
     .cv-grid {
       display: grid;
@@ -392,9 +383,9 @@
     }
 
     .icon-plain {
-      background: rgba(15, 58, 99, 0.06);
+      background: rgba(31, 78, 131, 0.06);
       color: var(--accent);
-      border: 1px solid rgba(15, 58, 99, 0.12);
+      border: 1px solid rgba(31, 78, 131, 0.12);
     }
 
     .icon-mini svg,
@@ -503,7 +494,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: rgba(15, 58, 99, 0.15);
+      background: rgba(31, 78, 131, 0.15);
     }
 
     .skill-dot.is-filled {
@@ -585,7 +576,7 @@
     }
 
     .experience-list strong {
-      color: #0c2845;
+      color: #1F4E83;
     }
 
     .projects {
@@ -597,7 +588,7 @@
     .project-item {
       display: block;
       padding: 10px 0;
-      border-bottom: 1px dashed rgba(15, 58, 99, 0.22);
+      border-bottom: 1px dashed rgba(31, 78, 131, 0.22);
     }
 
     .project-item:last-child {
@@ -806,7 +797,7 @@
 
   <article class="sheet">
     <div class="sheet-inner">
-      <div class="accent-notch" aria-hidden="true"></div>
+
 
       <div class="cv-grid">
         <aside class="sidebar">
