@@ -1153,26 +1153,6 @@ const translations = {
 const projects = {
   en: [
     {
-      title: "Neubau Freizeitbad mit Eissporthalleai · Wiesbaden",
-      year: "2024–2025",
-      oneLiner: "Major public leisure & ice sports complex in Wiesbaden — full 3D structural model with pile foundations, multi-zone RC structure, swimming pools and ice rink, to DIN standards.",
-      tech: ["Allplan", "DIN 1045-1", "3D Reinforcement", "Pile Foundations", "Public / Civic"],
-      image: "assets/projects/sportpark-wiesbaden-allplan.png",
-      thumbBg: "linear-gradient(135deg, #0F4C81 0%, #082B4D 100%)",
-      placeholderLabel: "SPORTS COMPLEX · DE",
-      caseStudy: {
-        role: "Lead draftsman · full project",
-        duration: "2024 – 2025",
-        summary: "New construction of a major public leisure bath and ice sports hall (Freizeitbad mit Eissporthalleai) at Konrad-Adenauer-Ring, Wiesbaden. Commissioned by mattiaqua (Eigenbetrieb der Landeshauptstadt Wiesbaden), designed by asp Architekten GmbH (Stuttgart), with structural engineering by wh-p GmbH Beratende Ingenieure. One of the largest and most structurally complex projects in the portfolio — a multi-zone civic building with deep pile foundations, multiple pool structures, and an ice rink, all detailed in full 3D.",
-        highlights: [
-          "Building the complete 3D structural model in Allplan for a large multi-zone civic complex — pile foundation system (hundreds of piles), RC substructure, pool basin walls and slabs, ice rink structure, and multi-level superstructure.",
-          "Full 3D reinforcement detailing across all structural zones to DIN 1045-1 — including the technically demanding interface between the pool basin waterproofing zone and the surrounding RC structure.",
-          "Coordinating drafting scope with the structural engineer wh-p GmbH and architect asp Architekten — working from IFC and 2D input to produce the full execution drawing set.",
-          "Managing the team through the full project cycle as lead, with QA/QC of all drawing sets before handover.",
-        ]
-      }
-    },
-    {
       title: "Ersatzneubau Tausendfüßler · Offenburg",
       year: "2020–2023",
       oneLiner: "Full structural drafting for a 180m 5-span road bridge over the Rheintalbahn — 3D model, 3D reinforcement, and 3D prestressed bar detailing, DIN 1045-1.",
@@ -1193,30 +1173,42 @@ const projects = {
       }
     },
     {
-      title: "PythonParts Automation Library · Personal Project",
-      year: "2023–",
-      oneLiner: "Custom Python plugins for Allplan automating standard structural components — parametric columns, beams, and reinforcement cages.",
-      tech: ["Python", "PythonParts API", "Allplan", "Automation"],
-      image: null,
-      thumbBg: "linear-gradient(135deg, #0F4C81 0%, #082B4D 100%)",
-      techCard: {
-        stats: [
-          { value: "15+", label: "TOOLS BUILT" },
-          { value: "90→20min", label: "MODELING TIME" },
-          { value: "Python", label: "LANGUAGE" },
-          { value: "Ongoing", label: "STATUS" },
-        ],
-        note: "PERSONAL PROJECT · OPEN-SOURCE SELECTED TOOLS · github.com/BiViPi"
-      },
+      title: "Sanierung & Aufstockung · Riedstrasse 17, Tamins",
+      year: "2022",
+      oneLiner: "Renovation and vertical extension of an existing building at 1756m elevation in Graubünden — high-volume detail drawings including structural steel connection details for the new Aufstockung.",
+      tech: ["Allplan", "SIA", "Sanierung", "Steel Connections", "Detail M 1:5"],
+      image: "assets/projects/tamins-riedstrasse17-allplan.png",
+      thumbBg: "linear-gradient(135deg, #EEF5FC, #BFD3EA)",
+      placeholderLabel: "RENOVATION · CH · 1756M",
       caseStudy: {
-        role: "Developer · personal initiative",
-        duration: "2023 – ongoing",
-        summary: "A personal library of PythonParts and SmartParts — Python plugins for Allplan — built entirely on personal initiative outside of project work. The tools automate repetitive structural drafting tasks that previously required hundreds of manual steps. Select tools are open-sourced on GitHub.",
+        role: "Lead draftsman · full project",
+        duration: "2022",
+        summary: "Renovation (Sanierung) and vertical extension (Aufstockung) of an existing building at Riedstrasse 17, Tamins — 7015, Canton Graubünden, Switzerland, at 1756m above sea level. A high-complexity renovation project requiring precise as-built documentation of the existing structure alongside full execution drawings for the new addition. The irregular building geometry and the interface between old RC structure and new steel frame made this one of the more technically demanding residential projects in the portfolio.",
         highlights: [
-          "Rebar QA Inspector — scans 3D models for duplicate reinforcement bars, missing rebar labels, and non-standard bar lengths. Catches errors before drawing issue, replacing a slow manual check.",
-          "Spacer (Unterstützung) — parametric 3D spacer tools generating standard and mesh spacers to DBV-BT and DBV-BK specifications automatically.",
-          "Automated Section — generates elevations, sections, and floor plans from any 3D model in a few operations instead of hundreds of manual steps. Major time saving on large models.",
-          "SmartParts for automated reinforcement of columns, walls, beams, and supplementary bars (Verstärkungsbewehrung) — set structural parameters, get full 3D reinforcement output.",
+          "Produced a high volume of detailed execution drawings at 1:50 and 1:25 — floor plans, 12+ cross-sections, and connection details — all fully annotated in German to SIA standards.",
+          "Detailed structural steel connections for the new Aufstockung: HEB 240 sections, end-plate connections (Kopfplatte), rib stiffeners, M20/M27 bolts, and M16 anchor rods — drawn at M 1:5 and 1:10.",
+          "Navigated the complex geometry of an irregular existing building footprint, reconciling as-built conditions with new structural intent across every drawing.",
+          "All drawings delivered QA/QC reviewed and ready for submission to the Swiss structural engineer and contractor without revision rounds.",
+        ]
+      }
+    },
+    {
+      title: "Neubau Freizeitbad mit Eissporthalleai · Wiesbaden",
+      year: "2024–2025",
+      oneLiner: "Major public leisure & ice sports complex in Wiesbaden — full 3D structural model with pile foundations, multi-zone RC structure, swimming pools and ice rink, to DIN standards.",
+      tech: ["Allplan", "DIN 1045-1", "3D Reinforcement", "Pile Foundations", "Public / Civic"],
+      image: "assets/projects/sportpark-wiesbaden-allplan.png",
+      thumbBg: "linear-gradient(135deg, #0F4C81 0%, #082B4D 100%)",
+      placeholderLabel: "SPORTS COMPLEX · DE",
+      caseStudy: {
+        role: "Lead draftsman · full project",
+        duration: "2024 – 2025",
+        summary: "New construction of a major public leisure bath and ice sports hall (Freizeitbad mit Eissporthalleai) at Konrad-Adenauer-Ring, Wiesbaden. Commissioned by mattiaqua (Eigenbetrieb the Landeshauptstadt Wiesbaden), designed by asp Architekten GmbH (Stuttgart), with structural engineering by wh-p GmbH Beratende Ingenieure. One of the largest and most structurally complex projects in the portfolio — a multi-zone civic building with deep pile foundations, multiple pool structures, and an ice rink, all detailed in full 3D.",
+        highlights: [
+          "Building the complete 3D structural model in Allplan for a large multi-zone civic complex — pile foundation system (hundreds of piles), RC substructure, pool basin walls and slabs, ice rink structure, and multi-level superstructure.",
+          "Full 3D reinforcement detailing across all structural zones to DIN 1045-1 — including the technically demanding interface between the pool basin waterproofing zone and the surrounding RC structure.",
+          "Coordinating drafting scope with the structural engineer wh-p GmbH and architect asp Architekten — working from IFC and 2D input to produce the full execution drawing set.",
+          "Managing the team through the full project cycle as lead, with QA/QC of all drawing sets before handover.",
         ]
       }
     },
@@ -1237,26 +1229,6 @@ const projects = {
           "Full 3D reinforcement detailing to SIA standards across all elements: basement retaining walls, flat slabs, stair cores, and facade elements.",
           "Managed the full drafting cycle as lead, coordinating with the Swiss project manager and delivering QA/QC-reviewed drawing sets at each milestone.",
           "Handled the structural transition between the wide commercial basement footprint and the tighter residential tower above — a geometrically complex handover zone.",
-        ]
-      }
-    },
-    {
-      title: "Sanierung & Aufstockung · Riedstrasse 17, Tamins",
-      year: "2022",
-      oneLiner: "Renovation and vertical extension of an existing building at 1756m elevation in Graubünden — high-volume detail drawings including structural steel connection details for the new Aufstockung.",
-      tech: ["Allplan", "SIA", "Sanierung", "Steel Connections", "Detail M 1:5"],
-      image: "assets/projects/tamins-riedstrasse17-allplan.png",
-      thumbBg: "linear-gradient(135deg, #EEF5FC, #BFD3EA)",
-      placeholderLabel: "RENOVATION · CH · 1756M",
-      caseStudy: {
-        role: "Lead draftsman · full project",
-        duration: "2022",
-        summary: "Renovation (Sanierung) and vertical extension (Aufstockung) of an existing building at Riedstrasse 17, Tamins — 7015, Canton Graubünden, Switzerland, at 1756m above sea level. A high-complexity renovation project requiring precise as-built documentation of the existing structure alongside full execution drawings for the new addition. The irregular building geometry and the interface between old RC structure and new steel frame made this one of the more technically demanding residential projects in the portfolio.",
-        highlights: [
-          "Produced a high volume of detailed execution drawings at 1:50 and 1:25 — floor plans, 12+ cross-sections, and connection details — all fully annotated in German to SIA standards.",
-          "Detailed structural steel connections for the new Aufstockung: HEB 240 sections, end-plate connections (Kopfplatte), rib stiffeners, M20/M27 bolts, and M16 anchor rods — drawn at M 1:5 and 1:10.",
-          "Navigated the complex geometry of an irregular existing building footprint, reconciling as-built conditions with new structural intent across every drawing.",
-          "All drawings delivered QA/QC reviewed and ready for submission to the Swiss structural engineer and contractor without revision rounds.",
         ]
       }
     },
@@ -1282,35 +1254,43 @@ const projects = {
         duration: "2025 – 2026 · in progress",
         summary: "Structural drafting for the Next Generation Paintshop (NGP) at Mercedes-Benz Werk Sindelfingen — one of the largest precast concrete industrial projects in Germany. The new Building 36 replaces an entire existing paint shop and will house the new series paint line, corrosion testing centre, and water treatment facilities. The structure uses 7,200 Spannbetonfertigteile (prestressed precast concrete elements) — a novel approach for modern production halls.",
         highlights: [
-          "7,200 prestressed precast elements across three typologies: Fertigteilstützen (columns), [MODIFY] Hauptträger (main beams), and Trogdecken (trough slabs) — all detailed in Allplan to DIN 1045-1.",
+          "7,200 prestressed precast elements across three typologies: Fertigteilstützen (columns), Hauptträger (main beams), and Trogdecken (trough slabs) — all detailed in Allplan to DIN 1045-1.",
           "2-story reinforced concrete substructure (~30,000m² footprint) topped by an 11m high steel frame — structural interface between RC precast and steel above requires precise connection detailing.",
           "Large-scale industrial project with tight manufacturing and delivery tolerances — precast elements require exact geometry and reinforcement detailing for factory production.",
           "Currently in progress (2025–2026). Project is part of a ~€1 billion Mercedes-Benz investment in Sindelfingen's future production capacity.",
         ]
       }
+    },
+    {
+      title: "PythonParts Automation Library · Personal Project",
+      year: "2026–",
+      oneLiner: "Custom Python plugins for Allplan automating standard structural components — parametric columns, beams, and reinforcement cages.",
+      tech: ["Python", "PythonParts API", "Allplan", "Automation"],
+      image: null,
+      thumbBg: "linear-gradient(135deg, #0F4C81 0%, #082B4D 100%)",
+      techCard: {
+        stats: [
+          { value: "15+", label: "TOOLS BUILT" },
+          { value: "90→20min", label: "MODELING TIME" },
+          { value: "Python", label: "LANGUAGE" },
+          { value: "Ongoing", label: "STATUS" },
+        ],
+        note: "PERSONAL PROJECT · OPEN-SOURCE SELECTED TOOLS · github.com/BiViPi"
+      },
+      caseStudy: {
+        role: "Developer · personal initiative",
+        duration: "2026 – ongoing",
+        summary: "A personal library of PythonParts and SmartParts — Python plugins for Allplan — built entirely on personal initiative outside of project work. The tools automate repetitive structural drafting tasks that previously required hundreds of manual steps. Select tools are open-sourced on GitHub.",
+        highlights: [
+          "Rebar QA Inspector — scans 3D models for duplicate reinforcement bars, missing rebar labels, and non-standard bar lengths. Catches errors before drawing issue, replacing a slow manual check.",
+          "Spacer (Unterstützung) — parametric 3D spacer tools generating standard and mesh spacers to DBV-BT and DBV-BK specifications automatically.",
+          "Automated Section — generates elevations, sections, and floor plans from any 3D model in a few operations instead of hundreds of manual steps. Major time saving on large models.",
+          "SmartParts for automated reinforcement of columns, walls, beams, and supplementary bars (Verstärkungsbewehrung) — set structural parameters, get full 3D reinforcement output.",
+        ]
+      }
     }
   ],
   vi: [
-    {
-      title: "Xây mới Tổ hợp Thể thao băng & Hồ bơi · Wiesbaden",
-      year: "2024–2025",
-      oneLiner: "Tổ hợp thể thao băng & hồ bơi công cộng quy mô lớn tại Wiesbaden — dựng mô hình kết cấu 3D hoàn chỉnh với móng cọc, kết cấu BTCT đa phân khu, các hồ bơi và sân băng theo tiêu chuẩn DIN.",
-      tech: ["Allplan", "DIN 1045-1", "3D Reinforcement", "Pile Foundations", "Public / Civic"],
-      image: "assets/projects/sportpark-wiesbaden-allplan.png",
-      thumbBg: "linear-gradient(135deg, #0F4C81 0%, #082B4D 100%)",
-      placeholderLabel: "SPORTS COMPLEX · DE",
-      caseStudy: {
-        role: "Họa viên trưởng · Toàn bộ dự án",
-        duration: "2024 – 2025",
-        summary: "Xây mới tổ hợp hồ bơi giải trí công cộng và nhà thi đấu thể thao băng (Freizeitbad mit Eissporthalle) tại Konrad-Adenauer-Ring, Wiesbaden. Chủ đầu tư: mattiaqua (Đơn vị vận hành trực thuộc thành phố Wiesbaden), thiết kế bởi asp Architekten GmbH (Stuttgart), đơn vị thiết kế kết cấu wh-p GmbH Beratende Ingenieure. Đây là một trong những dự án lớn và có kết cấu phức tạp nhất trong danh mục — một công trình công cộng đa khu chức năng với móng cọc sâu, kết cấu nhiều bể bơi và sân băng, toàn bộ được chi tiết hóa trên mô hình 3D.",
-        highlights: [
-          "Dựng mô hình kết cấu 3D hoàn chỉnh trên Allplan cho tổ hợp công cộng quy mô lớn — hệ móng cọc (hàng trăm cọc), kết cấu phần ngầm BTCT, tường và bản sàn bể bơi, kết cấu sân băng và phần thân nhiều tầng nổi.",
-          "Triển khai chi tiết cốt thép 3D toàn bộ các phân khu kết cấu theo tiêu chuẩn DIN 1045-1 — bao gồm khu vực giao cắt đòi hỏi kỹ thuật cao giữa vùng chống thấm bể bơi và kết cấu BTCT xung quanh.",
-          "Phối hợp triển khai bản vẽ với đơn vị thiết kế kết cấu wh-p GmbH và kiến trúc sư asp Architekten — làm việc từ dữ liệu IFC và đầu vào 2D để xuất bộ bản vẽ thi công hoàn chỉnh.",
-          "Quản lý đội ngũ trong suốt chu kỳ dự án với vai trò trưởng nhóm, chịu trách nhiệm QA/QC toàn bộ các bộ bản vẽ trước khi bàn giao.",
-        ]
-      }
-    },
     {
       title: "Xây mới Cầu đường bộ Tausendfüßler · Offenburg",
       year: "2020–2023",
@@ -1332,30 +1312,42 @@ const projects = {
       }
     },
     {
-      title: "Thư viện Tự động hóa PythonParts · Dự án cá nhân",
-      year: "2023–",
-      oneLiner: "Các plugin Python tự tùy chỉnh cho Allplan giúp tự động hóa các cấu kiện kết cấu điển hình — cột, dầm tham số hóa và lồng cốt thép.",
-      tech: ["Python", "PythonParts API", "Allplan", "Automation"],
-      image: null,
-      thumbBg: "linear-gradient(135deg, #0F4C81 0%, #082B4D 100%)",
-      techCard: {
-        stats: [
-          { value: "15+", label: "CÔNG CỤ ĐÃ DỰNG" },
-          { value: "90→20 phút", label: "THỜI GIAN DỰNG" },
-          { value: "Python", label: "NGÔN NGỮ" },
-          { value: "Đang phát triển", label: "TRẠNG THÁI" },
-        ],
-        note: "DỰ ÁN CÁ NHÂN · MÃ NGUỒN MỞ · github.com/BiViPi"
-      },
+      title: "Cải tạo & Nâng tầng · Riedstrasse 17, Tamins",
+      year: "2022",
+      oneLiner: "Cải tạo và nâng tầng cho công trình hiện hữu ở độ cao 1756m tại Graubünden — khối lượng lớn bản vẽ chi tiết bao gồm liên kết kết cấu thép cho phần nâng tầng mới.",
+      tech: ["Allplan", "SIA", "Sanierung", "Steel Connections", "Detail M 1:5"],
+      image: "assets/projects/tamins-riedstrasse17-allplan.png",
+      thumbBg: "linear-gradient(135deg, #EEF5FC, #BFD3EA)",
+      placeholderLabel: "RENOVATION · CH · 1756M",
       caseStudy: {
-        role: "Nhà phát triển · Sáng kiến cá nhân",
-        duration: "2023 – Hiện tại",
-        summary: "Một thư viện cá nhân gồm các công cụ PythonParts và SmartParts — các plugin Python dành riêng cho Allplan — được phát triển hoàn toàn theo sáng kiến cá nhân ngoài giờ làm việc. Các công cụ này tự động hóa các tác vụ vẽ kết cấu lặp đi lặp lại vốn trước đây đòi hỏi hàng trăm bước thủ công. Một số công cụ chọn lọc được chia sẻ mã nguồn mở trên GitHub.",
+        role: "Họa viên trưởng · Toàn bộ dự án",
+        duration: "2022",
+        summary: "Cải tạo (Sanierung) và nâng tầng (Aufstockung) cho tòa nhà hiện hữu tại Riedstrasse 17, Tamins — 7015, Bang Graubünden, Thụy Sĩ, ở độ cao 1756m so với mực nước biển. Dự án cải tạo có độ phức tạp cao, yêu cầu thiết lập hồ sơ hiện trạng chính xác của kết cấu cũ song song với bản vẽ thi công cho phần nâng tầng mới. Hình học tòa nhà không đều và giao diện kết nối giữa kết cấu BTCT cũ với khung thép mới làm cho đây trở thành một trong những dự án dân dụng đòi hỏi kỹ thuật cao nhất trong danh mục.",
         highlights: [
-          "Rebar QA Inspector — quét mô hình 3D để phát hiện các thanh cốt thép bị trùng lặp, thiếu nhãn ghi chú rebar hoặc chiều dài thanh không chuẩn tiêu chuẩn. Giúp kiểm soát lỗi trước khi xuất bản vẽ, thay thế quy trình kiểm tra thủ công chậm chạp.",
-          "Spacer (Thanh kê) — công cụ tạo các thanh kê cốt thép 3D tham số hóa tự động tạo các loại thanh kê tiêu chuẩn và dạng lưới theo đặc tính kỹ thuật DBV-BT và DBV-BK.",
-          "Automated Section — tự động tạo các mặt đứng, mặt cắt và mặt bằng sàn từ mô hình 3D bất kỳ chỉ với vài thao tác thay vì hàng trăm bước thủ công. Tiết kiệm thời gian đáng kể trên các mô hình lớn.",
-          "SmartParts hỗ trợ tự động bố trí cốt thép cho cột, tường, dầm và cốt thép bổ sung (Verstärkungsbewehrung) — chỉ cần nhập các thông số hình học kết cấu để nhận ngay kết quả mô hình cốt thép 3D hoàn chỉnh.",
+          "Xuất bản lượng lớn bản vẽ thi công chi tiết tỷ lệ 1:50 và 1:25 — mặt bằng, hơn 12 mặt cắt và các chi tiết liên kết — toàn bộ được chú thích bằng tiếng Đức theo tiêu chuẩn SIA.",
+          "Triển khai chi tiết các liên kết kết cấu thép cho phần nâng tầng mới: thép hình HEB 240, liên kết mặt bích (Kopfplatte), gân tăng cứng, bu lông M20/M27 và thanh neo M16 — vẽ ở tỷ lệ chi tiết 1:5 và 1:10.",
+          "Xử lý hình học phức tạp của mặt bằng công trình hiện hữu không vuông vắn, điều hòa sự sai lệch giữa hiện trạng thực tế và ý đồ kết cấu mới trên từng bản vẽ.",
+          "Toàn bộ bản vẽ được bàn giao sau khi đã qua kiểm tra QA/QC kỹ lưỡng, sẵn sàng trình duyệt cho kỹ sư kết cấu và nhà thầu Thụy Sĩ mà không cần qua các vòng chỉnh sửa.",
+        ]
+      }
+    },
+    {
+      title: "Xây mới Tổ hợp Thể thao băng & Hồ bơi · Wiesbaden",
+      year: "2024–2025",
+      oneLiner: "Tổ hợp thể thao băng & hồ bơi công cộng quy mô lớn tại Wiesbaden — dựng mô hình kết cấu 3D hoàn chỉnh với móng cọc, kết cấu BTCT đa phân khu, các hồ bơi và sân băng theo tiêu chuẩn DIN.",
+      tech: ["Allplan", "DIN 1045-1", "3D Reinforcement", "Pile Foundations", "Public / Civic"],
+      image: "assets/projects/sportpark-wiesbaden-allplan.png",
+      thumbBg: "linear-gradient(135deg, #0F4C81 0%, #082B4D 100%)",
+      placeholderLabel: "SPORTS COMPLEX · DE",
+      caseStudy: {
+        role: "Họa viên trưởng · Toàn bộ dự án",
+        duration: "2024 – 2025",
+        summary: "Xây mới tổ hợp hồ bơi giải trí công cộng và nhà thi đấu thể thao băng (Freizeitbad mit Eissporthalle) tại Konrad-Adenauer-Ring, Wiesbaden. Chủ đầu tư: mattiaqua (Đơn vị vận hành trực thuộc thành phố Wiesbaden), thiết kế bởi asp Architekten GmbH (Stuttgart), đơn vị thiết kế kết cấu wh-p GmbH Beratende Ingenieure. Đây là một trong những dự án lớn và có kết cấu phức tạp nhất trong danh mục — một công trình công cộng đa khu chức năng với móng cọc sâu, kết cấu nhiều bể bơi và sân băng, toàn bộ được chi tiết hóa trên mô hình 3D.",
+        highlights: [
+          "Dựng mô hình kết cấu 3D hoàn chỉnh trên Allplan cho tổ hợp công cộng quy mô lớn — hệ móng cọc (hàng trăm cọc), kết cấu phần ngầm BTCT, tường và bản sàn bể bơi, kết cấu sân băng và phần thân nhiều tầng nổi.",
+          "Triển khai chi tiết cốt thép 3D toàn bộ các phân khu kết cấu theo tiêu chuẩn DIN 1045-1 — bao gồm khu vực giao cắt đòi hỏi kỹ thuật cao giữa vùng chống thấm bể bơi và kết cấu BTCT xung quanh.",
+          "Phối hợp triển khai bản vẽ với đơn vị thiết kế kết cấu wh-p GmbH và kiến trúc sư asp Architekten — làm việc từ dữ liệu IFC và đầu vào 2D để xuất bộ bản vẽ thi công hoàn chỉnh.",
+          "Quản lý đội ngũ trong suốt chu kỳ dự án với vai trò trưởng nhóm, chịu trách nhiệm QA/QC toàn bộ các bộ bản vẽ trước khi bàn giao.",
         ]
       }
     },
@@ -1376,26 +1368,6 @@ const projects = {
           "Chi tiết hóa cốt thép 3D toàn bộ các cấu kiện theo tiêu chuẩn SIA của Thụy Sĩ: tường chắn tầng hầm, sàn phẳng, lõi thang máy và các cấu kiện mặt tiền.",
           "Quản lý toàn bộ chu kỳ vẽ với vai trò trưởng nhóm, phối hợp với quản lý dự án người Thụy Sĩ và bàn giao các bản vẽ đã qua kiểm định QA/QC tại mỗi cột mốc.",
           "Xử lý vùng chuyển tiếp kết cấu giữa mặt bằng thương mại rộng rãi ở tầng hầm và khối tháp căn hộ nhỏ hơn ở phía trên — một khu vực bàn giao hình học phức tạp.",
-        ]
-      }
-    },
-    {
-      title: "Cải tạo & Nâng tầng · Riedstrasse 17, Tamins",
-      year: "2022",
-      oneLiner: "Cải tạo và nâng tầng cho công trình hiện hữu ở độ cao 1756m tại Graubünden — khối lượng lớn bản vẽ chi tiết bao gồm liên kết kết cấu thép cho phần nâng tầng mới.",
-      tech: ["Allplan", "SIA", "Sanierung", "Steel Connections", "Detail M 1:5"],
-      image: "assets/projects/tamins-riedstrasse17-allplan.png",
-      thumbBg: "linear-gradient(135deg, #EEF5FC, #BFD3EA)",
-      placeholderLabel: "RENOVATION · CH · 1756M",
-      caseStudy: {
-        role: "Họa viên trưởng · Toàn bộ dự án",
-        duration: "2022",
-        summary: "Cải tạo (Sanierung) và nâng tầng (Aufstockung) cho tòa nhà hiện hữu tại Riedstrasse 17, Tamins — 7015, Bang Graubünden, Thụy Sĩ, ở độ cao 1756m so với mực nước biển. Dự án cải tạo có độ phức tạp cao, yêu cầu thiết lập hồ sơ hiện trạng chính xác của kết cấu cũ song song với bản vẽ thi công cho phần nâng tầng mới. Hình học tòa nhà không đều và giao diện kết nối giữa kết cấu BTCT cũ với khung thép mới làm cho đây trở thành một trong những dự án dân dụng đòi hỏi kỹ thuật cao nhất trong danh mục.",
-        highlights: [
-          "Xuất bản lượng lớn bản vẽ thi công chi tiết tỷ lệ 1:50 và 1:25 — mặt bằng, hơn 12 mặt cắt và các chi tiết liên kết — toàn bộ được chú thích bằng tiếng Đức theo tiêu chuẩn SIA.",
-          "Triển khai chi tiết các liên kết kết cấu thép cho phần nâng tầng mới: thép hình HEB 240, liên kết mặt bích (Kopfplatte), gân tăng cứng, bu lông M20/M27 và thanh neo M16 — vẽ ở tỷ lệ chi tiết 1:5 và 1:10.",
-          "Xử lý hình học phức tạp của mặt bằng công trình hiện hữu không vuông vắn, điều hòa sự sai lệch giữa hiện trạng thực tế và ý đồ kết cấu mới trên từng bản vẽ.",
-          "Toàn bộ bản vẽ được bàn giao sau khi đã qua kiểm tra QA/QC kỹ lưỡng, sẵn sàng trình duyệt cho kỹ sư kết cấu và nhà thầu Thụy Sĩ mà không cần qua các vòng chỉnh sửa.",
         ]
       }
     },
@@ -1425,6 +1397,34 @@ const projects = {
           "Kết cấu phần hạ tầng BTCT 2 tầng (diện tích sàn ~30,000m²) kết hợp với hệ khung thép cao 11m phía trên — giao diện kết nối giữa BTCT đúc sẵn và kết cấu thép phía trên đòi hỏi các chi tiết liên kết cực kỳ chính xác.",
           "Dự án công nghiệp quy mô lớn với dung sai chế tạo và vận chuyển lắp đặt rất ngặt nghèo — các cấu kiện đúc sẵn đòi hỏi độ chính xác tuyệt đối về hình học và chi tiết cốt thép phục vụ sản xuất tại nhà máy.",
           "Hiện đang triển khai (2025–2026). Dự án là một phần trong khoản đầu tư trị giá khoảng 1 tỷ Euro của Mercedes-Benz nhằm nâng cao năng lực sản xuất trong tương lai tại Sindelfingen.",
+        ]
+      }
+    },
+    {
+      title: "Thư viện Tự động hóa PythonParts · Dự án cá nhân",
+      year: "2026–",
+      oneLiner: "Các plugin Python tự tùy chỉnh cho Allplan giúp tự động hóa các cấu kiện kết cấu điển hình — cột, dầm tham số hóa và lồng cốt thép.",
+      tech: ["Python", "PythonParts API", "Allplan", "Automation"],
+      image: null,
+      thumbBg: "linear-gradient(135deg, #0F4C81 0%, #082B4D 100%)",
+      techCard: {
+        stats: [
+          { value: "15+", label: "CÔNG CỤ ĐÃ DỰNG" },
+          { value: "90→20 phút", label: "THỜI GIAN DỰNG" },
+          { value: "Python", label: "NGÔN NGỮ" },
+          { value: "Đang phát triển", label: "TRẠNG THÁI" },
+        ],
+        note: "DỰ ÁN CÁ NHÂN · MÃ NGUỒN MỞ · github.com/BiViPi"
+      },
+      caseStudy: {
+        role: "Nhà phát triển · Sáng kiến cá nhân",
+        duration: "2026 – Hiện tại",
+        summary: "Một thư viện cá nhân gồm các công cụ PythonParts và SmartParts — các plugin Python dành riêng cho Allplan — được phát triển hoàn toàn theo sáng kiến cá nhân ngoài giờ làm việc. Các công cụ này tự động hóa các tác vụ vẽ kết cấu lặp đi lặp lại vốn trước đây đòi hỏi hàng trăm bước thủ công. Một số công cụ chọn lọc được chia sẻ mã nguồn mở trên GitHub.",
+        highlights: [
+          "Rebar QA Inspector — quét mô hình 3D để phát hiện các thanh cốt thép bị trùng lặp, thiếu nhãn ghi chú rebar hoặc chiều dài thanh không chuẩn tiêu chuẩn. Giúp kiểm soát lỗi trước khi xuất bản vẽ, thay thế quy trình kiểm tra thủ công chậm chạp.",
+          "Spacer (Thanh kê) — công cụ tạo các thanh kê cốt thép 3D tham số hóa tự động tạo các loại thanh kê tiêu chuẩn và dạng lưới theo đặc tính kỹ thuật DBV-BT và DBV-BK.",
+          "Automated Section — tự động tạo các mặt đứng, mặt cắt và mặt bằng sàn từ mô hình 3D bất kỳ chỉ với vài thao tác thay vì hàng trăm bước thủ công. Tiết kiệm thời gian đáng kể trên các mô hình lớn.",
+          "SmartParts hỗ trợ tự động bố trí cốt thép cho cột, tường, dầm và cốt thép bổ sung (Verstärkungsbewehrung) — chỉ cần nhập các thông số hình học kết cấu để nhận ngay kết quả mô hình cốt thép 3D hoàn chỉnh.",
         ]
       }
     }

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phu Bui - ATS Resume</title>
+<style>
+  :root {
+    --ink: #0f172a;
+    --muted: #475569;
+    --line: #dbe3ec;
+    --accent: #1f4e83;
+    --paper: #ffffff;
+    --surface: #f8fafc;
+  }
+
+  @page {
+    size: A4;
+    margin: 15mm 16mm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    line-height: 1.45;
+    color: var(--ink);
+    background: var(--surface);
+  }
+
+  body {
+    min-height: 100vh;
+    padding: 32px 20px 56px;
+    background: var(--surface);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .print-bar {
+    max-width: 820px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .print-note {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .print-btn {
+    border: 0;
+    border-radius: 8px;
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 16px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .sheet {
+    max-width: 820px;
+    margin: 0 auto;
+    background: var(--paper);
+    padding: 34pt 38pt 38pt;
+    box-shadow: 0 10px 32px rgba(15, 23, 42, 0.08);
+  }
+
+  .cv-header {
+    padding-bottom: 14pt;
+    border-bottom: 1.5px solid var(--ink);
+  }
+
+  .cv-name {
+    font-size: 24pt;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  .cv-alt-name {
+    display: block;
+    margin-top: 3pt;
+    font-size: 11pt;
+    font-weight: 500;
+    color: var(--muted);
+  }
+
+  .cv-title {
+    margin-top: 8pt;
+    font-size: 11.5pt;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .contact-list {
+    list-style: none;
+    margin-top: 12pt;
+    display: grid;
+    gap: 4pt;
+    font-size: 10pt;
+    color: var(--muted);
+  }
+
+  .contact-label {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .cv-section {
+    margin-top: 18pt;
+  }
+
+  .cv-section-title {
+    margin-bottom: 8pt;
+    padding-bottom: 4pt;
+    border-bottom: 1px solid var(--line);
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .cv-summary,
+  .cv-paragraph {
+    color: var(--ink);
+    font-size: 10.8pt;
+    line-height: 1.55;
+  }
+
+  .cv-entry {
+    margin-top: 10pt;
+    page-break-inside: avoid;
+  }
+
+  .cv-entry:first-of-type {
+    margin-top: 0;
+  }
+
+  .cv-entry-head {
+    display: block;
+  }
+
+  .cv-entry-role {
+    display: block;
+    font-size: 11.4pt;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .cv-entry-meta,
+  .cv-entry-submeta {
+    display: block;
+    margin-top: 2pt;
+    font-size: 10pt;
+    color: var(--muted);
+  }
+
+  .cv-list {
+    margin-top: 7pt;
+    padding-left: 16pt;
+    list-style: disc;
+  }
+
+  .cv-list li {
+    margin-bottom: 5pt;
+    font-size: 10.4pt;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .cv-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .cv-label-block {
+    margin-top: 8pt;
+  }
+
+  .cv-label {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .cv-value {
+    display: block;
+    margin-top: 2pt;
+    font-size: 10.4pt;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .cv-note {
+    margin-top: 3pt;
+    font-size: 9.8pt;
+    color: var(--muted);
+  }
+
+  @media print {
+    body {
+      padding: 0;
+      background: #fff;
+    }
+
+    .print-bar {
+      display: none !important;
+    }
+
+    .sheet {
+      box-shadow: none;
+      padding: 0;
+      max-width: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <div class="print-note">ATS version: single-column, text-first, PDF export via browser print.</div>
+  <button class="print-btn" type="button" onclick="window.print()">Print / Save PDF</button>
+</div>
+
+<main class="sheet">
+  <header class="cv-header">
+    <h1 class="cv-name">
+      Phu Bui
+      <span class="cv-alt-name">Bui Vinh Phu</span>
+    </h1>
+    <p class="cv-title">Structural Draftsman | Team Leader | Allplan Specialist</p>
+    <ul class="contact-list">
+      <li><span class="contact-label">Email:</span> <a href="mailto:phubui277@gmail.com">phubui277@gmail.com</a></li>
+      <li><span class="contact-label">Phone:</span> 0932707531</li>
+      <li><span class="contact-label">Location:</span> Vietnam | Remote for Germany / Switzerland</li>
+      <li><span class="contact-label">LinkedIn:</span> <a href="https://www.linkedin.com/in/phu-bui-016919222/">linkedin.com/in/phu-bui-016919222</a></li>
+      <li><span class="contact-label">GitHub:</span> <a href="https://github.com/BiViPi">github.com/BiViPi</a></li>
+    </ul>
+  </header>
+
+  <section class="cv-section">
+    <h2 class="cv-section-title">Professional Summary</h2>
+    <p class="cv-summary">
+      Structural Draftsman and Team Leader with 13+ years of experience delivering reinforced concrete and precast projects for German and Swiss clients. Specialized in translating 2D drawings, IFC coordination models, and static documents into accurate 3D Allplan production models and reinforcement detailing packages to DIN 1045-1, SIA 262, and Eurocode 2. Experienced in drawing QA/QC, project coordination, and Python-based automation for repetitive drafting workflows.
+    </p>
+  </section>
+
+  <section class="cv-section">
+    <h2 class="cv-section-title">Experience</h2>
+
+    <article class="cv-entry">
+      <div class="cv-entry-head">
+        <span class="cv-entry-role">Team Leader - Structural Detailing</span>
+        <span class="cv-entry-meta">SSIFT Vietnam | 04/2013 - Present</span>
+        <span class="cv-entry-submeta">Vietnam | Germany | Switzerland | Remote delivery</span>
+      </div>
+      <ul class="cv-list">
+        <li>Coordinate structural drafting workflows for civil, commercial, industrial, and bridge projects across German and Swiss markets.</li>
+        <li>Build accurate 3D Allplan structural and reinforcement models from architectural drawings, IFC files, and structural engineer documentation.</li>
+        <li>Produce formwork drawings, reinforcement detailing, prestressed reinforcement layouts, precast element detailing, and related execution packages to DIN 1045-1, SIA 262, and Eurocode 2 requirements.</li>
+        <li>Perform QA/QC on drawing sets and model outputs before handover to project managers and downstream teams.</li>
+        <li>Develop PythonParts and SmartParts tools to reduce repetitive drafting work and improve model consistency.</li>
+        <li>Support team onboarding and internal know-how reuse through repeatable detailing workflows and reusable structural detail libraries.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="cv-section">
+    <h2 class="cv-section-title">Selected Projects</h2>
+
+    <article class="cv-entry">
+      <div class="cv-entry-head">
+        <span class="cv-entry-role">Ersatzneubau Tausendfussler</span>
+        <span class="cv-entry-meta">Offenburg, Germany | DIN 1045-1 | Allplan | Prestressed Reinforcement</span>
+      </div>
+      <ul class="cv-list">
+        <li>Replacement of a 5-span reinforced concrete road bridge over the Rheintalbahn, approximately 180m long and approximately 12m wide.</li>
+        <li>Led a 5-person drafting team through the full drafting cycle from project start to handover.</li>
+        <li>Delivered the 3D structural model, 3D reinforcement detailing, and 3D prestressed bar layout in Allplan.</li>
+      </ul>
+    </article>
+
+    <article class="cv-entry">
+      <div class="cv-entry-head">
+        <span class="cv-entry-role">Neubau Freizeitbad mit Eissporthalle</span>
+        <span class="cv-entry-meta">Wiesbaden, Germany | DIN 1045-1 | Allplan | Pile Foundations</span>
+      </div>
+      <ul class="cv-list">
+        <li>Developed the full 3D structural model for a large public leisure bath and ice sports complex with pile foundations, pool structures, and multi-zone reinforced concrete systems.</li>
+        <li>Handled reinforcement detailing across technically demanding interfaces, including pool waterproofing transition zones and surrounding reinforced concrete structure.</li>
+      </ul>
+    </article>
+
+    <article class="cv-entry">
+      <div class="cv-entry-head">
+        <span class="cv-entry-role">NGP Gebaude 36</span>
+        <span class="cv-entry-meta">Mercedes-Benz Sindelfingen, Germany | DIN 1045-1 | Precast / Spannbeton</span>
+      </div>
+      <ul class="cv-list">
+        <li>Produced structural drafting for 7,200 prestressed precast elements including columns, main beams, and trough slabs for a large industrial reinforced concrete structure covering approximately 30,000 m2.</li>
+      </ul>
+    </article>
+
+    <article class="cv-entry">
+      <div class="cv-entry-head">
+        <span class="cv-entry-role">PythonParts Automation Library</span>
+        <span class="cv-entry-meta">Personal project | Python | PythonParts API | SmartParts | Allplan</span>
+      </div>
+      <ul class="cv-list">
+        <li>Built a personal library of Allplan automation tools to reduce repetitive structural drafting steps.</li>
+        <li>Created Rebar QA Inspector utilities for duplicate bar detection, label checks, and non-standard bar length review before drawing issue.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="cv-section">
+    <h2 class="cv-section-title">Core Skills</h2>
+
+    <div class="cv-label-block">
+      <span class="cv-label">Structural detailing</span>
+      <span class="cv-value">2D-to-3D structural modeling, reinforcement detailing, precast detailing, prestressed reinforcement layouts, IFC-based coordination, drawing QA/QC.</span>
+    </div>
+
+    <div class="cv-label-block">
+      <span class="cv-label">Software</span>
+      <span class="cv-value">Allplan, Microsoft Excel, Microsoft Word.</span>
+    </div>
+
+    <div class="cv-label-block">
+      <span class="cv-label">Standards</span>
+      <span class="cv-value">DIN 1045-1, SIA 262, Eurocode 2.</span>
+    </div>
+
+    <div class="cv-label-block">
+      <span class="cv-label">Automation</span>
+      <span class="cv-value">Python, PythonParts API, SmartParts, internal drafting workflow automation.</span>
+    </div>
+
+    <div class="cv-label-block">
+      <span class="cv-label">Leadership</span>
+      <span class="cv-value">Task coordination, team support, quality control, drafting workflow improvement.</span>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <h2 class="cv-section-title">Education</h2>
+    <article class="cv-entry">
+      <span class="cv-entry-role">Architectural Drafting Certificate</span>
+      <span class="cv-entry-meta">Practical Detailing Academy</span>
+      <p class="cv-note">Practical drafting foundation later extended through live project delivery in structural engineering.</p>
+    </article>
+  </section>
+
+  <section class="cv-section">
+    <h2 class="cv-section-title">Languages</h2>
+
+    <div class="cv-label-block">
+      <span class="cv-label">Vietnamese</span>
+      <span class="cv-value">Native.</span>
+    </div>
+
+    <div class="cv-label-block">
+      <span class="cv-label">English</span>
+      <span class="cv-value">Strong reading and writing, basic spoken communication.</span>
+    </div>
+
+    <div class="cv-label-block">
+      <span class="cv-label">German</span>
+      <span class="cv-value">Technical reading for construction drawings, standards, and project documentation.</span>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
